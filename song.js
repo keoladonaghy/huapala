@@ -151,24 +151,28 @@ class SongPage {
             const hawaiianText = verse.hawaiian_text || '';
             const englishText = verse.english_text || '';
             
-            // Split text into lines for better formatting
-            const hawaiianLines = hawaiianText.split('\n').filter(line => line.trim());
-            const englishLines = englishText.split('\n').filter(line => line.trim());
+            // Preserve line breaks by replacing \n with <br>
+            const hawaiianFormatted = hawaiianText.replace(/\n/g, '<br>');
+            const englishFormatted = englishText.replace(/\n/g, '<br>');
             
-            // Handle cases where one side has more lines than the other
-            const maxLines = Math.max(hawaiianLines.length, englishLines.length, 1);
-            
-            for (let i = 0; i < maxLines; i++) {
-                const hawaiianLine = hawaiianLines[i] || '';
-                const englishLine = englishLines[i] || '';
-                
-                tableHTML += `
-                    <tr>
-                        <td class="hawaiian-lyrics">${hawaiianLine}</td>
-                        <td class="english-lyrics">${englishLine}</td>
-                    </tr>
-                `;
+            // Add verse/chorus label if available
+            let verseLabel = '';
+            if (verse.type && verse.order) {
+                verseLabel = verse.type === 'hui' ? 'Hui:' : `Verse ${verse.order}:`;
             }
+            
+            tableHTML += `
+                <tr>
+                    <td class="hawaiian-lyrics">
+                        ${verseLabel ? `<strong>${verseLabel}</strong><br>` : ''}
+                        ${hawaiianFormatted}
+                    </td>
+                    <td class="english-lyrics">
+                        ${verseLabel ? `<strong>${verseLabel}</strong><br>` : ''}
+                        ${englishFormatted}
+                    </td>
+                </tr>
+            `;
             
             // Add spacing between verses
             if (index < this.song.verses.length - 1) {
