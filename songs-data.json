@@ -1,0 +1,444 @@
+[
+  {
+    "canonical_mele_id": "adios_ke_aloha_canonical",
+    "canonical_title_hawaiian": "Adios Ke Aloha",
+    "canonical_title_english": "Kossuth, Ramon and Lauzada",
+    "primary_composer": "Prince William Pitt Leleiohoku",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Prince William Pitt Leleiohoku",
+    "translator": "Mary Pukui",
+    "hawaiian_editor": "Puakea Nogelmeier",
+    "source_file": "Adios Ke Aloha.txt",
+    "source_publication": "King's \"Songs of Hawaiʻi\" -",
+    "copyright_info": "1942 Charles E. King Translated by Mary Pukui",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": 1,
+    "youtube_urls": [
+      "http://www.youtube.com/watch?v=k7Dk5H80XqE"
+    ],
+    "verses": [
+      {
+        "order": 1,
+        "type": "hui",
+        "hawaiian_text": "E kuʻu belle o ka pō laʻilaʻi Ka lawe mālie a ka mahina Kōaniani mai nei e ke ahe Āhea ʻoe hoʻolono mai Āhea ʻoe, āhea ʻoe ʻOe hoʻolono mai I nei leo nahenahe Adios, adios ke aloha E ka hauʻoli ʻiniki puʻuwai E ke aloha e maliu mai ʻoe Ke hoʻolale mai nei e ke Kiu Ua anu ka wao i ka ua Hoʻokahi kiss Dew drops he maʻū ia E ka belle o ka noe līhau Eia au lā e ke aloha Ke huli hoʻi nei me ka neo",
+        "english_text": "Prince William Pitt Leleiohoku",
+        "hawaiian_lines": [
+          "E kuʻu belle o ka pō laʻilaʻi Ka lawe mālie a ka mahina Kōaniani mai nei e ke ahe Āhea ʻoe hoʻolono mai Hui: Āhea ʻoe, āhea ʻoe ʻOe hoʻolono mai I nei leo nahenahe Adios, adios ke aloha E ka hauʻoli ʻiniki puʻuwai E ke aloha e maliu mai ʻoe Ke hoʻolale mai nei e ke Kiu Ua anu ka wao i ka ua Hoʻokahi kiss Dew drops he maʻū ia E ka belle o ka noe līhau Eia au lā e ke aloha Ke huli hoʻi nei me ka neo"
+        ],
+        "english_lines": [
+          "Prince William Pitt Leleiohoku"
+        ],
+        "label": "Hui:"
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "bye_and_bye_hoi_mai_canonical",
+    "canonical_title_hawaiian": "Bye and Bye Hoi Mai",
+    "canonical_title_english": "",
+    "primary_composer": "",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "",
+    "translator": "",
+    "hawaiian_editor": "Puakea Nogelmeier",
+    "source_file": "By and By Hoi Mai ‘oe.txt",
+    "source_publication": "Recorded by Nā ʻŌiwi. Hawaiian Text edited by Puakea Nogelmeier",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "hui",
+        "hawaiian_text": "Aia i Mauna Kilohana ʻO aʻu lehua ʻula i ka wao Nā maka ʻohe kiʻi i ka wai ʻĀhaʻi ka ʻiʻini a ka manaʻo By and by hoʻi mai ʻoe E he ʻala hoene i ka poli By and by hoʻi mai ʻoe I ʻaneʻi kāua e laʻi ai E ʻae ana paha wau i ka ualo I ka leo hea a ka pololei E hoʻi aku nō wau e pili Me ka ua Kīpuʻu o ka nahele Me he ua noe ala ko aloha E hana mau nei kuʻu nui kino ʻO kou kai ia e mākoi ai Uʻi ʻaʻā ia pua i ka nani",
+        "english_text": "Liliʻuokalani",
+        "hawaiian_lines": [
+          "Aia i Mauna Kilohana ʻO aʻu lehua ʻula i ka wao Nā maka ʻohe kiʻi i ka wai ʻĀhaʻi ka ʻiʻini a ka manaʻo Hui: By and by hoʻi mai ʻoe E he ʻala hoene i ka poli By and by hoʻi mai ʻoe I ʻaneʻi kāua e laʻi ai E ʻae ana paha wau i ka ualo I ka leo hea a ka pololei E hoʻi aku nō wau e pili Me ka ua Kīpuʻu o ka nahele Me he ua noe ala ko aloha E hana mau nei kuʻu nui kino ʻO kou kai ia e mākoi ai Uʻi ʻaʻā ia pua i ka nani"
+        ],
+        "english_lines": [
+          "Liliʻuokalani"
+        ],
+        "label": "Hui:"
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "e_hoi_i_ka_pili_canonical",
+    "canonical_title_hawaiian": "E Hoi I Ka Pili",
+    "canonical_title_english": "",
+    "primary_composer": "Words & music by Kealiʻi Reichel",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Words & music by Kealiʻi Reichel",
+    "translator": "Kealiʻi Reichel. Hawaiian Text edited by Puakea Nogelmeier © 1994 Punahele",
+    "hawaiian_editor": "Puakea Nogelmeier",
+    "source_file": "E Hoi I ka Pili.txt",
+    "source_publication": "Kealiʻi Reichel album \"Pride of",
+    "copyright_info": "1994 Punahele",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "E hoʻi i ka pili E kuʻu ipo. E neneʻe mai, e nanea mai E ke aloha, E hoʻonipo kāua He lei wehi ʻoe No kuʻu nui kino. Lei ʻala hoʻōnaona lua i ka poli E ke aloha, E hanu lipo kāua Ka nehe a ke kai O Kahakuloa Kai koʻo hākuʻi piʻi ka pali E ke aloha, Pulu pē iho kāua Puana ʻia mai E kuʻu ipo. E neneʻe mai. e nanea mai E ke aloha, E hoʻonipo kāua",
+        "english_text": "Come here to me, My darling love. Cuddle close, Relax my beloved, And let us make love You are like a lei, For me to wear. Incomparably fragrant At my heart, my dearest, Let us deeply kiss The sea at Kahakuloa, Rumbles on the rocks And splashes up the cliffs. Oh my love, We are drenched Let it be told, My love, my darling. Cuddle close, Relax my beloved, And let us make love",
+        "hawaiian_lines": [
+          "E hoʻi i ka pili E kuʻu ipo. E neneʻe mai, e nanea mai E ke aloha, E hoʻonipo kāua He lei wehi ʻoe No kuʻu nui kino. Lei ʻala hoʻōnaona lua i ka poli E ke aloha, E hanu lipo kāua Ka nehe a ke kai O Kahakuloa Kai koʻo hākuʻi piʻi ka pali E ke aloha, Pulu pē iho kāua Puana ʻia mai E kuʻu ipo. E neneʻe mai. e nanea mai E ke aloha, E hoʻonipo kāua"
+        ],
+        "english_lines": [
+          "Come here to me, My darling love. Cuddle close, Relax my beloved, And let us make love You are like a lei, For me to wear. Incomparably fragrant At my heart, my dearest, Let us deeply kiss The sea at Kahakuloa, Rumbles on the rocks And splashes up the cliffs. Oh my love, We are drenched Let it be told, My love, my darling. Cuddle close, Relax my beloved, And let us make love"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "green_carnation_canonical",
+    "canonical_title_hawaiian": "Green Carnation",
+    "canonical_title_english": "",
+    "primary_composer": "",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "",
+    "translator": "Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier",
+    "hawaiian_editor": "Puakea Nogelmeier",
+    "source_file": "Green Carnation.txt",
+    "source_publication": "Mana Collection, Translated by Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": 1,
+    "youtube_urls": [
+      "http://www.youtube.com/watch?v=CJBAgW6iHtY"
+    ],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "Kuʻu ipo, kuʻu pua, kuʻu lei Green carnation onaona Wili ʻia me maile lau liʻi Lei nani makamae Liʻa wau i kou nani Hoa pili no mī nei Lei mai ana iaʻu kou aloha Hoʻi mai kāua e pili",
+        "english_text": "My sweetheart, my blossom, my wreath Green carnation, so alluring Entwined with small leaf maile Wreath so beautiful, so precious I desire your beauty Won`t you be my companion I am blessed with your love Come, let us be together",
+        "hawaiian_lines": [
+          "Listen to Green Carnation on YouTube http://www.youtube.com/watch?v=CJBAgW6iHtY Kuʻu ipo, kuʻu pua, kuʻu lei Green carnation onaona Wili ʻia me maile lau liʻi Lei nani makamae Liʻa wau i kou nani Hoa pili no mī nei Lei mai ana iaʻu kou aloha Hoʻi mai kāua e pili"
+        ],
+        "english_lines": [
+          "My sweetheart, my blossom, my wreath Green carnation, so alluring Entwined with small leaf maile Wreath so beautiful, so precious I desire your beauty Won`t you be my companion I am blessed with your love Come, let us be together"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "haleakala_hula_canonical",
+    "canonical_title_hawaiian": "Haleakala Hula",
+    "canonical_title_english": "House of the sun",
+    "primary_composer": "Alice Nämakelua",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Alice Nämakelua",
+    "translator": "",
+    "hawaiian_editor": "",
+    "source_file": "Kuahiwi Nani.txt",
+    "source_publication": "Mana Collection - Composed 1941,",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "Kuahiwi nani ʻoe Haleakalā Kaulana hoʻi ʻoe kū kilakila ʻO Makawao ia ua kaulana I kāohi ia iho o ka lāʻau He ʻŪkiu e ka ua o ka ʻāina Me ka makani aheahe ʻoluʻolu E aho no ʻoe a e komo mai A e hoʻolaʻi ka malu o ke ao Puana ka inoa i lohe ʻia Kuahiwi nani ʻoe Haleakalā",
+        "english_text": "You are a beautiful mountain, Haleakalā You are famous and stand majestically At Makawao, this rain is well known It falls gently on the trees ʻŪkiu is the name of the rain of this land Here the wind is soft and cool You should come in Relax in the shade of the clouds Tell the name so that it can be heard You are a beautiful mountain, Haleakalā",
+        "hawaiian_lines": [
+          "Kuahiwi nani ʻoe Haleakalā Kaulana hoʻi ʻoe kū kilakila ʻO Makawao ia ua kaulana I kāohi ia iho o ka lāʻau He ʻŪkiu e ka ua o ka ʻāina Me ka makani aheahe ʻoluʻolu E aho no ʻoe a e komo mai A e hoʻolaʻi ka malu o ke ao Puana ka inoa i lohe ʻia Kuahiwi nani ʻoe Haleakalā"
+        ],
+        "english_lines": [
+          "You are a beautiful mountain, Haleakalā You are famous and stand majestically At Makawao, this rain is well known It falls gently on the trees ʻŪkiu is the name of the rain of this land Here the wind is soft and cool You should come in Relax in the shade of the clouds Tell the name so that it can be heard You are a beautiful mountain, Haleakalā"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "heha_waipio_canonical",
+    "canonical_title_hawaiian": "Heha Waipio",
+    "canonical_title_english": "frigate bird",
+    "primary_composer": "Sam Li`a Kalainaina, Jr.",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Sam Li`a Kalainaina, Jr.",
+    "translator": "",
+    "hawaiian_editor": "",
+    "source_file": "Heha Waipio.txt",
+    "source_publication": "This mele is for the home of",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "Kaulana kuʻu home puni Waipiʻo Me nā peʻa nani o ka ʻāina Kākela he hale aliʻi Herode koʻu hoalike Mōʻī puni haʻakei Kukuna o ka lā koʻu kapa ʻia E ʻōlino nei a puni ka honua Aue aʻi luna lilo Lihi launa ʻole mai Nā aliʻi nui o ke ao E oʻu mau kini nā makamaka Me nā kupa o kuʻu ʻāina Me ka wailele aʻo Hiʻilawe Koʻiawe maila i luna Koʻiawe mau i ka pali ʻAʻole pēlā ka ʻoia ʻiʻo Hakuʻepa lokoʻino o ka makamaka Ua like nō a like Me nā kini lehulehu O kuʻu one hānau E ola māua me aʻu kini Me aʻu lei o nei ʻāina Pulupē i ka hunakai Ka iʻa mili i ka lima Heha Waipiʻo i ka noe Haʻina ʻia mai ana ka puana No ka lei hapa pua Sēpānia He kupa no ka ʻāina E kipa mai ma loko Haleʻiwa beautiful home",
+        "english_text": "Famous is my home, beloved Waipiʻo And the beautiful borders of the land A castle, a royal house I am like Herod A haughty king Rays of the sun are my garments Sparkling on all the earth Far above, so high, beyond reach There are no limits For the great lord of the day My friends and neighbors And natives of this land Hiʻilawe, the waterfall Showering from above Showering always on the cliff This is not the truth Gossip started by a jealous crony I am just the same Like every one else Of my birthplace May the two of us and my friends And my children live in this land Drenched with sea spray Where fish are caught in the hand Waipiʻo is drowsy in the mist Tell the refrain Of this half Spanish flower lei A resident of the land You are welcome to come to Haleʻiwa, my beautiful home",
+        "hawaiian_lines": [
+          "Kaulana kuʻu home puni Waipiʻo Me nā peʻa nani o ka ʻāina Kākela he hale aliʻi Herode koʻu hoalike Mōʻī puni haʻakei Kukuna o ka lā koʻu kapa ʻia E ʻōlino nei a puni ka honua Aue aʻi luna lilo Lihi launa ʻole mai Nā aliʻi nui o ke ao E oʻu mau kini nā makamaka Me nā kupa o kuʻu ʻāina Me ka wailele aʻo Hiʻilawe Koʻiawe maila i luna Koʻiawe mau i ka pali ʻAʻole pēlā ka ʻoia ʻiʻo Hakuʻepa lokoʻino o ka makamaka Ua like nō a like Me nā kini lehulehu O kuʻu one hānau E ola māua me aʻu kini Me aʻu lei o nei ʻāina Pulupē i ka hunakai Ka iʻa mili i ka lima Heha Waipiʻo i ka noe Haʻina ʻia mai ana ka puana No ka lei hapa pua Sēpānia He kupa no ka ʻāina E kipa mai ma loko Haleʻiwa beautiful home"
+        ],
+        "english_lines": [
+          "Famous is my home, beloved Waipiʻo And the beautiful borders of the land A castle, a royal house I am like Herod A haughty king Rays of the sun are my garments Sparkling on all the earth Far above, so high, beyond reach There are no limits For the great lord of the day My friends and neighbors And natives of this land Hiʻilawe, the waterfall Showering from above Showering always on the cliff This is not the truth Gossip started by a jealous crony I am just the same Like every one else Of my birthplace May the two of us and my friends And my children live in this land Drenched with sea spray Where fish are caught in the hand Waipiʻo is drowsy in the mist Tell the refrain Of this half Spanish flower lei A resident of the land You are welcome to come to Haleʻiwa, my beautiful home"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "iesu_me_ke_kanaka_waiwai_canonical",
+    "canonical_title_hawaiian": "Iesu Me Ke Kanaka Waiwai",
+    "canonical_title_english": "Jesus and The Rich Man",
+    "primary_composer": "music by John K. Almeida",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "music by John K. Almeida",
+    "translator": "Haunani Bernardino - Based on",
+    "hawaiian_editor": "",
+    "source_file": "Iesu Kanaka Waiwai.txt",
+    "source_publication": "Keola Donaghy, Copyright J.",
+    "copyright_info": "J.",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "hui",
+        "hawaiian_text": "Ma ke alahele ʻo Iesû I hālāwai aku ai Me ke kanaka ʻōpio hanohano Kaulana i ka waiwai Pane mai e ka ʻōpio ʻE kuʻu Haku maikaʻi He aha hoʻi kaʻu e hana aku ai I loaʻa e ke ola mau? E hāʻawi, e hāʻawi lilo I kou mau waiwai Huli a hahai mai iaʻu I loaʻa e ke ola mau ia ʻoe Minamina e ka ʻōpio I kona mau waiwai I ke kūʻai a hāʻawi lilo aku I ka poʻe nele a hune Huli aʻe ʻo Iesū lā Pane aku i ka ʻōpio ʻAʻole aʻe hiki ke kanaka waiwai I ke aupuni o ka lani",
+        "english_text": "Along the road, Jesus Met With a distinguished young man Who was known for his wealth The young man said, \"My good lord, What must I do To gain eternal life?\" Chorus: \"Give, give away all Of your possessions Then come and follow me In order to gain eternal life\" The young man grieved Over his wealth Unwilling to sell and give all To the poor and destitute Jesus then turned And answered the man, \"Rich man, you will not enter The Kingdom of Heaven",
+        "hawaiian_lines": [
+          "Ma ke alahele ʻo Iesû I hālāwai aku ai Me ke kanaka ʻōpio hanohano Kaulana i ka waiwai Pane mai e ka ʻōpio ʻE kuʻu Haku maikaʻi He aha hoʻi kaʻu e hana aku ai I loaʻa e ke ola mau? Hui: E hāʻawi, e hāʻawi lilo I kou mau waiwai Huli a hahai mai iaʻu I loaʻa e ke ola mau ia ʻoe Minamina e ka ʻōpio I kona mau waiwai I ke kūʻai a hāʻawi lilo aku I ka poʻe nele a hune Huli aʻe ʻo Iesū lā Pane aku i ka ʻōpio ʻAʻole aʻe hiki ke kanaka waiwai I ke aupuni o ka lani"
+        ],
+        "english_lines": [
+          "Along the road, Jesus Met With a distinguished young man Who was known for his wealth The young man said, \"My good lord, What must I do To gain eternal life?\" Chorus: \"Give, give away all Of your possessions Then come and follow me In order to gain eternal life\" The young man grieved Over his wealth Unwilling to sell and give all To the poor and destitute Jesus then turned And answered the man, \"Rich man, you will not enter The Kingdom of Heaven"
+        ],
+        "label": "Hui:"
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "ka_hinano_0_puna_canonical",
+    "canonical_title_hawaiian": "Ka Hinano 0 Puna",
+    "canonical_title_english": "",
+    "primary_composer": "Kainani Kahaunaele",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Kainani Kahaunaele",
+    "translator": "",
+    "hawaiian_editor": "Kaʻiʻiʻni Garza-Maguire",
+    "source_file": "Ka Hīnano O Puna.txt",
+    "source_publication": "C. Kalikiana Durr, Hawaiian Text edited by Kaʻiʻiʻni Garza-Maguire",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": 1,
+    "youtube_urls": [
+      "https://www.youtube.com/watch?v=Gn13qo-8hQ8"
+    ],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "ʻO ka hīnano o Puna kuʻu liʻa E lauwiliwili ai kaʻiʻiʻni Nipo ninipo hoʻi i ke aloha Ka lehua haʻalewa lā i ke kai ʻO ke kai nehe mai i ka uluhala E hoʻohenoheno nei kuʻu nui kino No Puna ka makani Moaniʻala E hali hali ana i kuʻu haʻehaʻe ʻEnaena Puna i ke ahi a pele ʻUʻina laka huaʻinaʻi Puʻu ʻŌʻō Puʻō ke ahi lapalapa i luna Punohunohu i ke ano ahiahi Haʻina ʻia mai ana ka puana No ka hīnano o Puna paia ʻala Hʻaina hou mai ana ka puana No ka hoa lūlana moe i ke ala",
+        "english_text": "The hinano of Puna is my desire Twisting my emotions Yearning, longing for love Is the lehua swaying by the sea The rustling sea by the hala grove Gently caresses me The Moani'ala wind hails from Puna That carries my dear affections Puna glows in Pele’s fire The gushing lava crackles at Puu 'O‘o The blazing fire blazes up Her smoke billows in the evening Thus the story is told For the hinano of Puna with fragrant walls The story is told again For my peaceful friend who lies on the path",
+        "hawaiian_lines": [
+          "ʻO ka hīnano o Puna kuʻu liʻa E lauwiliwili ai kaʻiʻiʻni Nipo ninipo hoʻi i ke aloha Ka lehua haʻalewa lā i ke kai ʻO ke kai nehe mai i ka uluhala E hoʻohenoheno nei kuʻu nui kino No Puna ka makani Moaniʻala E hali hali ana i kuʻu haʻehaʻe ʻEnaena Puna i ke ahi a pele ʻUʻina laka huaʻinaʻi Puʻu ʻŌʻō Puʻō ke ahi lapalapa i luna Punohunohu i ke ano ahiahi Haʻina ʻia mai ana ka puana No ka hīnano o Puna paia ʻala Hʻaina hou mai ana ka puana No ka hoa lūlana moe i ke ala"
+        ],
+        "english_lines": [
+          "The hinano of Puna is my desire Twisting my emotions Yearning, longing for love Is the lehua swaying by the sea The rustling sea by the hala grove Gently caresses me The Moani'ala wind hails from Puna That carries my dear affections Puna glows in Pele’s fire The gushing lava crackles at Puu 'O‘o The blazing fire blazes up Her smoke billows in the evening Thus the story is told For the hinano of Puna with fragrant walls The story is told again For my peaceful friend who lies on the path"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "kuhio_bay_canonical",
+    "canonical_title_hawaiian": "Kuhio Bay",
+    "canonical_title_english": "",
+    "primary_composer": "Words & music by Keliana Bishaw",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Words & music by Keliana Bishaw",
+    "translator": "Kamehameha Schools HSI",
+    "hawaiian_editor": "",
+    "source_file": "Kuhio Bay.txt",
+    "source_publication": "Johnny Noble’s Royal Collection of Hawaiian Songs © 1928 Johnny Noble and Oscar U. Hyatt International Copyright Secured Translated by Kamehameha Schools HSI",
+    "copyright_info": "Secured Translated by Kamehameha Schools HSI",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "ʻAkahi hoʻi a ʻike kuʻu maka I ka nani aʻo Waiakea ʻAʻohe lua e like ai Me ka nani a me ka nani Aʻo Kūhiō Bay Mahalo aʻe au i ka nani aʻo Hilo Me ka ua aʻe hoʻopulu nei ʻOni ana Mokuola au i ke kai ʻOua ʻāina e Kaulana nei Wai ānuenue a he wai kaulana Wai makaʻikaʻi a ka malihini Wai kamahaʻo i kaʻu ʻike E papahi e hoʻope nei I ka nahele",
+        "english_text": "This is the first time I saw for myself The beauty of Waiakea There is no other that can compare With the beauty, the beauty Of Kūhiō Bay I admire the beauty of Hilo The rain drenches it Mokuola stands out in the sea Island that is Known to all Rainbow falls is well known Falls visited by strangers Marvelous waters in my sight It streams down and wets The forest",
+        "hawaiian_lines": [
+          "ʻAkahi hoʻi a ʻike kuʻu maka I ka nani aʻo Waiakea ʻAʻohe lua e like ai Me ka nani a me ka nani Aʻo Kūhiō Bay Mahalo aʻe au i ka nani aʻo Hilo Me ka ua aʻe hoʻopulu nei ʻOni ana Mokuola au i ke kai ʻOua ʻāina e Kaulana nei Wai ānuenue a he wai kaulana Wai makaʻikaʻi a ka malihini Wai kamahaʻo i kaʻu ʻike E papahi e hoʻope nei I ka nahele"
+        ],
+        "english_lines": [
+          "This is the first time I saw for myself The beauty of Waiakea There is no other that can compare With the beauty, the beauty Of Kūhiō Bay I admire the beauty of Hilo The rain drenches it Mokuola stands out in the sea Island that is Known to all Rainbow falls is well known Falls visited by strangers Marvelous waters in my sight It streams down and wets The forest"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "latitu_canonical",
+    "canonical_title_hawaiian": "Latitu",
+    "canonical_title_english": "",
+    "primary_composer": "Lokoʻino",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Lokoʻino",
+    "translator": "",
+    "hawaiian_editor": "",
+    "source_file": "Latitū.txt",
+    "source_publication": "Mana collection - Some credit",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "hui",
+        "hawaiian_text": "Kainō a ʻo wau wale nō ka i ʻike I nā latitū aʻā ia aupuni Eia kā he nui loa a he lehulehu Nā pailaka o ia awa kū moku ē Loko ʻino maoli nō hoʻi ʻoe e ke hoa Ko lilo paha i ka ʻulala Aloha ʻole iho i nei kupuʻeu E ʻau hele nei i ka moana E kuhi ana paha ʻoe a e nalo ana Kāu hana hōʻehaʻeha naʻau I ka nalo ʻana aʻe o kuʻu maka Lawa pono iho ai ko makemake Aia i mua kuʻu nui kino Aia i hopekuʻu hoʻoilina I ʻaneʻi hoʻi au ʻeha ka manaʻo I ka lohe ʻana mai ua heo ʻoe",
+        "english_text": "Chorus: I thought that I was the only one that knew The latitude of this kingdom There are many, multitudes Pilots of this boat harbor You are truly bitter, friend You are cruel You have no love for this rascal I shall sail out to sea Perhaps you think it will vanish These things that hurt me deeply They disappear before my eyes And your desires are satisfied There up ahead is the essence of me There behind is my legacy Right here I am, with hurt feelings Having heard that you've departed",
+        "hawaiian_lines": [
+          "Hui: Kainō a ʻo wau wale nō ka i ʻike I nā latitū aʻā ia aupuni Eia kā he nui loa a he lehulehu Nā pailaka o ia awa kū moku ē Loko ʻino maoli nō hoʻi ʻoe e ke hoa Ko lilo paha i ka ʻulala Aloha ʻole iho i nei kupuʻeu E ʻau hele nei i ka moana E kuhi ana paha ʻoe a e nalo ana Kāu hana hōʻehaʻeha naʻau I ka nalo ʻana aʻe o kuʻu maka Lawa pono iho ai ko makemake Aia i mua kuʻu nui kino Aia i hopekuʻu hoʻoilina I ʻaneʻi hoʻi au ʻeha ka manaʻo I ka lohe ʻana mai ua heo ʻoe"
+        ],
+        "english_lines": [
+          "Chorus: I thought that I was the only one that knew The latitude of this kingdom There are many, multitudes Pilots of this boat harbor You are truly bitter, friend You are cruel You have no love for this rascal I shall sail out to sea Perhaps you think it will vanish These things that hurt me deeply They disappear before my eyes And your desires are satisfied There up ahead is the essence of me There behind is my legacy Right here I am, with hurt feelings Having heard that you've departed"
+        ],
+        "label": "Hui:"
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "lei_ilima_canonical",
+    "canonical_title_hawaiian": "Lei Ilima",
+    "canonical_title_english": "",
+    "primary_composer": "",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "",
+    "translator": "Mary Pukui",
+    "hawaiian_editor": "",
+    "source_file": "Lei Ilima.txt",
+    "source_publication": "King's Book of Hawaiian Melodies © 1926,43 Charles E. King - Translated by Mary Pukui",
+    "copyright_info": "1926",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "‘O ka ‘ilima nō koʻu lei Ka liʻa ia nei puʻu wai He wehi ia no kuʻu kino Lei hoʻohihi a ka mana‘o ‘I‘ini au lā i kou nani He hiwahiwa i ka‘u ‘ike ‘O wau kou hoa e kohu ai E lei ‘ilima ē. lei ‘ilima",
+        "english_text": "The ‘ilima is my lei and The joy of my heart The adornment for me It is dear to my thoughts I greatly desire its beauty A charming lei to my sight It is the companion suitable to your beauty The ‘ilima wreath, the ʻilima wreath",
+        "hawaiian_lines": [
+          "‘O ka ‘ilima nō koʻu lei Ka liʻa ia nei puʻu wai He wehi ia no kuʻu kino Lei hoʻohihi a ka mana‘o ‘I‘ini au lā i kou nani He hiwahiwa i ka‘u ‘ike ‘O wau kou hoa e kohu ai E lei ‘ilima ē. lei ‘ilima"
+        ],
+        "english_lines": [
+          "The ‘ilima is my lei and The joy of my heart The adornment for me It is dear to my thoughts I greatly desire its beauty A charming lei to my sight It is the companion suitable to your beauty The ‘ilima wreath, the ʻilima wreath"
+        ]
+      }
+    ]
+  },
+  {
+    "canonical_mele_id": "mahina_o_hoku_canonical",
+    "canonical_title_hawaiian": "Mahina O Hoku",
+    "canonical_title_english": "",
+    "primary_composer": "Lillian Awa",
+    "primary_lyricist": null,
+    "estimated_composition_date": "",
+    "cultural_significance_notes": "",
+    "composer": "Lillian Awa",
+    "translator": "Ainsley",
+    "hawaiian_editor": "",
+    "source_file": "Mahina o Hoku.txt",
+    "source_publication": "Translated by Ainsley",
+    "copyright_info": "",
+    "primary_location": "",
+    "island": "",
+    "themes": "[]",
+    "mele_type": "[]",
+    "cultural_elements": "[]",
+    "youtube_count": null,
+    "youtube_urls": [],
+    "verses": [
+      {
+        "order": 1,
+        "type": "verse",
+        "hawaiian_text": "ʻAuhea wale ʻoe Mahina ʻo Hoku Hōʻike aʻe ʻoe I kou nani Ua laʻi nā kai Mehameha nā pali ʻO ʻoe a ʻo wau E hoʻoipoipo nei E moani ke ʻala O ka pua hīnano E ʻapo mai ʻoe Me kou aloha Haʻina kou inoa Mahina ʻo Hoku Ke noho nani maila Mauna lani kiʻekiʻe",
+        "english_text": "Where are you Full moon of the night Reveal your Beauty The seas are calm The cliffs are lonely But you and I Are making love How fragrant Is the hīnano blossom That captivates you My love Tell of your name Full moon of the night There beauty sits high Above the heavenly mountain",
+        "hawaiian_lines": [
+          "ʻAuhea wale ʻoe Mahina ʻo Hoku Hōʻike aʻe ʻoe I kou nani Ua laʻi nā kai Mehameha nā pali ʻO ʻoe a ʻo wau E hoʻoipoipo nei E moani ke ʻala O ka pua hīnano E ʻapo mai ʻoe Me kou aloha Haʻina kou inoa Mahina ʻo Hoku Ke noho nani maila Mauna lani kiʻekiʻe"
+        ],
+        "english_lines": [
+          "Where are you Full moon of the night Reveal your Beauty The seas are calm The cliffs are lonely But you and I Are making love How fragrant Is the hīnano blossom That captivates you My love Tell of your name Full moon of the night There beauty sits high Above the heavenly mountain"
+        ]
+      }
+    ]
+  }
+]
