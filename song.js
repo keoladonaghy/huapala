@@ -231,7 +231,7 @@ class SongPage {
             // Break before capital letters that start new sentences/lines
             .replace(/([a-z])\s+([A-Z][a-z])/g, '$1<br>$2')
             // Break before quotes (common in songs)
-            .replace(/([a-z])\s+("/g, '$1<br>$2')
+            .replace(/([a-z])\s+(\")/g, '$1<br>$2')
             // Break before "To" at start of lines
             .replace(/([a-z])\s+(To\s)/g, '$1<br>$2');
         
