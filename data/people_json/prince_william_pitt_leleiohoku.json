@@ -1,0 +1,26 @@
+{
+  "person_id": "prince_william_pitt_leleiohoku",
+  "full_name": "Prince William Pitt Leleiohoku",
+  "display_name": "Prince Leleiohoku",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": null,
+  "death_date": null,
+  "cultural_background": "Native Hawaiian",
+  "biographical_notes": "Composer of 'Adios Ke Aloha' written in the 1870's",
+  "roles": ["composer"],
+  "primary_role": "composer",
+  "specialties": [],
+  "active_period_start": 1870,
+  "active_period_end": null,
+  "notable_works": ["Adios Ke Aloha"],
+  "awards_honors": [],
+  "source_references": {
+    "sources": ["King's Songs of Hawaiʻi"],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

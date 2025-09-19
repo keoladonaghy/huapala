@@ -1,0 +1,26 @@
+{
+  "person_id": "harry_swinton",
+  "full_name": "Harry Swinton",
+  "display_name": "Harry Swinton",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": null,
+  "death_date": null,
+  "cultural_background": "hapa-Hawaiian sailor",
+  "biographical_notes": "Attributed composer of 'Latitū'. Hapa-Hawaiian sailor who wrote this for his wife around end of 19th century",
+  "roles": ["composer"],
+  "primary_role": "composer",
+  "specialties": [],
+  "active_period_start": 1890,
+  "active_period_end": 1900,
+  "notable_works": ["Latitū"],
+  "awards_honors": [],
+  "source_references": {
+    "sources": ["Mana Collection"],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

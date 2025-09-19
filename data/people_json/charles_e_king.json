@@ -1,0 +1,26 @@
+{
+  "person_id": "charles_e_king",
+  "full_name": "Charles E. King",
+  "display_name": "Charles E. King",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": "January 29, 1874",
+  "death_date": "February 27, 1950",
+  "cultural_background": null,
+  "biographical_notes": "Born January 29, 1874 in Honolulu (Estate of Queen Emma) in the Kingdom of Hawaiʻi. Parents: Walter King and Mary Ann Brash. He was adopted by his maternal grandfather, John Lewis King, after his mother's death; godmother was Queen Emma. Educated in Honolulu public schools, then Kamehameha School for Boys. Also attended a teachers' training school in New York (Oswego) funded by Bishop Estate.<br>King was a teacher, legislator, and prolific composer. Known for \"Ke Kali Nei Au\" (also known as the Hawaiian Wedding Song), among many others. He published books of Hawaiian melodies, composed for operettas (e.g. The Prince of Hawaii), and worked with the Royal Hawaiian Band. His music spans traditional mele, hapa haole, dance music, and songs for hula.Composer of 'Lei ʻIlima'. Also published collections including 'Songs of Hawaiʻi' and 'Book of Hawaiian Melodies'",
+  "roles": ["composer", "editor"],
+  "primary_role": "composer",
+  "specialties": [],
+  "active_period_start": null,
+  "active_period_end": null,
+  "notable_works": ["Lei ʻIlima"],
+  "awards_honors": [],
+  "source_references": {
+    "sources": ["King's Book of Hawaiian Melodies", "King's Songs of Hawaiʻi"],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

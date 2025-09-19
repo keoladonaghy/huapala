@@ -13,6 +13,7 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 import psycopg2
 from psycopg2.extras import RealDictCursor
+# Note: database_validator.py import would go here when deployed
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -63,6 +64,11 @@ async def root():
         "endpoints": {
             "/songs": "Get all songs (replaces songs-data.json)",
             "/songs/{song_id}": "Get specific song by ID",
+            "/people/search": "Search for people by name",
+            "/people/{person_id}": "Get specific person by ID",
+            "/validation/summary": "Get validation session summaries",
+            "/validation/review": "Get songs needing manual review",
+            "/validation/songs/{song_id}": "Get validation details for specific song",
             "/health": "Health check endpoint"
         }
     }
@@ -266,6 +272,167 @@ async def get_song(song_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error fetching song: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+# People API endpoints
+@app.get("/people/search")
+async def search_people(name: str = Query(..., description="Name to search for")):
+    """Search for people by name (exact or fuzzy match)"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        # First try exact match, then fuzzy match
+        query = """
+        SELECT person_id, full_name, display_name, place_of_birth, 
+               primary_influence_location, hawaiian_speaker, birth_date, death_date,
+               cultural_background, biographical_notes, roles, primary_role, 
+               specialties, notable_works, awards_honors, verification_status
+        FROM people 
+        WHERE full_name ILIKE %s 
+           OR display_name ILIKE %s
+           OR full_name ILIKE %s
+        ORDER BY 
+            CASE 
+                WHEN full_name ILIKE %s THEN 1
+                WHEN display_name ILIKE %s THEN 2
+                ELSE 3
+            END
+        LIMIT 1
+        """
+        
+        exact_match = f"{name}"
+        fuzzy_match = f"%{name}%"
+        
+        cur.execute(query, (exact_match, exact_match, fuzzy_match, exact_match, exact_match))
+        row = cur.fetchone()
+        
+        if not row:
+            return None
+            
+        person = dict(row)
+        return person
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error searching people: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/people/{person_id}")
+async def get_person(person_id: str):
+    """Get a specific person by person_id"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        query = """
+        SELECT person_id, full_name, display_name, place_of_birth, 
+               primary_influence_location, hawaiian_speaker, birth_date, death_date,
+               cultural_background, biographical_notes, roles, primary_role, 
+               specialties, notable_works, awards_honors, verification_status,
+               places_of_hawaiian_influence, source_references
+        FROM people 
+        WHERE person_id = %s
+        """
+        
+        cur.execute(query, (person_id,))
+        row = cur.fetchone()
+        
+        if not row:
+            raise HTTPException(status_code=404, detail=f"Person with ID {person_id} not found")
+            
+        person = dict(row)
+        return person
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching person: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+# Validation API endpoints
+@app.get("/validation/summary")
+async def get_validation_summary(session_id: Optional[int] = Query(None)):
+    """Get validation session summaries"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        if session_id:
+            cur.execute("SELECT * FROM validation_summary WHERE session_id = %s", (session_id,))
+            result = cur.fetchone()
+            return dict(result) if result else {}
+        else:
+            cur.execute("SELECT * FROM validation_summary ORDER BY started_at DESC LIMIT 10")
+            return [dict(row) for row in cur.fetchall()]
+            
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching validation summary: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/validation/review")
+async def get_songs_needing_review():
+    """Get all songs that require manual review"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        cur.execute("SELECT * FROM songs_needing_review ORDER BY data_quality_score ASC")
+        return [dict(row) for row in cur.fetchall()]
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching songs for review: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/validation/songs/{song_id}")
+async def get_song_validation_details(song_id: int):
+    """Get detailed validation information for a specific song"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        cur.execute("SELECT * FROM get_song_validation_details(%s)", (song_id,))
+        result = cur.fetchone()
+        
+        if not result:
+            raise HTTPException(status_code=404, detail=f"No validation data found for song {song_id}")
+            
+        return dict(result)
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching validation details: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/validation/sessions")
+async def get_validation_sessions():
+    """Get all validation sessions"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        cur.execute("""
+            SELECT id, session_name, started_at, completed_at, total_songs, 
+                   songs_processed, songs_flagged, average_quality_score, status
+            FROM validation_sessions 
+            ORDER BY started_at DESC
+        """)
+        return [dict(row) for row in cur.fetchall()]
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching validation sessions: {str(e)}")
     finally:
         cur.close()
         conn.close()

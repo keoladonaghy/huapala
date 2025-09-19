@@ -1,0 +1,26 @@
+{
+  "person_id": "johnny_noble",
+  "full_name": "Johnny Noble",
+  "display_name": "Johnny Noble",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": null,
+  "death_date": null,
+  "cultural_background": null,
+  "biographical_notes": "Co-credited with 'Royal Collection of Hawaiian Songs', source for 'Kūhiō Bay'",
+  "roles": ["source_contributor", "editor"],
+  "primary_role": "source_contributor",
+  "specialties": [],
+  "active_period_start": null,
+  "active_period_end": null,
+  "notable_works": [],
+  "awards_honors": [],
+  "source_references": {
+    "sources": ["Royal Collection of Hawaiian Songs"],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

@@ -1,0 +1,26 @@
+{
+  "person_id": "mary_pukui",
+  "full_name": "Mary Pukui",
+  "display_name": "Mary Pukui",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": true,
+  "birth_date": null,
+  "death_date": null,
+  "cultural_background": "Native Hawaiian",
+  "biographical_notes": "Translator of 'Adios Ke Aloha' and 'Lei ʻIlima'",
+  "roles": ["translator"],
+  "primary_role": "translator",
+  "specialties": [],
+  "active_period_start": null,
+  "active_period_end": null,
+  "notable_works": [],
+  "awards_honors": [],
+  "source_references": {
+    "sources": [],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

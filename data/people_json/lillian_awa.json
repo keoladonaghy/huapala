@@ -1,0 +1,26 @@
+{
+  "person_id": "lillian_awa",
+  "full_name": "Lillian Awa",
+  "display_name": "Lillian Awa",
+  "place_of_birth": null,
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": null,
+  "death_date": null,
+  "cultural_background": "Native Hawaiian",
+  "biographical_notes": "Composer of 'Mahina ʻO Hoku'",
+  "roles": ["composer"],
+  "primary_role": "composer",
+  "specialties": [],
+  "active_period_start": null,
+  "active_period_end": null,
+  "notable_works": ["Mahina ʻO Hoku"],
+  "awards_honors": [],
+  "source_references": {
+    "sources": [],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}
