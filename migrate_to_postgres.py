@@ -21,11 +21,12 @@ import argparse
 
 # Database configuration
 DB_CONFIG = {
-    'host': 'your-neon-host.com',
-    'database': 'huapala',
-    'user': 'your-username',
-    'password': 'your-password',
-    'port': 5432
+    'host': 'ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech',
+    'database': 'neondb',
+    'user': 'neondb_owner',
+    'password': 'npg_Ic2Qq1ErOykl',
+    'port': 5432,
+    'sslmode': 'require'
 }
 
 def load_config():
