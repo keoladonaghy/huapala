@@ -151,7 +151,7 @@ class SongPage {
             const hawaiianText = verse.hawaiian_text || '';
             const englishText = verse.english_text || '';
             
-            // Try multiple line break formats and add manual breaks based on capital letters
+            // Try multiple line break formats first
             let hawaiianFormatted = hawaiianText
                 .replace(/\r\n/g, '<br>')
                 .replace(/\n/g, '<br>')
@@ -162,15 +162,13 @@ class SongPage {
                 .replace(/\n/g, '<br>')
                 .replace(/\r/g, '<br>');
             
-            // If no <br> tags yet, try to break on capital letters (likely new lines)
+            // If no line breaks found, apply intelligent breaking for Hawaiian songs
             if (!hawaiianFormatted.includes('<br>') && hawaiianText.length > 50) {
-                // Break before capital letters that start new phrases/lines
-                hawaiianFormatted = hawaiianText.replace(/([a-z])\s+([A-ZĀĒĪŌŪ])/g, '$1<br>$2');
+                hawaiianFormatted = this.reconstructHawaiianLines(hawaiianText);
             }
             
             if (!englishFormatted.includes('<br>') && englishText.length > 50) {
-                // Break before capital letters that start new phrases/lines
-                englishFormatted = englishText.replace(/([a-z])\s+([A-Z])/g, '$1<br>$2');
+                englishFormatted = this.reconstructEnglishLines(englishText);
             }
             
             // Add verse/chorus label if available
@@ -211,6 +209,33 @@ class SongPage {
     
     formatField(value) {
         return value && value.trim() !== '' ? value : 'Not specified';
+    }
+    
+    reconstructHawaiianLines(text) {
+        // Based on Hawaiian song structure - typically 4 lines per verse
+        // Break on capital letters and common Hawaiian phrase patterns
+        let formatted = text
+            // Break before capital letters that likely start new lines
+            .replace(/([a-zāēīōū])\s+([A-ZĀĒĪŌŪ][a-zāēīōū])/g, '$1<br>$2')
+            // Break before common Hawaiian line starters
+            .replace(/([a-zāēīōū])\s+(ʻE\s|Pane\s|I\s[a-zāēīōū]|Me\s|A\s)/g, '$1<br>$2')
+            // Break before question words
+            .replace(/([a-zāēīōū])\s+(He\s)/g, '$1<br>$2');
+        
+        return formatted;
+    }
+    
+    reconstructEnglishLines(text) {
+        // Based on English translation patterns
+        let formatted = text
+            // Break before capital letters that start new sentences/lines
+            .replace(/([a-z])\s+([A-Z][a-z])/g, '$1<br>$2')
+            // Break before quotes (common in songs)
+            .replace(/([a-z])\s+("/g, '$1<br>$2')
+            // Break before "To" at start of lines
+            .replace(/([a-z])\s+(To\s)/g, '$1<br>$2');
+        
+        return formatted;
     }
     
     hideLoading() {
