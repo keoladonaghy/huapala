@@ -106,72 +106,64 @@ class HuapalaApp {
     
     renderSongDetail(song) {
         return `
-            <h2>${this.formatField(song.canonical_title_hawaiian)}</h2>
-            ${song.canonical_title_english ? `<h3 style="color: #7f8c8d; font-style: italic; margin-bottom: 30px;">${song.canonical_title_english}</h3>` : ''}
-            
-            <div class="detail-section">
-                <h3>Attribution</h3>
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <div class="detail-label">Composer</div>
-                        <div class="detail-value">${this.formatField(song.primary_composer)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Lyricist</div>
-                        <div class="detail-value">${this.formatField(song.primary_lyricist)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Translator</div>
-                        <div class="detail-value">${this.formatField(song.translator)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Hawaiian Editor</div>
-                        <div class="detail-value">${this.formatField(song.hawaiian_editor)}</div>
-                    </div>
-                </div>
+            <div class="song-header">
+                <div class="song-title-main">${this.formatFieldPlain(song.canonical_title_hawaiian)}</div>
+                <div class="song-composer-main">${this.formatFieldPlain(song.primary_composer)}</div>
             </div>
             
-            <div class="detail-section">
-                <h3>Classification</h3>
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <div class="detail-label">Location</div>
-                        <div class="detail-value">${this.formatField(song.primary_location)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Island</div>
-                        <div class="detail-value">${this.formatField(song.island)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Composition Date</div>
-                        <div class="detail-value">${this.formatField(song.estimated_composition_date)}</div>
-                    </div>
-                    <div class="detail-item">
-                        <div class="detail-label">Source File</div>
-                        <div class="detail-value">${this.formatField(song.source_file)}</div>
-                    </div>
+            <div class="song-content">
+                <div class="left-sidebar">
+                    ${song.source_file ? `
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Source:</div>
+                            <div class="sidebar-content">${this.formatFieldPlain(song.source_file)}</div>
+                        </div>
+                    ` : ''}
+                    
+                    ${song.translator ? `
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Translator:</div>
+                            <div class="sidebar-content">${this.formatFieldPlain(song.translator)}</div>
+                        </div>
+                    ` : ''}
+                    
+                    ${song.hawaiian_editor ? `
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Hawaiian Editor:</div>
+                            <div class="sidebar-content">${this.formatFieldPlain(song.hawaiian_editor)}</div>
+                        </div>
+                    ` : ''}
+                    
+                    ${song.primary_location ? `
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Location:</div>
+                            <div class="sidebar-content">${this.formatFieldPlain(song.primary_location)}</div>
+                        </div>
+                    ` : ''}
+                    
+                    ${song.youtube_urls && song.youtube_urls.length > 0 ? `
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">Listen:</div>
+                            <div class="sidebar-content">
+                                ${song.youtube_urls.map(url => `
+                                    <a href="${url}" target="_blank">YouTube</a><br>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+                
+                <div class="main-content">
+                    ${this.renderLyricsNew(song)}
+                    
+                    ${song.cultural_significance_notes ? `
+                        <div class="cultural-notes">
+                            <div class="notes-title">Cultural Significance:</div>
+                            ${song.cultural_significance_notes}
+                        </div>
+                    ` : ''}
                 </div>
             </div>
-            
-            ${this.renderLyrics(song)}
-            
-            ${song.youtube_urls && song.youtube_urls.length > 0 ? `
-                <div class="detail-section">
-                    <h3>Media</h3>
-                    <div class="media-links">
-                        ${song.youtube_urls.map(url => `
-                            <a href="${url}" target="_blank">🎵 YouTube</a>
-                        `).join('')}
-                    </div>
-                </div>
-            ` : ''}
-            
-            ${song.cultural_significance_notes ? `
-                <div class="detail-section">
-                    <h3>Cultural Significance</h3>
-                    <p>${song.cultural_significance_notes}</p>
-                </div>
-            ` : ''}
         `;
     }
     
@@ -214,6 +206,29 @@ class HuapalaApp {
     
     formatFieldPlain(value) {
         return value && value.trim() !== '' ? value : 'Not specified';
+    }
+    
+    renderLyricsNew(song) {
+        if (!song.verses || song.verses.length === 0) {
+            return `
+                <div class="lyrics-container">
+                    <div class="lyrics-title">Lyrics not available</div>
+                </div>
+            `;
+        }
+        
+        // Combine all Hawaiian text
+        const hawaiianText = song.verses.map(verse => verse.hawaiian_text || '').join('\n\n');
+        const englishText = song.verses.map(verse => verse.english_text || '').join('\n\n');
+        
+        return `
+            <div class="lyrics-container">
+                <div class="lyrics-columns">
+                    <div class="lyrics-hawaiian">${hawaiianText}</div>
+                    <div class="lyrics-english">${englishText}</div>
+                </div>
+            </div>
+        `;
     }
     
     closeModal() {
