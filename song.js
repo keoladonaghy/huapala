@@ -193,11 +193,11 @@ class SongPage {
                 </tr>
             `;
             
-            // Add spacing between verses
+            // Add proper spacing between verses (like double <br> in original)
             if (index < this.song.verses.length - 1) {
                 tableHTML += `
                     <tr>
-                        <td colspan="2" style="height: 15px;"></td>
+                        <td colspan="2" style="height: 25px; border-bottom: 1px solid #eee;"></td>
                     </tr>
                 `;
             }
@@ -212,15 +212,20 @@ class SongPage {
     }
     
     reconstructHawaiianLines(text) {
-        // Based on Hawaiian song structure - typically 4 lines per verse
-        // Break on capital letters and common Hawaiian phrase patterns
+        // More conservative approach - only break at clear verse boundaries
         let formatted = text
-            // Break before capital letters that likely start new lines
-            .replace(/([a-zāēīōū])\s+([A-ZĀĒĪŌŪ][a-zāēīōū])/g, '$1<br>$2')
-            // Break before common Hawaiian line starters
-            .replace(/([a-zāēīōū])\s+(ʻE\s|Pane\s|I\s[a-zāēīōū]|Me\s|A\s)/g, '$1<br>$2')
-            // Break before question words
-            .replace(/([a-zāēīōū])\s+(He\s)/g, '$1<br>$2');
+            // Break before common verse/line starters (not names)
+            .replace(/([ai])\s+(ʻE\s)/g, '$1<br>$2')  // "aku ai ʻE"
+            .replace(/([ai])\s+(Pane\s)/g, '$1<br>$2')  // "waiwai Pane"
+            .replace(/([ai])\s+(I\s[klhmp])/g, '$1<br>$2')  // "ai I loaʻa" but not "ai I Haku"
+            .replace(/([ai])\s+(Me\s[k])/g, '$1<br>$2')  // "ai Me ke" but not "Me Haku"
+            // Break after question marks (end of questions)
+            .replace(/(\?)\s+([A-ZĀĒĪŌŪ])/g, '$1<br>$2')
+            // Very specific patterns only
+            .replace(/(waiwai)\s+(Pane)/g, '$1<br>$2')
+            .replace(/(mau)\s+(Minamina)/g, '$1<br>$2')
+            .replace(/(hune)\s+(Huli)/g, '$1<br>$2')
+            .replace(/(ʻōpio)\s+(ʻAʻole)/g, '$1<br>$2');
         
         return formatted;
     }
