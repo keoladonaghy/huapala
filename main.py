@@ -48,7 +48,9 @@ def get_db_config():
 def get_db_connection():
     """Get database connection with error handling"""
     try:
-        return psycopg2.connect(**get_db_config())
+        config = get_db_config()
+        config['connect_timeout'] = 10
+        return psycopg2.connect(**config)
     except psycopg2.Error as e:
         raise HTTPException(status_code=500, detail=f"Database connection failed: {str(e)}")
 
