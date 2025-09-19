@@ -129,6 +129,8 @@ class SongPage {
     renderLyricsTable() {
         const lyricsTable = document.getElementById('lyricsTable');
         
+        console.log('Song verses data:', this.song.verses); // Debug log
+        
         if (!this.song.verses || this.song.verses.length === 0) {
             lyricsTable.innerHTML = `
                 <tr>
@@ -144,6 +146,8 @@ class SongPage {
         let tableHTML = '';
         
         this.song.verses.forEach((verse, index) => {
+            console.log(`Verse ${index}:`, verse); // Debug log
+            
             const hawaiianText = verse.hawaiian_text || '';
             const englishText = verse.english_text || '';
             
@@ -152,7 +156,7 @@ class SongPage {
             const englishLines = englishText.split('\n').filter(line => line.trim());
             
             // Handle cases where one side has more lines than the other
-            const maxLines = Math.max(hawaiianLines.length, englishLines.length);
+            const maxLines = Math.max(hawaiianLines.length, englishLines.length, 1);
             
             for (let i = 0; i < maxLines; i++) {
                 const hawaiianLine = hawaiianLines[i] || '';
@@ -176,6 +180,7 @@ class SongPage {
             }
         });
         
+        console.log('Generated table HTML:', tableHTML); // Debug log
         lyricsTable.innerHTML = tableHTML;
     }
     
