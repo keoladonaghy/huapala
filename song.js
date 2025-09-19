@@ -151,15 +151,36 @@ class SongPage {
             const hawaiianText = verse.hawaiian_text || '';
             const englishText = verse.english_text || '';
             
-            // Preserve line breaks by replacing \n with <br>
-            const hawaiianFormatted = hawaiianText.replace(/\n/g, '<br>');
-            const englishFormatted = englishText.replace(/\n/g, '<br>');
+            // Try multiple line break formats and add manual breaks based on capital letters
+            let hawaiianFormatted = hawaiianText
+                .replace(/\r\n/g, '<br>')
+                .replace(/\n/g, '<br>')
+                .replace(/\r/g, '<br>');
+            
+            let englishFormatted = englishText
+                .replace(/\r\n/g, '<br>')
+                .replace(/\n/g, '<br>')
+                .replace(/\r/g, '<br>');
+            
+            // If no <br> tags yet, try to break on capital letters (likely new lines)
+            if (!hawaiianFormatted.includes('<br>') && hawaiianText.length > 50) {
+                // Break before capital letters that start new phrases/lines
+                hawaiianFormatted = hawaiianText.replace(/([a-z])\s+([A-ZĀĒĪŌŪ])/g, '$1<br>$2');
+            }
+            
+            if (!englishFormatted.includes('<br>') && englishText.length > 50) {
+                // Break before capital letters that start new phrases/lines
+                englishFormatted = englishText.replace(/([a-z])\s+([A-Z])/g, '$1<br>$2');
+            }
             
             // Add verse/chorus label if available
             let verseLabel = '';
             if (verse.type && verse.order) {
                 verseLabel = verse.type === 'hui' ? 'Hui:' : `Verse ${verse.order}:`;
             }
+            
+            console.log(`Hawaiian formatted: "${hawaiianFormatted}"`); // Debug log
+            console.log(`English formatted: "${englishFormatted}"`); // Debug log
             
             tableHTML += `
                 <tr>
