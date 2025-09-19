@@ -13,11 +13,14 @@ class HuapalaApp {
     
     async loadSongs() {
         try {
-            // Since we can't directly access PostgreSQL from client-side,
-            // we'll use a static JSON file generated from the database
-            const response = await fetch('songs-data.json');
+            // Use Railway-hosted API that connects to Neon PostgreSQL
+            const API_BASE_URL = window.location.hostname === 'localhost' 
+                ? 'http://localhost:8000'  // Local development
+                : 'https://web-production-cde73.up.railway.app';  // Production Railway API
+            
+            const response = await fetch(`${API_BASE_URL}/songs`);
             if (!response.ok) {
-                throw new Error('Failed to load songs data');
+                throw new Error(`Failed to load songs data: ${response.status}`);
             }
             
             this.songs = await response.json();
