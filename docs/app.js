@@ -76,7 +76,7 @@ class HuapalaApp {
     
     renderSongs() {
         const container = document.getElementById('songsContainer');
-        container.style.display = 'grid';
+        container.style.display = 'block';
         
         if (this.filteredSongs.length === 0) {
             container.innerHTML = '<div class="error">No songs found matching your search.</div>';
@@ -84,15 +84,11 @@ class HuapalaApp {
         }
         
         container.innerHTML = this.filteredSongs.map(song => `
-            <div class="song-card" onclick="app.showSongDetail('${song.canonical_mele_id}')">
-                <div class="song-title">${this.formatField(song.canonical_title_hawaiian)}</div>
-                <div class="song-english">${this.formatField(song.canonical_title_english)}</div>
-                <div class="song-composer">♪ ${this.formatField(song.primary_composer)}</div>
-                <div class="song-meta">
-                    ${song.primary_location ? `📍 ${song.primary_location}` : ''}
-                    ${song.island ? ` • ${song.island}` : ''}
-                    ${song.youtube_count ? ` • ${song.youtube_count} videos` : ''}
-                </div>
+            <div class="song-entry">
+                <span class="song-link" onclick="app.showSongDetail('${song.canonical_mele_id}')">
+                    ${this.formatFieldPlain(song.canonical_title_hawaiian)}
+                </span>
+                <span class="composer-info"> - ${this.formatFieldPlain(song.primary_composer)}</span>
             </div>
         `).join('');
     }
@@ -214,6 +210,10 @@ class HuapalaApp {
     
     formatField(value) {
         return value && value.trim() !== '' ? value : '<span class="empty-field">Not specified</span>';
+    }
+    
+    formatFieldPlain(value) {
+        return value && value.trim() !== '' ? value : 'Not specified';
     }
     
     closeModal() {
