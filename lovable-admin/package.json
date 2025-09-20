@@ -1,0 +1,48 @@
+{
+  "name": "huapala-lovable-admin",
+  "version": "1.0.0",
+  "description": "Database maintenance system for Huapala Hawaiian Music Archives",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "npm run development server command here",
+    "build": "npm run build command here",
+    "start": "npm run production server command here",
+    "test": "npm run test command here",
+    "lint": "npm run linting command here"
+  },
+  "keywords": [
+    "hawaiian-music",
+    "database-admin",
+    "songbook-management",
+    "neon-database",
+    "music-archives"
+  ],
+  "author": "Lovable AI + Keola Donaghy",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "axios": "^1.6.0",
+    "react-router-dom": "^6.8.0",
+    "react-hook-form": "^7.43.0",
+    "react-query": "^3.39.0",
+    "date-fns": "^2.29.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/jest-dom": "^5.16.0",
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keoladonaghy/huapala.git",
+    "directory": "lovable-admin"
+  }
+}
