@@ -61,12 +61,20 @@ class HuapalaApp {
             }
         });
         
+        // Handle tab switching
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('tab-button')) {
+                this.switchTab(e.target.dataset.tab);
+            }
+        });
+        
         // Handle people icon clicks
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('people-icon')) {
                 e.preventDefault();
                 const composerName = e.target.dataset.composer;
-                this.showPersonModal(composerName);
+                const songId = e.target.dataset.songId;
+                this.showSongModal(composerName, songId);
             }
         });
     }
@@ -99,7 +107,7 @@ class HuapalaApp {
                 </a>
                 <span class="composer-info"> - ${this.formatFieldPlain(song.primary_composer)}</span>
                 ${song.primary_composer && song.primary_composer.trim() !== '' && song.primary_composer !== 'Not specified' ? 
-                    `<span class="people-icon" data-composer="${song.primary_composer}" title="View composer details">🔍</span>` : 
+                    `<span class="people-icon" data-composer="${song.primary_composer}" data-song-id="${song.canonical_mele_id}" title="View song and composer details">🔍</span>` : 
                     ''
                 }
             </div>
@@ -124,56 +132,192 @@ class HuapalaApp {
         document.getElementById('errorMessage').style.display = 'block';
     }
     
-    async showPersonModal(composerName) {
-        const modal = document.getElementById('peopleModal');
-        const modalContent = document.getElementById('modalContent');
-        const modalTitle = document.getElementById('modalPersonName');
+    switchTab(tabName) {
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
         
-        // Show modal with loading state
+        // Add active class to selected tab and content
+        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        document.getElementById(`${tabName}Tab`).classList.add('active');
+    }
+    
+    async showSongModal(composerName, songId) {
+        const modal = document.getElementById('peopleModal');
+        const modalTitle = document.getElementById('modalSongTitle');
+        const metadataTab = document.getElementById('metadataTab');
+        const composerTab = document.getElementById('composerTab');
+        
+        // Show modal and reset to first tab
         modal.style.display = 'block';
-        modalTitle.textContent = composerName;
-        modalContent.innerHTML = '<div class="modal-loading">Loading person details...</div>';
+        this.switchTab('metadata');
+        
+        // Set loading states
+        metadataTab.innerHTML = '<div class="modal-loading">Loading song details...</div>';
+        composerTab.innerHTML = '<div class="modal-loading">Loading composer details...</div>';
         
         try {
             const API_BASE_URL = window.location.hostname === 'localhost' 
                 ? 'http://localhost:8000'
                 : 'https://web-production-cde73.up.railway.app';
             
-            // Search for person by name
-            const response = await fetch(`${API_BASE_URL}/people/search?name=${encodeURIComponent(composerName)}`);
+            // Load song data and composer data in parallel
+            const [songResponse, personResponse] = await Promise.all([
+                fetch(`${API_BASE_URL}/songs/${encodeURIComponent(songId)}`),
+                fetch(`${API_BASE_URL}/people/search?name=${encodeURIComponent(composerName)}`)
+            ]);
             
-            if (!response.ok) {
-                throw new Error(`Failed to load person data: ${response.status}`);
+            if (songResponse.ok) {
+                const song = await songResponse.json();
+                modalTitle.textContent = song.canonical_title_hawaiian || song.canonical_title_english || 'Song Details';
+                this.renderSongMetadata(song, metadataTab);
+            } else {
+                metadataTab.innerHTML = '<div class="modal-error">Unable to load song details.</div>';
             }
             
-            const person = await response.json();
-            
-            if (!person) {
-                modalContent.innerHTML = `
-                    <div class="modal-error">
-                        No detailed information found for "${composerName}".
-                        <br><br>
-                        This person may not yet be in our biographical database.
-                    </div>
-                `;
-                return;
+            if (personResponse.ok) {
+                const person = await personResponse.json();
+                if (person) {
+                    this.renderComposerDetails(person, composerTab);
+                } else {
+                    composerTab.innerHTML = `
+                        <div class="modal-error">
+                            No detailed information found for "${composerName}".
+                            <br><br>
+                            This person may not yet be in our biographical database.
+                        </div>
+                    `;
+                }
+            } else {
+                composerTab.innerHTML = '<div class="modal-error">Unable to load composer details.</div>';
             }
-            
-            this.renderPersonDetails(person, modalContent);
             
         } catch (error) {
-            console.error('Error loading person details:', error);
-            modalContent.innerHTML = `
-                <div class="modal-error">
-                    Unable to load biographical information for "${composerName}".
-                    <br><br>
-                    Please try again later.
-                </div>
-            `;
+            console.error('Error loading modal data:', error);
+            metadataTab.innerHTML = '<div class="modal-error">Unable to load song details.</div>';
+            composerTab.innerHTML = '<div class="modal-error">Unable to load composer details.</div>';
         }
     }
     
-    renderPersonDetails(person, container) {
+    renderSongMetadata(song, container) {
+        const formatArray = (arr) => {
+            if (!arr || arr.length === 0) return 'Not specified';
+            return Array.isArray(arr) ? arr.join(', ') : arr;
+        };
+        
+        const formatField = (value) => {
+            return value && value.trim() !== '' ? value : 'Not specified';
+        };
+        
+        // Build contributors list
+        let contributorsHTML = '';
+        const contributors = [];
+        
+        if (song.primary_composer && song.primary_composer !== 'Not specified') {
+            contributors.push({ name: song.primary_composer, role: 'Composer' });
+        }
+        if (song.composer && song.composer !== song.primary_composer && song.composer !== 'Not specified') {
+            contributors.push({ name: song.composer, role: 'Additional Composer' });
+        }
+        if (song.primary_lyricist && song.primary_lyricist !== 'Not specified') {
+            contributors.push({ name: song.primary_lyricist, role: 'Lyricist' });
+        }
+        if (song.translator && song.translator !== 'Not specified') {
+            contributors.push({ name: song.translator, role: 'Translator' });
+        }
+        if (song.hawaiian_editor && song.hawaiian_editor !== 'Not specified') {
+            contributors.push({ name: song.hawaiian_editor, role: 'Hawaiian Editor' });
+        }
+        
+        if (contributors.length > 0) {
+            contributorsHTML = `
+                <div class="metadata-section">
+                    <h3>Contributors</h3>
+                    <div class="contributors-list">
+                        ${contributors.map(c => `
+                            <div class="contributor-item">
+                                <span class="contributor-name">${c.name}</span>
+                                <span class="contributor-role">${c.role}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Build media links
+        let mediaHTML = '';
+        if (song.youtube_urls && song.youtube_urls.length > 0) {
+            mediaHTML = `
+                <div class="metadata-section">
+                    <h3>Media Links</h3>
+                    <div class="media-links">
+                        ${song.youtube_urls.map((url, index) => `
+                            <a href="${url}" target="_blank" class="media-link">YouTube ${index + 1}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        container.innerHTML = `
+            ${contributorsHTML}
+            
+            <div class="metadata-section">
+                <h3>Publication Information</h3>
+                <div class="metadata-field">
+                    <span class="metadata-label">Source File:</span>
+                    <span class="metadata-value">${formatField(song.source_file)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Publication:</span>
+                    <span class="metadata-value">${formatField(song.source_publication)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Copyright:</span>
+                    <span class="metadata-value">${formatField(song.copyright_info)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Composition Date:</span>
+                    <span class="metadata-value">${formatField(song.estimated_composition_date)}</span>
+                </div>
+            </div>
+            
+            <div class="metadata-section">
+                <h3>Cultural Context</h3>
+                <div class="metadata-field">
+                    <span class="metadata-label">Location:</span>
+                    <span class="metadata-value">${formatField(song.primary_location)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Island:</span>
+                    <span class="metadata-value">${formatField(song.island)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Mele Type:</span>
+                    <span class="metadata-value">${formatField(song.mele_type)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Themes:</span>
+                    <span class="metadata-value">${formatArray(song.themes)}</span>
+                </div>
+                <div class="metadata-field">
+                    <span class="metadata-label">Cultural Elements:</span>
+                    <span class="metadata-value">${formatArray(song.cultural_elements)}</span>
+                </div>
+                ${song.cultural_significance_notes ? `
+                    <div class="metadata-field">
+                        <span class="metadata-label">Cultural Notes:</span>
+                        <div class="metadata-value" style="margin-top: 4px; line-height: 1.4;">${song.cultural_significance_notes}</div>
+                    </div>
+                ` : ''}
+            </div>
+            
+            ${mediaHTML}
+        `;
+    }
+    
+    renderComposerDetails(person, container) {
         const photoHTML = person.photo_url ? 
             `<img src="${person.photo_url}" alt="${person.full_name}" class="person-photo">` : '';
         

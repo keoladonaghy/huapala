@@ -155,23 +155,22 @@
         .modal-content {
             background-color: #fff;
             margin: 5% auto;
-            padding: 20px;
+            padding: 0;
             border: 1px solid #888;
             width: 80%;
-            max-width: 600px;
+            max-width: 700px;
             border-radius: 5px;
             position: relative;
             max-height: 80vh;
-            overflow-y: auto;
+            overflow: hidden;
         }
         
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 20px 10px 20px;
             border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
         }
         
         .modal-title {
@@ -190,6 +189,122 @@
         
         .close:hover {
             color: #000;
+        }
+        
+        /* Tab Styles */
+        .modal-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            background: #f8f9fa;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button:hover {
+            background: #e9ecef;
+            color: #000;
+        }
+        
+        .tab-button.active {
+            color: #000;
+            border-bottom-color: #007bff;
+            background: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(80vh - 120px);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Song Metadata Styles */
+        .metadata-section {
+            margin-bottom: 20px;
+        }
+        
+        .metadata-section h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 4px;
+        }
+        
+        .metadata-field {
+            margin-bottom: 6px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .metadata-label {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            min-width: 80px;
+        }
+        
+        .metadata-value {
+            color: #000;
+        }
+        
+        .contributors-list {
+            margin-top: 8px;
+        }
+        
+        .contributor-item {
+            margin-bottom: 4px;
+            padding: 4px 8px;
+            background: #f8f9fa;
+            border-left: 3px solid #007bff;
+            font-size: 12px;
+        }
+        
+        .contributor-name {
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .contributor-role {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .media-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        
+        .media-link {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #dc3545;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 11px;
+        }
+        
+        .media-link:hover {
+            background: #c82333;
+            color: white;
         }
         
         .person-photo {
@@ -268,11 +383,18 @@
     <div id="peopleModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="modalPersonName">Person Details</div>
+                <div class="modal-title" id="modalSongTitle">Song Details</div>
                 <span class="close" id="closeModal">&times;</span>
             </div>
-            <div id="modalContent">
-                <div class="modal-loading">Loading person details...</div>
+            <div class="modal-tabs">
+                <button class="tab-button active" data-tab="metadata">Song Details</button>
+                <button class="tab-button" data-tab="composer">Composer</button>
+            </div>
+            <div id="metadataTab" class="tab-content active">
+                <div class="modal-loading">Loading song details...</div>
+            </div>
+            <div id="composerTab" class="tab-content">
+                <div class="modal-loading">Loading composer details...</div>
             </div>
         </div>
     </div>

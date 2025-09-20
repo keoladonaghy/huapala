@@ -1,0 +1,462 @@
+/* Huapala Archives
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* General
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+body
+{
+	color: #000;
+	background-color: #FFFFFF;
+	background-image: url(../bk.jpg);
+	background-repeat: repeat;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 100%;
+	margin: 0 auto;
+	padding-bottom: 2em;
+	width: 750px;
+}
+
+#wrapper
+{
+	margin: 0 20px;
+}
+
+img
+{
+	border: 0;
+}
+
+table
+{
+}
+
+.centered
+{
+	text-align: center;
+}
+
+.hide
+{
+	display: none;
+}
+
+/* Header
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#header
+{
+	color: #997300;
+	font-family: "Lucida Grande", Helvetica, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+}
+
+#header #masthead_home
+{
+	font-size: 3em;
+	font-style: italic;
+	text-transform: uppercase;
+	margin-top: 0.25em;
+	margin-bottom: 0.4em;
+	vertical-align: bottom;
+}
+
+#header #masthead_home a:link,
+#header #masthead_home a:visited,
+#header #masthead_home a:active,
+#header #masthead_home a:hover
+{
+	color: #997300;
+	text-decoration: none;
+}
+
+#header #masthead
+{
+	font-size: 3em;
+	font-style: italic;
+	text-transform: uppercase;
+	margin-top: 0.25em;
+	margin-bottom: 0.4em;
+	vertical-align: bottom;
+}
+
+#header #masthead a:link,
+#header #masthead a:visited,
+#header #masthead a:active,
+#header #masthead a:hover
+{
+	color: #997300;
+	text-decoration: none;
+}
+
+#header #tagline_home
+{
+	font-size: 2em;
+}
+
+#header #tagline
+{
+	font-size: 2em;
+	margin-bottom: 0.5em;
+	display: none;
+}
+
+#header #about_home
+{
+	margin: 0 auto;
+	padding-bottom: 1em;
+	width: 80%;
+}
+
+#header .nav
+{
+	font-family: "Lucida Grande", Helvetica, sans-serif;
+	color: #997300;
+	font-weight: bold;
+	margin-bottom: 2em;
+}
+
+/* Content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#content h1
+{
+	color: #997300;
+	font-family: "Lucida Grande", Helvetica, sans-serif;
+	font-size: 1.2em;
+	text-align: center;
+}
+
+#content h1.tight
+{
+	margin-bottom: 0;
+}
+
+#content h1.tight + p
+{
+	margin-top: 0;
+	margin-bottom: 2em;
+	text-align: center;
+}
+
+#content h2
+{
+	color: #997300;
+	font-size: 1.1em;
+	text-align: center;
+	margin-top: 1.5em;
+}
+
+#content table
+{
+	margin: 0 auto;
+	width: 100%;
+}
+
+#content table,
+#content td
+{
+	border: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#content td#listing
+{
+	width: 55%;
+	vertical-align: top;
+}
+
+#content .instructions
+{
+	color: #F30065;
+	font-size: 0.8em;
+	margin-bottom: 1.5em;
+}
+
+#content td.col1,
+#content td.col2,
+#content td.col3
+{
+	vertical-align: top;
+}
+
+#content #listing li,
+#content .col1 li,
+#content .col2 li,
+#content .col3 li
+{
+	font-size: 0.8em;
+}
+
+#content #listing li a,
+#content .col1 li a,
+#content .col2 li a,
+#content .col3 li a
+{
+	font-size: 1.25em;
+}
+
+#content .title-extra
+{
+	color: #0000AF;
+	font-size: 1.25em;
+}
+
+#content #listing .music-marker
+{
+	color: #F30065;
+}
+
+/* Hula Pages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#content #hula
+{
+	color: #997300;
+}
+
+ol li
+{
+	counter-increment: mycounter;
+	list-style-type: none;
+	margin-bottom: 1em;
+}
+
+ol li:before
+{
+	content: counter(mycounter) ".\00A0\00A0";
+	font-weight: bold;
+	margin-left: -2em;
+}
+
+ol li.less-than-ten:before
+{
+	content: counter(mycounter) ".\00A0\00A0\00A0\00A0";
+}
+
+#tunings table
+{
+	width: auto;
+	vertical-align: top;
+	margin-left: 0;
+	border-collapse: collapse;
+}
+
+#tunings td
+{
+	padding-right: 1em;
+}
+
+ol#hulasteps1
+{
+	counter-reset: none;
+}
+
+ol#hulasteps2
+{
+	counter-reset: mycounter 26;
+}
+
+ol#hulasteps3
+{
+	counter-reset: none;
+}
+
+table#hula-arms
+{
+}
+
+table#hula-arms td
+{
+	text-align: center;
+}
+
+table#hula-arms img
+{
+	border: 1px solid #666;
+}
+
+/* Island Index Pages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+dl.mountains
+{
+	margin-top: 0;
+}
+
+#content #isle td
+{
+	padding-bottom: 1em;
+}
+
+#content #isle ul
+{
+	margin-top: 0;
+}
+
+#content #isle td img
+{
+	margin-bottom: 2em;
+}
+
+#content #isle .caption
+{
+	font-style: italic;
+}
+
+#content #isle .nudge29 img /* Oahu */
+{
+	margin-left: 29px;
+}
+
+#content #isle .nudge33 img /* Kauai, Niihau */
+{
+	margin-left: 33px;
+}
+
+#content #isle .nudge37 img /* Lanai */
+{
+	margin-left: 37px;
+}
+
+#content #isle .nudge45 img /* Hawaii */
+{
+	margin-left: 45px;
+}
+
+#content #isle .nudge65 img /* Kahoolawe */
+{
+	margin-left: 65px;
+}
+
+#content #isle .nudge108 img /* Molokai */
+{
+	margin-left: 108px;
+}
+
+/* Sidebar
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#content td#sidebar
+{
+	vertical-align: top;
+	padding-top: 2.25em;
+	width: 40%;
+}
+
+#content #sidebar p
+{
+	color: #996633;
+	font-weight: bold;
+	margin-bottom: 3em;
+	text-align: center;
+}
+
+#content #sidebar.spacing-large p
+{
+	margin-bottom: 7em;
+}
+
+#content #sidebar.spacing-large p.tight-bottom
+{
+	margin-bottom: 0;
+}
+
+#content #sidebar span
+{
+	font-weight: normal;
+	color: #0000D3;
+}
+
+#content #sidebar a
+{
+	font-weight: normal;
+}
+
+/* Footer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#footer
+{
+	text-align: center;
+	margin-top: 3em;
+}
+
+#footer .nav
+{
+	font-family: "Lucida Grande", Helvetica, sans-serif;
+	color: #997300;
+	font-weight: bold;
+}
+
+#footer #copyright
+{
+	margin-top: 2em;
+	font-size: 0.875em;
+	display: none;
+}
+
+#footer .attribution
+{
+	display: none;
+}
+
+/* Error Pages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#content #error
+{
+	margin-bottom: 10em;
+}
+
+/* Print-Friendly
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media print,
+{
+	body
+	{
+		background: none;
+		margin: 0;
+		width: 100%;
+	}
+	
+	#header .nav,
+		#footer .nav
+	{
+		display: none !important;
+	}
+	
+	img
+	{
+		page-break-inside: avoid;
+	}
+	
+	#content a:link,
+		#content a:visited
+	{
+		color: blue;
+		text-decoration: underline;
+	}
+	
+	#content #listing .title-extra,
+		#content .col1 .title-extra,
+		#content .col2 .title-extra,
+		#content .col3 .title-extra
+	{
+		color: blue;
+	}
+	
+	#content h2
+	{
+		page-break-after: avoid;
+	}
+	
+	#footer
+	{
+		margin-top: 0;
+	}
+}
