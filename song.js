@@ -185,14 +185,10 @@ class SongPage {
                 }
             }
             
-            // Add verse/chorus label if available
+            // Only show label for chorus/hui sections
             let verseLabel = '';
-            if (verse.type) {
-                if (verse.type === 'chorus' || verse.type === 'hui') {
-                    verseLabel = 'Hui:';
-                } else if (verse.type === 'verse') {
-                    verseLabel = `Verse ${verse.number || verse.order || index + 1}:`;
-                }
+            if (verse.type && (verse.type === 'chorus' || verse.type === 'hui')) {
+                verseLabel = 'Hui:';
             }
             
             console.log(`Hawaiian formatted: "${hawaiianFormatted}"`); // Debug log
@@ -210,15 +206,6 @@ class SongPage {
                     </td>
                 </tr>
             `;
-            
-            // Add proper spacing between verses (like double <br> in original)
-            if (index < this.song.verses.length - 1) {
-                tableHTML += `
-                    <tr>
-                        <td colspan="2" style="height: 25px; border-bottom: 1px solid #eee;"></td>
-                    </tr>
-                `;
-            }
         });
         
         console.log('Generated table HTML:', tableHTML); // Debug log
