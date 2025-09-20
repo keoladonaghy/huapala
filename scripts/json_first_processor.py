@@ -8,24 +8,30 @@ This creates a human-in-the-loop workflow:
 3. Import reviewed JSON files → database
 
 Usage:
-  python3 json_first_processor.py parse data/cleaned_source_hml/    # HTML → JSON
-  python3 json_first_processor.py import                           # JSON → Database
-  python3 json_first_processor.py export                           # Database → JSON (for editing)
+  python3 scripts/json_first_processor.py parse data/cleaned_source_hml/    # HTML → JSON
+  python3 scripts/json_first_processor.py import                           # JSON → Database
+  python3 scripts/json_first_processor.py export                           # Database → JSON (for editing)
 """
 
 import os
+import sys
 import json
 import glob
 import argparse
 from pathlib import Path
 from datetime import datetime
-from html_parser_with_validation import HuapalaHTMLParser
 import psycopg2
 from psycopg2.extras import RealDictCursor
+
+# Add parent directory to path so we can import scripts modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.html_parser_with_validation import HuapalaHTMLParser
+from scripts.raw_html_parser import RawHtmlParser
 
 class JSONFirstProcessor:
     def __init__(self, database_url: str = None):
         self.parser = HuapalaHTMLParser()
+        self.raw_parser = RawHtmlParser()
         self.database_url = database_url
         self.reviewed_dir = Path("data/reviewed_songs")
         self.reviewed_dir.mkdir(exist_ok=True)
@@ -44,8 +50,13 @@ class JSONFirstProcessor:
             try:
                 print(f"📥 Processing: {file_path}")
                 
-                # Parse the song
-                parsed_song, validation_result = self.parser.parse_file(file_path)
+                # Determine which parser to use based on file content/location
+                if self._is_raw_html_file(file_path):
+                    print(f"   Using raw HTML parser")
+                    parsed_song, validation_result = self.raw_parser.parse_file(file_path)
+                else:
+                    print(f"   Using cleaned HTML parser")
+                    parsed_song, validation_result = self.parser.parse_file(file_path)
                 
                 # Generate canonical ID
                 clean_title = self._clean_title(parsed_song.title)
@@ -55,14 +66,14 @@ class JSONFirstProcessor:
                 song_data = {
                     "canonical_mele_id": canonical_id,
                     "canonical_title_hawaiian": clean_title,
-                    "canonical_title_english": parsed_song.english_title or "",
+                    "canonical_title_english": getattr(parsed_song, 'english_title', '') or "",
                     "primary_composer": parsed_song.composer.strip() if parsed_song.composer else "",
                     "translator": parsed_song.translator.strip() if parsed_song.translator else "",
                     "source_file": file_path,
                     "processing_metadata": {
                         "original_file": file_path,
                         "processed_at": datetime.now().isoformat(),
-                        "parsing_quality_score": validation_result.quality_score if validation_result else 0,
+                        "parsing_quality_score": getattr(validation_result, 'quality_score', 0) if validation_result else 0,
                         "total_sections": len(parsed_song.sections),
                         "total_lines": sum(len(section.lines) for section in parsed_song.sections)
                     },
@@ -373,10 +384,40 @@ class JSONFirstProcessor:
         return re.sub(r'\s+', ' ', title.replace('\n', ' ')).strip()
     
     def _generate_canonical_id(self, title: str) -> str:
-        """Generate canonical ID from title"""
+        """Generate canonical ID from title with consistent special character handling"""
         import re
-        clean_title = re.sub(r'[^a-zA-Z0-9\s]', '', title.lower()).replace(' ', '_')
+        import unicodedata
+        
+        # First normalize unicode characters (ū → u, ī → i, etc.)
+        normalized = unicodedata.normalize('NFKD', title)
+        
+        # Remove accents/diacritics 
+        ascii_title = ''.join(c for c in normalized if not unicodedata.combining(c))
+        
+        # Convert to lowercase and remove all non-alphanumeric except spaces
+        clean_title = re.sub(r'[^a-zA-Z0-9\s]', '', ascii_title.lower())
+        
+        # Replace multiple spaces with single space, then replace spaces with underscores
+        clean_title = re.sub(r'\s+', ' ', clean_title).strip().replace(' ', '_')
+        
         return f"{clean_title}_canonical"
+    
+    def _is_raw_html_file(self, file_path: str) -> bool:
+        """Determine if a file is raw HTML (not cleaned)"""
+        # Check if the file is in source_html directory (raw files)
+        path_obj = Path(file_path)
+        if 'source_html' in path_obj.parts:
+            return True
+        
+        # Check file content for HTML tags that indicate raw HTML
+        try:
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read(500)  # Read first 500 chars
+                # Look for DOCTYPE, html tags, or other raw HTML indicators
+                raw_indicators = ['<!DOCTYPE', '<html>', '<head>', '<body>', '<title>']
+                return any(indicator in content for indicator in raw_indicators)
+        except:
+            return False
     
     def _generate_verse_label(self, section_type: str, number: int) -> str:
         """Generate human-readable verse label"""

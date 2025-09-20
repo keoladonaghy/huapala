@@ -5,11 +5,15 @@ Extends the existing validation system to work with Neon PostgreSQL
 """
 
 import os
+import sys
 import psycopg2
 import psycopg2.extras
 from datetime import datetime
 from typing import Dict, List, Optional
-from data_validation_system import HuapalaValidator, SongValidationResult, ValidationIssue
+
+# Add parent directory to path so we can import scripts modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.data_validation_system import HuapalaValidator, SongValidationResult, ValidationIssue
 
 class DatabaseValidator(HuapalaValidator):
     """Validation system integrated with Neon PostgreSQL database"""

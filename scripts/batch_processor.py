@@ -4,11 +4,15 @@ Batch processor for validating HTML files and storing results in Neon database
 """
 
 import os
+import sys
 import glob
 import json
 from pathlib import Path
-from html_parser_with_validation import HuapalaHTMLParser
-from database_validator import DatabaseValidator
+
+# Add parent directory to path so we can import scripts modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.html_parser_with_validation import HuapalaHTMLParser
+from scripts.database_validator import DatabaseValidator
 
 class BatchProcessor:
     """Process multiple HTML files and store validation results"""
@@ -17,7 +21,7 @@ class BatchProcessor:
         self.parser = HuapalaHTMLParser()
         self.db_validator = DatabaseValidator(database_url)
         
-    def find_or_create_canonical_mele(self, parsed_song) -> int:
+    def find_or_create_canonical_mele(self, parsed_song) -> str:
         """Find existing or create new canonical_mele record"""
         # This is a simplified version - you might want more sophisticated matching
         if not self.db_validator.conn:
@@ -25,29 +29,37 @@ class BatchProcessor:
         
         try:
             with self.db_validator.conn.cursor() as cursor:
-                # Check if song already exists by title
+                # Generate the canonical ID from title
+                import re
+                title = parsed_song.title.strip()
+                # Remove newlines and extra spaces, convert to lowercase
+                clean_title = re.sub(r'\s+', ' ', title.replace('\n', ' ')).strip()
+                canonical_id = re.sub(r'[^a-zA-Z0-9\s]', '', clean_title.lower()).replace(' ', '_') + '_canonical'
+                
+                # Check if song already exists by ID
                 cursor.execute("""
                     SELECT canonical_mele_id FROM canonical_mele 
-                    WHERE canonical_title_hawaiian = %s 
+                    WHERE canonical_mele_id = %s 
                     LIMIT 1
-                """, (parsed_song.title.strip(),))
+                """, (canonical_id,))
                 
                 result = cursor.fetchone()
                 if result:
+                    self.db_validator.logger.info(f"Found existing canonical_mele record: {canonical_id}")
                     return result[0]
                 
-                # Create new record
+                # Create new record with generated ID
                 cursor.execute("""
                     INSERT INTO canonical_mele (
+                        canonical_mele_id,
                         canonical_title_hawaiian, 
-                        primary_composer, 
-                        structured_lyrics
+                        primary_composer
                     ) VALUES (%s, %s, %s)
                     RETURNING canonical_mele_id
                 """, (
-                    parsed_song.title.strip(),
-                    parsed_song.composer.strip() if parsed_song.composer else '',
-                    json.dumps(self.parser.generate_jsonb_structure(parsed_song))
+                    canonical_id,
+                    clean_title,
+                    parsed_song.composer.strip() if parsed_song.composer else ''
                 ))
                 
                 song_id = cursor.fetchone()[0]

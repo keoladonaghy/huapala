@@ -9,10 +9,15 @@ Implements validation and logging for data quality issues.
 import re
 import html
 import json
+import os
+import sys
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass
 from datetime import datetime
-from data_validation_system import HuapalaValidator, ValidationIssue, IssueType, IssueSeverity
+
+# Add parent directory to path so we can import scripts modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.data_validation_system import HuapalaValidator, ValidationIssue, IssueType, IssueSeverity
 
 @dataclass
 class SongLine:

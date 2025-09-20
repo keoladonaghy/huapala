@@ -1,0 +1,157 @@
+{
+  "description": "Database schema reference for Lovable admin system",
+  "primary_table": "songbook_entries",
+  "access_permissions": {
+    "full_access": ["songbook_entries"],
+    "read_only": ["canonical_mele", "people"],
+    "no_access": ["mele_sources"]
+  },
+  "tables": {
+    "songbook_entries": {
+      "description": "Main table for Lovable CRUD operations",
+      "columns": {
+        "id": {
+          "type": "SERIAL PRIMARY KEY",
+          "description": "Auto-incrementing unique identifier",
+          "editable": false
+        },
+        "timestamp": {
+          "type": "TIMESTAMPTZ",
+          "description": "Original entry timestamp",
+          "editable": true
+        },
+        "printed_song_title": {
+          "type": "TEXT",
+          "description": "Song title as printed in songbook",
+          "editable": true,
+          "indexed": true
+        },
+        "eng_title_transl": {
+          "type": "TEXT",
+          "description": "English translation of title",
+          "editable": true,
+          "indexed": true
+        },
+        "modern_song_title": {
+          "type": "TEXT", 
+          "description": "Modern/standardized title",
+          "editable": true,
+          "indexed": true
+        },
+        "scripped_song_title": {
+          "type": "TEXT",
+          "description": "Alternative scripted title",
+          "editable": true,
+          "indexed": true
+        },
+        "song_title": {
+          "type": "TEXT",
+          "description": "Additional title field",
+          "editable": true,
+          "indexed": true
+        },
+        "songbook_name": {
+          "type": "TEXT NOT NULL",
+          "description": "Name of the songbook",
+          "editable": true,
+          "indexed": true
+        },
+        "page": {
+          "type": "INTEGER",
+          "description": "Page number in songbook",
+          "editable": true,
+          "validation": "positive_integer"
+        },
+        "pub_year": {
+          "type": "INTEGER",
+          "description": "Publication year",
+          "editable": true,
+          "validation": "year_range_1800_2100"
+        },
+        "diacritics": {
+          "type": "TEXT CHECK (diacritics IN ('Yes', 'No', 'Inconsistent', 'Unknown'))",
+          "description": "Whether songbook uses diacritical marks",
+          "editable": true,
+          "options": ["Yes", "No", "Inconsistent", "Unknown"]
+        },
+        "composer": {
+          "type": "TEXT",
+          "description": "Song composer/author",
+          "editable": true,
+          "indexed": true
+        },
+        "additional_information": {
+          "type": "TEXT",
+          "description": "Additional notes about the song",
+          "editable": true
+        },
+        "email_address": {
+          "type": "TEXT",
+          "description": "Contributor contact email",
+          "editable": true,
+          "validation": "email_format"
+        },
+        "canonical_mele_id": {
+          "type": "TEXT REFERENCES canonical_mele(canonical_mele_id)",
+          "description": "Foreign key to main song database",
+          "editable": false,
+          "note": "Use Railway API for linking operations"
+        },
+        "created_at": {
+          "type": "TIMESTAMPTZ DEFAULT NOW()",
+          "description": "Record creation timestamp",
+          "editable": false
+        },
+        "updated_at": {
+          "type": "TIMESTAMPTZ DEFAULT NOW()",
+          "description": "Record update timestamp", 
+          "editable": false,
+          "auto_update": true
+        }
+      }
+    },
+    "canonical_mele": {
+      "description": "Reference table - read-only access",
+      "access": "read_only",
+      "purpose": "For dropdown lists and reference data",
+      "key_columns": ["canonical_mele_id", "canonical_title_hawaiian", "primary_composer"]
+    },
+    "people": {
+      "description": "Reference table - read-only access", 
+      "access": "read_only",
+      "purpose": "For composer/contributor dropdowns",
+      "key_columns": ["person_id", "name", "roles"]
+    }
+  },
+  "api_boundaries": {
+    "allowed_operations": [
+      "SELECT songbook_entries",
+      "INSERT songbook_entries", 
+      "UPDATE songbook_entries",
+      "DELETE songbook_entries",
+      "SELECT canonical_mele (reference only)",
+      "SELECT people (reference only)"
+    ],
+    "forbidden_operations": [
+      "UPDATE canonical_mele_id in songbook_entries",
+      "INSERT/UPDATE/DELETE canonical_mele",
+      "INSERT/UPDATE/DELETE people", 
+      "Complex multi-table joins",
+      "Advanced analytics queries"
+    ],
+    "railway_api_required": [
+      "Linking songs to songbook entries",
+      "Complex search across tables",
+      "Data validation beyond basic types",
+      "Business logic operations",
+      "Advanced reporting and analytics"
+    ]
+  },
+  "suggested_interfaces": {
+    "songbook_browser": "Paginated table with filtering by songbook, year, composer",
+    "entry_editor": "Form for creating/editing individual songbook entries",
+    "bulk_operations": "Select multiple entries for batch updates",
+    "search_interface": "Simple text search within songbook entries",
+    "reference_data": "Dropdowns populated from canonical_mele and people tables"
+  }
+}

@@ -4,9 +4,13 @@ Test script to verify validation system integration with Neon database
 """
 
 import os
+import sys
 import psycopg2
-from database_validator import DatabaseValidator
-from html_parser_with_validation import HuapalaHTMLParser
+
+# Add parent directory to path so we can import scripts modules
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.database_validator import DatabaseValidator
+from scripts.html_parser_with_validation import HuapalaHTMLParser
 
 # Use same config as main.py for testing
 def get_db_config():

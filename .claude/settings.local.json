@@ -30,7 +30,17 @@
       "Bash(do echo \"Testing: $file\")",
       "Bash(/dev/null)",
       "Bash(done)",
-      "WebFetch(domain:keoladonaghy.github.io)"
+      "WebFetch(domain:keoladonaghy.github.io)",
+      "Bash(psql:*)",
+      "Bash(grep:*)",
+      "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py export)",
+      "Bash(pip3 install:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(git clone:*)",
+      "Bash(npm install)",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []
