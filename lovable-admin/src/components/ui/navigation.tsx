@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Music, Database, Search, Plus, Settings } from "lucide-react";
+import { Music, Database, Search, Plus, Settings, Book, Users } from "lucide-react";
 
 interface NavigationProps {
   currentPage: string;
@@ -10,8 +10,9 @@ interface NavigationProps {
 export function Navigation({ currentPage, onPageChange }: NavigationProps) {
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: Database },
-    { id: "songs", label: "Mele (Songs)", icon: Music },
-    { id: "artists", label: "Artists", icon: Music },
+    { id: "songbook-entries", label: "Songbook Entries", icon: Book },
+    { id: "songs", label: "Canonical Songs", icon: Music },
+    { id: "artists", label: "People", icon: Users },
     { id: "search", label: "Search", icon: Search },
     { id: "add", label: "Add Entry", icon: Plus },
     { id: "settings", label: "Settings", icon: Settings },

@@ -5,6 +5,7 @@ import { SongsList } from "@/components/songs/SongsList";
 import { AddEntryForm } from "@/components/forms/AddEntryForm";
 import { PeopleList } from "@/components/people/PeopleList";
 import { MeleList } from "@/components/mele/MeleList";
+import { SongbookEntriesList } from "@/components/songbook/SongbookEntriesList";
 
 const Index = () => {
   const [currentPage, setCurrentPage] = useState("dashboard");
@@ -13,6 +14,8 @@ const Index = () => {
     switch (currentPage) {
       case "dashboard":
         return <Dashboard onPageChange={setCurrentPage} />;
+      case "songbook-entries":
+        return <SongbookEntriesList />;
       case "songs":
         return <MeleList />;
       case "artists":

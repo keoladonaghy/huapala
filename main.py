@@ -8,9 +8,10 @@ Acts as a bridge between GitHub Pages frontend and Neon database.
 
 import json
 import os
-from typing import List, Optional
-from fastapi import FastAPI, HTTPException, Query
+from typing import List, Optional, Dict, Any
+from fastapi import FastAPI, HTTPException, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import psycopg2
 from psycopg2.extras import RealDictCursor
 # Note: database_validator.py import would go here when deployed
@@ -31,7 +32,7 @@ app.add_middleware(
         "*"  # Allow all for now - tighten in production
     ],
     allow_credentials=True,
-    allow_methods=["GET"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
 
@@ -433,6 +434,404 @@ async def get_validation_sessions():
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error fetching validation sessions: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+# Pydantic models for songbook entries
+class SongbookEntryCreate(BaseModel):
+    printed_song_title: str
+    eng_title_transl: Optional[str] = None
+    modern_song_title: Optional[str] = None
+    scripped_song_title: Optional[str] = None
+    song_title: Optional[str] = None
+    songbook_name: str
+    page: Optional[int] = None
+    pub_year: Optional[int] = None
+    diacritics: Optional[str] = None
+    composer: Optional[str] = None
+    additional_information: Optional[str] = None
+    email_address: Optional[str] = None
+
+class SongbookEntryUpdate(BaseModel):
+    printed_song_title: Optional[str] = None
+    eng_title_transl: Optional[str] = None
+    modern_song_title: Optional[str] = None
+    scripped_song_title: Optional[str] = None
+    song_title: Optional[str] = None
+    songbook_name: Optional[str] = None
+    page: Optional[int] = None
+    pub_year: Optional[int] = None
+    diacritics: Optional[str] = None
+    composer: Optional[str] = None
+    additional_information: Optional[str] = None
+    email_address: Optional[str] = None
+
+# Songbook Entries API endpoints
+@app.get("/api/songbook-entries")
+async def get_songbook_entries(
+    limit: int = Query(100, description="Maximum number of entries to return"),
+    offset: int = Query(0, description="Number of entries to skip"),
+    songbook_name: Optional[str] = Query(None, description="Filter by songbook name"),
+    composer: Optional[str] = Query(None, description="Filter by composer"),
+    pub_year_min: Optional[int] = Query(None, description="Minimum publication year"),
+    pub_year_max: Optional[int] = Query(None, description="Maximum publication year"),
+    search: Optional[str] = Query(None, description="Search in titles and composer")
+):
+    """Get songbook entries with optional filtering and pagination"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        # Build WHERE clauses
+        where_clauses = []
+        params = []
+        
+        if songbook_name:
+            where_clauses.append("songbook_name = %s")
+            params.append(songbook_name)
+            
+        if composer:
+            where_clauses.append("composer ILIKE %s")
+            params.append(f"%{composer}%")
+            
+        if pub_year_min:
+            where_clauses.append("pub_year >= %s")
+            params.append(pub_year_min)
+            
+        if pub_year_max:
+            where_clauses.append("pub_year <= %s")
+            params.append(pub_year_max)
+            
+        if search:
+            where_clauses.append("""
+                (printed_song_title ILIKE %s 
+                 OR eng_title_transl ILIKE %s 
+                 OR modern_song_title ILIKE %s 
+                 OR composer ILIKE %s)
+            """)
+            search_param = f"%{search}%"
+            params.extend([search_param, search_param, search_param, search_param])
+        
+        where_sql = " WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+        
+        query = f"""
+            SELECT id, timestamp, printed_song_title, eng_title_transl, modern_song_title,
+                   scripped_song_title, song_title, songbook_name, page, pub_year,
+                   diacritics, composer, additional_information, email_address,
+                   canonical_mele_id, created_at, updated_at
+            FROM songbook_entries
+            {where_sql}
+            ORDER BY created_at DESC
+            LIMIT %s OFFSET %s
+        """
+        
+        params.extend([limit, offset])
+        cur.execute(query, params)
+        
+        entries = [dict(row) for row in cur.fetchall()]
+        return entries
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching songbook entries: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/api/songbook-entries/{entry_id}")
+async def get_songbook_entry(entry_id: int):
+    """Get a single songbook entry by ID"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        cur.execute("""
+            SELECT id, timestamp, printed_song_title, eng_title_transl, modern_song_title,
+                   scripped_song_title, song_title, songbook_name, page, pub_year,
+                   diacritics, composer, additional_information, email_address,
+                   canonical_mele_id, created_at, updated_at
+            FROM songbook_entries
+            WHERE id = %s
+        """, (entry_id,))
+        
+        entry = cur.fetchone()
+        if not entry:
+            raise HTTPException(status_code=404, detail="Songbook entry not found")
+            
+        return dict(entry)
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching songbook entry: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.post("/api/songbook-entries")
+async def create_songbook_entry(entry: SongbookEntryCreate):
+    """Create a new songbook entry"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        cur.execute("""
+            INSERT INTO songbook_entries (
+                printed_song_title, eng_title_transl, modern_song_title,
+                scripped_song_title, song_title, songbook_name, page, pub_year,
+                diacritics, composer, additional_information, email_address
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            RETURNING id, timestamp, printed_song_title, eng_title_transl, modern_song_title,
+                      scripped_song_title, song_title, songbook_name, page, pub_year,
+                      diacritics, composer, additional_information, email_address,
+                      canonical_mele_id, created_at, updated_at
+        """, (
+            entry.printed_song_title,
+            entry.eng_title_transl,
+            entry.modern_song_title,
+            entry.scripped_song_title,
+            entry.song_title,
+            entry.songbook_name,
+            entry.page,
+            entry.pub_year,
+            entry.diacritics,
+            entry.composer,
+            entry.additional_information,
+            entry.email_address
+        ))
+        
+        created_entry = dict(cur.fetchone())
+        conn.commit()
+        return created_entry
+        
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Error creating songbook entry: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.put("/api/songbook-entries/{entry_id}")
+async def update_songbook_entry(entry_id: int, entry: SongbookEntryUpdate):
+    """Update an existing songbook entry"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        # Build update fields dynamically
+        update_fields = []
+        params = []
+        
+        entry_dict = entry.dict(exclude_unset=True)
+        for field, value in entry_dict.items():
+            update_fields.append(f"{field} = %s")
+            params.append(value)
+        
+        if not update_fields:
+            raise HTTPException(status_code=400, detail="No fields to update")
+        
+        params.append(entry_id)
+        
+        query = f"""
+            UPDATE songbook_entries 
+            SET {', '.join(update_fields)}, updated_at = NOW()
+            WHERE id = %s
+            RETURNING id, timestamp, printed_song_title, eng_title_transl, modern_song_title,
+                      scripped_song_title, song_title, songbook_name, page, pub_year,
+                      diacritics, composer, additional_information, email_address,
+                      canonical_mele_id, created_at, updated_at
+        """
+        
+        cur.execute(query, params)
+        updated_entry = cur.fetchone()
+        
+        if not updated_entry:
+            raise HTTPException(status_code=404, detail="Songbook entry not found")
+        
+        conn.commit()
+        return dict(updated_entry)
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Error updating songbook entry: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.delete("/api/songbook-entries/{entry_id}")
+async def delete_songbook_entry(entry_id: int):
+    """Delete a songbook entry"""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    try:
+        cur.execute("DELETE FROM songbook_entries WHERE id = %s", (entry_id,))
+        
+        if cur.rowcount == 0:
+            raise HTTPException(status_code=404, detail="Songbook entry not found")
+        
+        conn.commit()
+        return {"message": "Songbook entry deleted successfully"}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=500, detail=f"Error deleting songbook entry: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/api/songbook-names")
+async def get_songbook_names():
+    """Get unique songbook names for dropdown lists"""
+    conn = get_db_connection()
+    cur = conn.cursor()
+    
+    try:
+        cur.execute("""
+            SELECT DISTINCT songbook_name 
+            FROM songbook_entries 
+            WHERE songbook_name IS NOT NULL 
+            ORDER BY songbook_name
+        """)
+        
+        names = [row[0] for row in cur.fetchall()]
+        return names
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching songbook names: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/api/songbook-stats")
+async def get_songbook_stats():
+    """Get statistics about songbook entries"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        # Get basic stats
+        cur.execute("""
+            SELECT 
+                COUNT(*) as total_entries,
+                COUNT(DISTINCT songbook_name) as unique_songbooks,
+                COUNT(DISTINCT composer) as unique_composers,
+                COUNT(page) as entries_with_pages
+            FROM songbook_entries
+        """)
+        
+        stats = dict(cur.fetchone())
+        
+        # Get entries by decade
+        cur.execute("""
+            SELECT 
+                CONCAT(FLOOR(pub_year/10)*10, 's') as decade,
+                COUNT(*) as count
+            FROM songbook_entries 
+            WHERE pub_year IS NOT NULL
+            GROUP BY FLOOR(pub_year/10)*10
+            ORDER BY FLOOR(pub_year/10)*10
+        """)
+        
+        decades = [dict(row) for row in cur.fetchall()]
+        stats['entries_by_decade'] = decades
+        
+        return stats
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching songbook stats: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/api/canonical-mele")
+async def get_canonical_mele(
+    limit: int = Query(100, description="Maximum number of songs to return"),
+    search: Optional[str] = Query(None, description="Search in titles and composer")
+):
+    """Get canonical songs for reference (read-only)"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        where_sql = ""
+        params = []
+        
+        if search:
+            where_sql = """
+                WHERE canonical_title_hawaiian ILIKE %s 
+                   OR canonical_title_english ILIKE %s 
+                   OR primary_composer ILIKE %s
+            """
+            search_param = f"%{search}%"
+            params.extend([search_param, search_param, search_param])
+        
+        query = f"""
+            SELECT canonical_mele_id, canonical_title_hawaiian, 
+                   canonical_title_english, primary_composer
+            FROM canonical_mele
+            {where_sql}
+            ORDER BY canonical_title_hawaiian
+            LIMIT %s
+        """
+        
+        params.append(limit)
+        cur.execute(query, params)
+        
+        songs = [dict(row) for row in cur.fetchall()]
+        return songs
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching canonical songs: {str(e)}")
+    finally:
+        cur.close()
+        conn.close()
+
+@app.get("/api/people")
+async def get_people(
+    limit: int = Query(100, description="Maximum number of people to return"),
+    search: Optional[str] = Query(None, description="Search in names"),
+    role: Optional[str] = Query(None, description="Filter by role")
+):
+    """Get people for reference (read-only)"""
+    conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
+    
+    try:
+        where_clauses = []
+        params = []
+        
+        if search:
+            where_clauses.append("(full_name ILIKE %s OR display_name ILIKE %s)")
+            search_param = f"%{search}%"
+            params.extend([search_param, search_param])
+            
+        if role:
+            where_clauses.append("roles @> %s")
+            params.append(json.dumps([role]))
+        
+        where_sql = " WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+        
+        query = f"""
+            SELECT person_id, full_name as name, roles
+            FROM people
+            {where_sql}
+            ORDER BY full_name
+            LIMIT %s
+        """
+        
+        params.append(limit)
+        cur.execute(query, params)
+        
+        people = [dict(row) for row in cur.fetchall()]
+        return people
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching people: {str(e)}")
     finally:
         cur.close()
         conn.close()
