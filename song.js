@@ -148,33 +148,51 @@ class SongPage {
         this.song.verses.forEach((verse, index) => {
             console.log(`Verse ${index}:`, verse); // Debug log
             
-            const hawaiianText = verse.hawaiian_text || '';
-            const englishText = verse.english_text || '';
+            let hawaiianFormatted = '';
+            let englishFormatted = '';
             
-            // Try multiple line break formats first
-            let hawaiianFormatted = hawaiianText
-                .replace(/\r\n/g, '<br>')
-                .replace(/\n/g, '<br>')
-                .replace(/\r/g, '<br>');
-            
-            let englishFormatted = englishText
-                .replace(/\r\n/g, '<br>')
-                .replace(/\n/g, '<br>')
-                .replace(/\r/g, '<br>');
-            
-            // If no line breaks found, apply intelligent breaking for Hawaiian songs
-            if (!hawaiianFormatted.includes('<br>') && hawaiianText.length > 50) {
-                hawaiianFormatted = this.reconstructHawaiianLines(hawaiianText);
+            // Handle new format with lines array
+            if (verse.lines && Array.isArray(verse.lines)) {
+                const hawaiianLines = verse.lines.map(line => line.hawaiian_text || '').filter(text => text.trim());
+                const englishLines = verse.lines.map(line => line.english_text || '').filter(text => text.trim());
+                
+                hawaiianFormatted = hawaiianLines.join('<br>');
+                englishFormatted = englishLines.join('<br>');
             }
-            
-            if (!englishFormatted.includes('<br>') && englishText.length > 50) {
-                englishFormatted = this.reconstructEnglishLines(englishText);
+            // Fallback to old format
+            else {
+                const hawaiianText = verse.hawaiian_text || '';
+                const englishText = verse.english_text || '';
+                
+                // Try multiple line break formats first
+                hawaiianFormatted = hawaiianText
+                    .replace(/\r\n/g, '<br>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/\r/g, '<br>');
+                
+                englishFormatted = englishText
+                    .replace(/\r\n/g, '<br>')
+                    .replace(/\n/g, '<br>')
+                    .replace(/\r/g, '<br>');
+                
+                // If no line breaks found, apply intelligent breaking for Hawaiian songs
+                if (!hawaiianFormatted.includes('<br>') && hawaiianText.length > 50) {
+                    hawaiianFormatted = this.reconstructHawaiianLines(hawaiianText);
+                }
+                
+                if (!englishFormatted.includes('<br>') && englishText.length > 50) {
+                    englishFormatted = this.reconstructEnglishLines(englishText);
+                }
             }
             
             // Add verse/chorus label if available
             let verseLabel = '';
-            if (verse.type && verse.order) {
-                verseLabel = verse.type === 'hui' ? 'Hui:' : `Verse ${verse.order}:`;
+            if (verse.type) {
+                if (verse.type === 'chorus' || verse.type === 'hui') {
+                    verseLabel = 'Hui:';
+                } else if (verse.type === 'verse') {
+                    verseLabel = `Verse ${verse.number || verse.order || index + 1}:`;
+                }
             }
             
             console.log(`Hawaiian formatted: "${hawaiianFormatted}"`); // Debug log
