@@ -358,16 +358,20 @@ class JSONFirstProcessor:
             if cursor.rowcount == 0:
                 cursor.execute("""
                     INSERT INTO mele_sources (
+                        id,
                         canonical_mele_id,
+                        source_specific_title,
                         composer,
                         translator,
                         source_file,
                         verses_json,
                         processing_status,
                         extraction_date
-                    ) VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
+                    canonical_id + "_source",  # Create unique ID
                     canonical_id,
+                    song_data.get("canonical_title_hawaiian", ""),  # source_specific_title
                     song_data["primary_composer"],
                     song_data.get("translator", ""),
                     song_data.get("source_file", ""),
