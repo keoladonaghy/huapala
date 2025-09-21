@@ -45,7 +45,7 @@ class RawHtmlParser:
         ]
         
         self.composer_patterns = [
-            r'<font[^>]*>\s*-\s*by\s+([^<\n\r]+?)\s*</font>',  # Handle "<font> - by Queen Liliʻuokalani</font>"
+            r'<font[^>]*>\s*-\s*by\s+([^<]+?)\s*</font>',  # Handle "<font> - by Prince William Pitt\n         Leleiohoku</font>"
             r'(?:-\s*)?(?:music\s+by|composed\s+by|by)\s+([^<\n\r]+?)(?:\s*<|$)',
             r'(?:lyrics?\s+by\s+[^,]+,?\s*)?music\s+by\s+([^<\n\r]+?)(?:\s*<|$)',
             r'Words\s+by\s+[^,]+,?\s*(?:music\s+by\s+)?([^<\n\r]+?)(?:\s*<|$)',
@@ -94,8 +94,11 @@ class RawHtmlParser:
             if title_pos > -1:
                 # Look in a window around the title
                 start = max(0, title_pos - 200)
-                end = min(len(html_content), title_pos + len(title) + 300)
+                end = min(len(html_content), title_pos + len(title) + 500)  # Expanded window for composer
                 title_area = html_content[start:end]
+                
+                # Remove HTML comments to avoid false matches
+                title_area = re.sub(r'<!--.*?-->', '', title_area, flags=re.DOTALL)
                 
                 for pattern in self.composer_patterns:
                     match = re.search(pattern, title_area, re.IGNORECASE)
@@ -363,7 +366,7 @@ class RawHtmlParser:
         if not text:
             return ""
         
-        # Normalize whitespace
+        # Normalize whitespace (including newlines to spaces)
         text = re.sub(r'\s+', ' ', text)
         text = text.strip()
         
