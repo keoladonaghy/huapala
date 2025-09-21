@@ -1,5 +1,6 @@
 # Data directories with proprietary content
 data/
+lovable-admin/
 
 # Python
 __pycache__/
