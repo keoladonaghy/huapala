@@ -13,17 +13,27 @@ class HuapalaApp {
     
     async loadSongs() {
         try {
-            // Use Railway-hosted API that connects to Neon PostgreSQL
-            const API_BASE_URL = window.location.hostname === 'localhost' 
-                ? 'http://localhost:8000'  // Local development
-                : 'https://web-production-cde73.up.railway.app';  // Production Railway API
+            let response;
+            let songs;
             
-            const response = await fetch(`${API_BASE_URL}/songs`);
-            if (!response.ok) {
-                throw new Error(`Failed to load songs data: ${response.status}`);
+            if (window.location.hostname === 'localhost') {
+                // Local development - use API
+                const API_BASE_URL = 'http://localhost:8000';
+                response = await fetch(`${API_BASE_URL}/songs`);
+                if (!response.ok) {
+                    throw new Error(`Failed to load songs data: ${response.status}`);
+                }
+                songs = await response.json();
+            } else {
+                // GitHub Pages - use static data file
+                response = await fetch('./songs-data.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load songs data: ${response.status}`);
+                }
+                songs = await response.json();
             }
             
-            this.songs = await response.json();
+            this.songs = songs;
             this.filteredSongs = [...this.songs];
             this.renderSongs();
             this.hideLoading();
