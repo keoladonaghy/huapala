@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song - Huapala Hawaiian Music Archives</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #000;
+            background: #fff url('img/bk.jpg') repeat;
+            min-height: 100vh;
+        }
+        
+        .page-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(to right, #fff 0%, #fff 65%, transparent 100%), url('img/bk.jpg') repeat;
+            min-height: 100vh;
+            display: flex;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px 30px;
+            background: rgba(255,255,255,0.95);
+        }
+        
+        .left-sidebar {
+            width: 200px;
+            padding: 20px;
+            background: rgba(255,255,255,0.9);
+            border-right: 1px solid #ddd;
+        }
+        
+        .song-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .song-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        
+        .song-composer {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-title {
+            font-weight: bold;
+            font-size: 12px;
+            color: #000;
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-content {
+            font-size: 11px;
+            color: #333;
+            line-height: 1.3;
+        }
+        
+        .sidebar-content a {
+            color: #0000EE;
+            text-decoration: underline;
+        }
+        
+        .lyrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        
+        .lyrics-table td {
+            vertical-align: top;
+            padding: 15px 15px;
+            border: none;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .hawaiian-lyrics {
+            width: 50%;
+            color: #000;
+            border-right: 1px solid #ddd;
+        }
+        
+        .english-lyrics {
+            width: 50%;
+            color: #333;
+            font-style: italic;
+        }
+        
+        .cultural-notes {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        .notes-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #000;
+            font-size: 12px;
+            margin: 50px 0;
+        }
+        
+        .error {
+            background: #ffeeee;
+            border: 1px solid #cc0000;
+            color: #cc0000;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #0000EE;
+            text-decoration: underline;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .back-link:hover {
+            color: #0000AA;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <div class="left-sidebar">
+            <a href="index.html" class="back-link">← Back to song list</a>
+            <div id="sidebarContent"></div>
+        </div>
+        
+        <div class="main-content">
+            <div id="loadingMessage" class="loading">Loading song...</div>
+            <div id="errorMessage" class="error" style="display: none;">Unable to load song. Please check the URL.</div>
+            <div id="songContent" style="display: none;">
+                <div class="song-header">
+                    <div class="song-title" id="songTitle"></div>
+                    <div class="song-composer" id="songComposer"></div>
+                </div>
+                
+                <table class="lyrics-table" id="lyricsTable">
+                    <!-- Lyrics will be inserted here -->
+                </table>
+                
+                <div id="culturalNotes" class="cultural-notes" style="display: none;">
+                    <div class="notes-title">Cultural Significance:</div>
+                    <div id="notesContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="song.js"></script>
+</body>
+</html>
