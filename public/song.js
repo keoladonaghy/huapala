@@ -36,7 +36,7 @@ class SongPage {
                 const songs = await response.json();
                 
                 // Find the song by ID
-                this.song = songs.find(song => song.canonical_id === songId);
+                this.song = songs.find(song => song.canonical_mele_id === songId);
                 if (!this.song) {
                     throw new Error(`Song with ID "${songId}" not found`);
                 }
