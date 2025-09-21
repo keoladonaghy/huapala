@@ -114,6 +114,8 @@ async def get_songs(
             ms.source_publication,
             ms.copyright_info,
             ms.verses_json,
+            ms.song_type,
+            ms.structure_type,
             ms.primary_location,
             ms.island,
             ms.themes,
@@ -148,7 +150,7 @@ async def get_songs(
             cm.primary_composer, cm.primary_lyricist, cm.estimated_composition_date,
             cm.cultural_significance_notes, ms.composer, ms.translator, ms.hawaiian_editor,
             ms.source_file, ms.source_publication, ms.copyright_info, ms.verses_json,
-            ms.primary_location, ms.island, ms.themes, ms.mele_type, ms.cultural_elements
+            ms.song_type, ms.structure_type, ms.primary_location, ms.island, ms.themes, ms.mele_type, ms.cultural_elements
         ORDER BY cm.canonical_title_hawaiian
         LIMIT %s
         """
@@ -218,6 +220,8 @@ async def get_song(song_id: str):
             ms.source_publication,
             ms.copyright_info,
             ms.verses_json,
+            ms.song_type,
+            ms.structure_type,
             ms.primary_location,
             ms.island,
             ms.themes,
@@ -234,7 +238,7 @@ async def get_song(song_id: str):
             cm.primary_composer, cm.primary_lyricist, cm.estimated_composition_date,
             cm.cultural_significance_notes, ms.composer, ms.translator, ms.hawaiian_editor,
             ms.source_file, ms.source_publication, ms.copyright_info, ms.verses_json,
-            ms.primary_location, ms.island, ms.themes, ms.mele_type, ms.cultural_elements
+            ms.song_type, ms.structure_type, ms.primary_location, ms.island, ms.themes, ms.mele_type, ms.cultural_elements
         """
         
         cur.execute(query, (song_id,))

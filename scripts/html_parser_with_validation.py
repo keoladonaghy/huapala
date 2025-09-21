@@ -66,7 +66,10 @@ class HuapalaHTMLParser:
         # Extract table content (the main lyrics)
         table_content = self._extract_table_content(content)
         
-        # Parse Hawaiian and English sides
+        # Clean three-column tables by removing middle column (early preprocessing)
+        table_content = self._clean_three_column_table(table_content)
+        
+        # Parse Hawaiian and English sides (now always two columns)
         hawaiian_lines, english_lines = self._parse_lyrics_columns(table_content)
         
         # Post-process to fix known alignment issues
@@ -75,7 +78,11 @@ class HuapalaHTMLParser:
         
         
         # Structure into verses/choruses with line IDs
-        sections = self._structure_into_sections(hawaiian_lines, english_lines)
+        sections, song_structure = self._structure_into_sections(hawaiian_lines, english_lines)
+        
+        # Add song structure to metadata
+        metadata['song_structure'] = song_structure
+        metadata['hui_detected'] = song_structure == "verse_chorus"
         
         # Create parsed song object
         parsed_song = ParsedSong(
@@ -123,17 +130,61 @@ class HuapalaHTMLParser:
     
     def _extract_table_content(self, content: str) -> str:
         """Extract the main table content containing lyrics"""
-        # Find the table row with lyrics (width="53%" and width="45%")
-        table_pattern = r'<tr>\s*<td width="53%"[^>]*>(.*?)</td>\s*<td width="45%"[^>]*>(.*?)</td>\s*</tr>'
-        table_match = re.search(table_pattern, content, re.DOTALL)
+        # Look for three-column pattern with specific widths (Adios Ke Aloha style)
+        three_col_pixel_pattern = r'<tr[^>]*>\s*<td width=\d+[^>]*>.*?</td>\s*<td width=\d+[^>]*>.*?<img[^>]*>.*?</td>\s*<td width="?\d+"?[^>]*>.*?</td>\s*</tr>'
+        three_col_match = re.search(three_col_pixel_pattern, content, re.DOTALL | re.IGNORECASE)
         
-        if table_match:
-            return table_match.group(0)
+        if three_col_match:
+            return three_col_match.group(0)
+        
+        # Look for any table row with 3 td elements where middle has image (general pattern)
+        three_col_general_pattern = r'<tr[^>]*>\s*<td[^>]*>.*?</td>\s*<td[^>]*>.*?<img[^>]*>.*?</td>\s*<td[^>]*>.*?</td>\s*</tr>'
+        three_col_general_match = re.search(three_col_general_pattern, content, re.DOTALL | re.IGNORECASE)
+        
+        if three_col_general_match:
+            return three_col_general_match.group(0)
+        
+        # Fall back to two-column pattern (width="53%" and width="45%")
+        two_col_pattern = r'<tr>\s*<td width="53%"[^>]*>(.*?)</td>\s*<td width="45%"[^>]*>(.*?)</td>\s*</tr>'
+        two_col_match = re.search(two_col_pattern, content, re.DOTALL)
+        
+        if two_col_match:
+            return two_col_match.group(0)
         else:
             raise ValueError("Could not find main lyrics table in HTML")
     
+    def _clean_three_column_table(self, table_content: str) -> str:
+        """Remove middle column from three-column tables, converting to two-column format"""
+        # Check if this is a three-column table with image in middle
+        td_pattern = r'<td[^>]*>(.*?)</td>'
+        td_matches = re.findall(td_pattern, table_content, re.DOTALL)
+        
+        if len(td_matches) >= 3:
+            # Check if middle column contains image
+            middle_td = td_matches[1] if len(td_matches) >= 2 else ""
+            has_image = re.search(r'<img[^>]*>', middle_td, re.IGNORECASE)
+            
+            if has_image:
+                # Reconstruct table with only first and third columns
+                # Extract the <tr> wrapper and other attributes
+                tr_match = re.search(r'(<tr[^>]*>).*?(</tr>)', table_content, re.DOTALL)
+                if tr_match:
+                    tr_start = tr_match.group(1)
+                    tr_end = tr_match.group(2)
+                    
+                    # Create new table with only column 1 and 3, using standard widths
+                    new_table = f'{tr_start}<td width="53%">{td_matches[0]}</td><td width="45%">{td_matches[2]}</td>{tr_end}'
+                    return new_table
+        
+        # Return original if not three-column or no changes needed
+        return table_content
+    
     def _parse_lyrics_columns(self, table_content: str) -> Tuple[List[str], List[str]]:
-        """Parse Hawaiian and English columns from table content"""
+        """Parse Hawaiian and English columns from table content (always two columns after preprocessing)"""
+        return self._parse_two_column_table(table_content)
+    
+    def _parse_two_column_table(self, table_content: str) -> Tuple[List[str], List[str]]:
+        """Parse traditional two-column table"""
         
         # Extract Hawaiian side (first td)
         hawaiian_pattern = r'<td width="53%"[^>]*>(.*?)</td>'
@@ -286,6 +337,9 @@ class HuapalaHTMLParser:
             english = english_lines[i] if i < len(english_lines) else ""
             paired_lines.append((hawaiian, english))
         
+        # Detect song structure early to inform processing
+        song_structure = self._detect_song_structure(paired_lines)
+        
         current_section_lines = []
         current_section_type = 'verse'  # Default to verse (strophic format)
         
@@ -320,19 +374,30 @@ class HuapalaHTMLParser:
         if current_section_lines:
             sections.append(self._create_section(current_section_lines, current_section_type, verse_count, chorus_count))
         
-        return sections
+        return sections, song_structure
     
     def _is_chorus_marker(self, hawaiian: str, english: str) -> bool:
-        """Check if line contains chorus marker - standalone 'hui:' or 'chorus:' or lines starting with these"""
+        """Check if line contains chorus marker - standalone 'hui' word is the key indicator"""
         hawaiian_clean = hawaiian.strip().lower()
         english_clean = english.strip().lower()
         
+        # The key insight: standalone 'hui' word (with or without colon) indicates chorus structure
+        # This follows the user's guidance that presence/absence of standalone 'hui' is the sole indicator
         return (
+            hawaiian_clean == 'hui' or
             hawaiian_clean == 'hui:' or
+            english_clean == 'chorus' or
             english_clean == 'chorus:' or
             english_clean.startswith('chorus:') or
             hawaiian_clean.startswith('hui:')
         )
+    
+    def _detect_song_structure(self, paired_lines: List[Tuple]) -> str:
+        """Detect if song is strophic or has chorus structure based on hui presence"""
+        for hawaiian, english in paired_lines:
+            if self._is_chorus_marker(hawaiian, english):
+                return "verse_chorus"
+        return "strophic"
     
     def _create_section(self, lines: List[Tuple], section_type: str, verse_count: int, chorus_count: int) -> SongSection:
         """Create a structured section with proper IDs"""
@@ -475,12 +540,15 @@ class HuapalaHTMLParser:
             "title": parsed_song.title,
             "composer": parsed_song.composer,
             "translator": parsed_song.translator,
-            "song_type": song_type,
+            "song_type": "mele",  # All current songs are mele
+            "structure_type": parsed_song.metadata.get('song_structure', 'unknown'),
             "sections": sections,
             "metadata": {
                 "total_sections": len(sections),
                 "total_lines": total_lines,
                 "has_chorus": has_chorus,
+                "song_structure": parsed_song.metadata.get('song_structure', 'unknown'),
+                "hui_detected": parsed_song.metadata.get('hui_detected', False),
                 "parsing_quality_score": 84.0,  # Would come from validation
                 "last_updated": datetime.now().isoformat()
             }

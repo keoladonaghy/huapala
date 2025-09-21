@@ -45,9 +45,11 @@ class RawHtmlParser:
         ]
         
         self.composer_patterns = [
+            r'<font[^>]*>\s*-\s*by\s+([^<\n\r]+?)\s*</font>',  # Handle "<font> - by Queen Liliʻuokalani</font>"
             r'(?:-\s*)?(?:music\s+by|composed\s+by|by)\s+([^<\n\r]+?)(?:\s*<|$)',
             r'(?:lyrics?\s+by\s+[^,]+,?\s*)?music\s+by\s+([^<\n\r]+?)(?:\s*<|$)',
             r'Words\s+by\s+[^,]+,?\s*(?:music\s+by\s+)?([^<\n\r]+?)(?:\s*<|$)',
+            r'-\s*by\s+([^<\n\r]+?)(?:\s*<|$)',  # Handle "- by Queen Liliʻuokalani" format
             r'-\s*([^<\n\r]+?)(?:\s*<br|$)'
         ]
         
@@ -161,6 +163,23 @@ class RawHtmlParser:
                         
                         # This looks like our lyrics table
                         return self._parse_lyrics_cells(cells[0], cells[1])
+                
+                elif len(cells) == 3:
+                    # Handle three-column table: Hawaiian, Image, English
+                    cell1_text = self._strip_html(cells[0])  # Hawaiian
+                    cell2_text = self._strip_html(cells[1])  # Middle (image)
+                    cell3_text = self._strip_html(cells[2])  # English
+                    
+                    # Check if middle column contains image (skip it)
+                    middle_has_image = re.search(r'<img[^>]*>', cells[1], re.IGNORECASE)
+                    
+                    # Check if this looks like lyrics in first and third columns
+                    if (middle_has_image and 
+                        len(cell1_text) > 30 and len(cell3_text) > 30 and
+                        '<br' in cells[0].lower() and '<br' in cells[2].lower()):
+                        
+                        # This looks like our three-column lyrics table (Hawaiian, Image, English)
+                        return self._parse_lyrics_cells(cells[0], cells[2])
         
         return []
     
@@ -244,15 +263,46 @@ class RawHtmlParser:
         text = re.sub(r'<br\s*/?>', '\n', html, flags=re.IGNORECASE)
         # Remove other HTML tags
         text = self._strip_html(text)
-        return text
+        
+        # Join lines that were split in HTML formatting
+        lines = text.split('\n')
+        joined_lines = []
+        i = 0
+        
+        while i < len(lines):
+            current_line = lines[i].strip()
+            
+            # Skip empty lines
+            if not current_line:
+                joined_lines.append('')
+                i += 1
+                continue
+            
+            # Look ahead to see if next line should be joined
+            if i + 1 < len(lines):
+                next_line = lines[i + 1].strip()
+                
+                # Join if current line doesn't end with punctuation and next line starts lowercase
+                # or if it looks like a word was split
+                if (next_line and 
+                    not current_line.endswith(('.', '!', '?', ':')) and
+                    (next_line[0].islower() or 
+                     (len(current_line.split()) == 1 and len(next_line.split()) >= 1))):
+                    current_line += ' ' + next_line
+                    i += 2  # Skip the next line since we joined it
+                else:
+                    i += 1
+            else:
+                i += 1
+            
+            joined_lines.append(current_line)
+        
+        return '\n'.join(joined_lines)
     
     def _should_break_section(self, current_idx: int, h_lines: List[str], e_lines: List[str], current_section: SongSection) -> bool:
         """Determine if we should break the current section"""
-        # For verses, break after 4 lines (typical verse length)
-        if current_section.section_type == "verse" and len(current_section.lines) >= 4:
-            return True
-        # For chorus, be more flexible - look for actual content breaks
-        if current_section.section_type == "chorus" and len(current_section.lines) >= 6:
+        # Hawaiian songs typically have 4-line verses and choruses
+        if len(current_section.lines) >= 4:
             return True
         # Could add more sophisticated logic here based on content analysis
         return False

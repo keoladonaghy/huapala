@@ -365,9 +365,11 @@ class JSONFirstProcessor:
                         translator,
                         source_file,
                         verses_json,
+                        song_type,
+                        structure_type,
                         processing_status,
                         extraction_date
-                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                 """, (
                     canonical_id + "_source",  # Create unique ID
                     canonical_id,
@@ -376,6 +378,8 @@ class JSONFirstProcessor:
                     song_data.get("translator", ""),
                     song_data.get("source_file", ""),
                     json.dumps(self._normalize_verses_format(song_data["verses"]), ensure_ascii=False),
+                    "mele",  # song_type - all current songs are mele
+                    self._detect_structure_type(song_data["verses"]),  # structure_type
                     "reviewed_and_imported",
                     datetime.now()
                 ))
@@ -431,6 +435,43 @@ class JSONFirstProcessor:
             return f"Verse {number}:"
         else:
             return f"{section_type.title()} {number}:"
+    
+    def _detect_structure_type(self, verses: list) -> str:
+        """Detect song structure type based on verse patterns"""
+        if not verses:
+            return "unknown"
+            
+        # Count verses and choruses
+        verse_count = len([v for v in verses if v.get('type') == 'verse'])
+        chorus_count = len([v for v in verses if v.get('type') == 'chorus'])
+        
+        # Analyze verse line patterns
+        verse_line_counts = []
+        has_hui = chorus_count > 0
+        
+        for verse in verses:
+            if verse.get('type') == 'verse':
+                lines = verse.get('lines', [])
+                line_count = len(lines)
+                verse_line_counts.append(line_count)
+        
+        # Determine structure based on patterns
+        if has_hui:
+            return 'verse-chorus'
+        elif verse_line_counts:
+            if len(verse_line_counts) >= 2:  # Need at least 2 verses for strophic
+                if all(count == 4 for count in verse_line_counts):
+                    return '4-line-strophic'
+                elif all(count == 2 for count in verse_line_counts):
+                    return '2-line-strophic'
+                elif len(set(verse_line_counts)) == 1:  # All same length
+                    return 'other'  # Regular but not 2 or 4 lines
+                else:
+                    return 'through-composed'  # Irregular patterns
+            else:
+                return 'other'  # Single verse or unclear pattern
+        else:
+            return 'unknown'
     
     def _normalize_verses_format(self, verses: list) -> list:
         """Convert verses to the new format with lines array"""
