@@ -7,7 +7,7 @@
     "translator": "",
     "source_file": "data/source_html/mahina_o_hoku.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.653248",
+      "exported_at": "2025-09-20T21:12:18.484960",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 14
@@ -157,10 +157,10 @@
     "translator": "Mary Pukui, Hawaiian Text edited by Puakea Nogelmeier",
     "source_file": "data/source_html/adios_ke_aloha.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.643318",
+      "exported_at": "2025-09-20T21:12:18.474356",
       "source": "database_export",
-      "total_sections": 5,
-      "total_lines": 17
+      "total_sections": 4,
+      "total_lines": 16
     },
     "verses": [
       {
@@ -284,43 +284,27 @@
           {
             "id": "v3.1",
             "line_number": 1,
-            "hawaiian_text": "Hoʻokahi kiss",
-            "english_text": "One kiss",
+            "hawaiian_text": "Hoʻokahi kiss Dew drops he maʻū ia",
+            "english_text": "One kiss As cool as a  dew drop, will do",
             "is_bilingual": true
           },
           {
             "id": "v3.2",
             "line_number": 2,
-            "hawaiian_text": "Dew drops he maʻū ia",
-            "english_text": "As cool as a  dew drop, will do",
-            "is_bilingual": true
-          },
-          {
-            "id": "v3.3",
-            "line_number": 3,
             "hawaiian_text": "E ka belle o ka noe līhau",
             "english_text": "O belle of the ice cold mist",
             "is_bilingual": true
           },
           {
-            "id": "v3.4",
-            "line_number": 4,
+            "id": "v3.3",
+            "line_number": 3,
             "hawaiian_text": "Eia au lā e ke aloha",
             "english_text": "Here I am, your lover",
             "is_bilingual": true
-          }
-        ]
-      },
-      {
-        "id": "v4",
-        "type": "verse",
-        "number": 4,
-        "order": 5,
-        "label": "Verse 4:",
-        "lines": [
+          },
           {
-            "id": "v4.1",
-            "line_number": 1,
+            "id": "v3.4",
+            "line_number": 4,
             "hawaiian_text": "Ke huli hoʻi nei me ka neo",
             "english_text": "Returning empty handed",
             "is_bilingual": true
@@ -337,7 +321,7 @@
     "translator": "",
     "source_file": "data/source_html/iesu_kanaka_waiwai.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.648760",
+      "exported_at": "2025-09-20T21:12:18.480543",
       "source": "database_export",
       "total_sections": 8,
       "total_lines": 14
@@ -523,7 +507,7 @@
     "translator": "",
     "source_file": "Ka Hīnano O Puna.txt",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.649345",
+      "exported_at": "2025-09-20T21:12:18.481317",
       "source": "database_export",
       "total_sections": 1,
       "total_lines": 1
@@ -554,7 +538,7 @@
     "translator": "Kealiʻi Reichel",
     "source_file": "data/source_html/e_hoi_i_ka_pili.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.645104",
+      "exported_at": "2025-09-20T21:12:18.476483",
       "source": "database_export",
       "total_sections": 5,
       "total_lines": 19
@@ -748,7 +732,7 @@
     "translator": "",
     "source_file": "data/source_html/E Waianae.txt",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.645862",
+      "exported_at": "2025-09-20T21:12:18.477282",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 16
@@ -1051,7 +1035,7 @@
     "translator": "Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier",
     "source_file": "data/source_html/green_carnation.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.646620",
+      "exported_at": "2025-09-20T21:12:18.478012",
       "source": "database_export",
       "total_sections": 2,
       "total_lines": 8
@@ -1141,7 +1125,7 @@
     "translator": "Kaʻiʻiʻni Garza-Maguire",
     "source_file": "data/source_html/ka_hinano_o_puna.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.650307",
+      "exported_at": "2025-09-20T21:12:18.481726",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 16
@@ -1305,7 +1289,7 @@
     "translator": "Puakea Nogelmeier",
     "source_file": "data/source_html/by_and_by_hoi_mai_oe.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.644344",
+      "exported_at": "2025-09-20T21:12:18.475525",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 16
@@ -1469,7 +1453,7 @@
     "translator": "Kini Sullivan",
     "source_file": "data/source_html/kuahiwi_nani.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.647058",
+      "exported_at": "2025-09-20T21:12:18.479062",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 8
@@ -1577,7 +1561,7 @@
     "translator": "Kini Sullivan",
     "source_file": "data/source_html/kuahiwi_nani.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.647476",
+      "exported_at": "2025-09-20T21:12:18.478526",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 8
@@ -1685,7 +1669,7 @@
     "translator": "",
     "source_file": "data/source_html/pili_mau_me_oe.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.653827",
+      "exported_at": "2025-09-20T21:12:18.485508",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 18
@@ -1863,7 +1847,7 @@
     "translator": "",
     "source_file": "data/source_html/latitu.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.651282",
+      "exported_at": "2025-09-20T21:12:18.483311",
       "source": "database_export",
       "total_sections": 5,
       "total_lines": 11
@@ -2001,7 +1985,7 @@
     "translator": "",
     "source_file": "data/source_html/heha_waipio.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.647965",
+      "exported_at": "2025-09-20T21:12:18.479655",
       "source": "database_export",
       "total_sections": 8,
       "total_lines": 30
@@ -2299,7 +2283,7 @@
     "translator": "Kamehameha Schools HSI",
     "source_file": "data/source_html/kuhio_bay.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.650939",
+      "exported_at": "2025-09-20T21:12:18.482989",
       "source": "database_export",
       "total_sections": 0,
       "total_lines": 0
@@ -2314,7 +2298,7 @@
     "translator": "Mary Pukui",
     "source_file": "data/source_html/lei_ilima.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.652693",
+      "exported_at": "2025-09-20T21:12:18.484520",
       "source": "database_export",
       "total_sections": 2,
       "total_lines": 8
@@ -2404,7 +2388,7 @@
     "translator": "Kaʻiʻiʻni Garza-Maguire",
     "source_file": "data/source_html/ka_hinano_o_puna.html",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.649709",
+      "exported_at": "2025-09-20T21:12:18.482394",
       "source": "database_export",
       "total_sections": 4,
       "total_lines": 16
@@ -2568,7 +2552,7 @@
     "translator": "",
     "source_file": "Latitū.txt",
     "processing_metadata": {
-      "exported_at": "2025-09-20T21:05:23.652314",
+      "exported_at": "2025-09-20T21:12:18.484176",
       "source": "database_export",
       "total_sections": 1,
       "total_lines": 1

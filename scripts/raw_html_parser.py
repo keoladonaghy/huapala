@@ -236,13 +236,29 @@ class RawHtmlParser:
                     number=verse_count
                 )
             
-            # Add line to current section
-            line = SongLine(
-                hawaiian_text=h_line,
-                english_text=e_line,
-                line_number=len(current_section.lines) + 1
-            )
-            current_section.lines.append(line)
+            # Special handling for "Hoʻokahi kiss" + "Dew drops he maʻū ia" joining
+            if (h_line.strip() == "Hoʻokahi kiss" and 
+                i + 1 < len(h_lines) and 
+                h_lines[i + 1].strip().startswith("Dew drops")):
+                # Join these two lines
+                joined_h = h_line + " " + h_lines[i + 1].strip()
+                joined_e = e_line + " " + (e_lines[i + 1] if i + 1 < len(e_lines) else "")
+                
+                line = SongLine(
+                    hawaiian_text=joined_h,
+                    english_text=joined_e,
+                    line_number=len(current_section.lines) + 1
+                )
+                current_section.lines.append(line)
+                i += 1  # Skip the next line since we joined it
+            else:
+                # Regular line processing
+                line = SongLine(
+                    hawaiian_text=h_line,
+                    english_text=e_line,
+                    line_number=len(current_section.lines) + 1
+                )
+                current_section.lines.append(line)
             
             # Check if we should end this section (look ahead for breaks)
             if i + 1 < max_lines:
@@ -287,10 +303,20 @@ class RawHtmlParser:
                 
                 # Join if current line doesn't end with punctuation and next line starts lowercase
                 # or if it looks like a word was split
-                if (next_line and 
-                    not current_line.endswith(('.', '!', '?', ':')) and
-                    (next_line[0].islower() or 
-                     (len(current_line.split()) == 1 and len(next_line.split()) >= 1))):
+                should_join = False
+                
+                if next_line and not current_line.endswith(('.', '!', '?', ':')):
+                    # Standard joining rules
+                    if (next_line[0].islower() or 
+                        (len(current_line.split()) == 1 and len(next_line.split()) >= 1)):
+                        should_join = True
+                    
+                    # Special case: "Hoʻokahi kiss" should join with "Dew drops he maʻū ia"
+                    elif (current_line.strip() == "Hoʻokahi kiss" and 
+                          next_line.startswith("Dew drops")):
+                        should_join = True
+                
+                if should_join:
                     current_line += ' ' + next_line
                     i += 2  # Skip the next line since we joined it
                 else:
@@ -305,9 +331,19 @@ class RawHtmlParser:
     def _should_break_section(self, current_idx: int, h_lines: List[str], e_lines: List[str], current_section: SongSection) -> bool:
         """Determine if we should break the current section"""
         # Hawaiian songs typically have 4-line verses and choruses
+        # But check for natural section breaks first
+        if current_idx + 1 < len(h_lines):
+            next_h = h_lines[current_idx + 1] if current_idx + 1 < len(h_lines) else ""
+            next_e = e_lines[current_idx + 1] if current_idx + 1 < len(e_lines) else ""
+            
+            # Look for empty lines indicating section breaks
+            if not next_h.strip() and not next_e.strip():
+                return True
+        
+        # Default to 4-line breaking if no natural breaks found
         if len(current_section.lines) >= 4:
             return True
-        # Could add more sophisticated logic here based on content analysis
+        
         return False
     
     def _split_into_blocks(self, html_content: str) -> List[str]:
