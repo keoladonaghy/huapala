@@ -24,7 +24,7 @@ DB_CONFIG = {
     'host': 'ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech',
     'database': 'neondb',
     'user': 'neondb_owner',
-    'password': 'npg_Ic2Qq1ErOykl',
+    'password': os.getenv('PGPASSWORD'),
     'port': 5432,
     'sslmode': 'require'
 }

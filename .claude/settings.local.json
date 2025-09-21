@@ -45,10 +45,10 @@
       "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py parse data/source_html/)",
       "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py parse data/source_html/ --pattern \"*.html\")",
       "Bash(env)",
-      "Bash(DATABASE_URL='postgresql://neondb_owner:npg_Ic2Qq1ErOykl@ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require' python3 scripts/json_first_processor.py import)",
-      "Bash(DATABASE_URL='postgresql://neondb_owner:npg_Ic2Qq1ErOykl@ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require' python3 scripts/json_first_processor.py parse data/source_html/ --pattern \"by_and_by_hoi_mai_oe.html\")",
-      "Bash(DATABASE_URL='postgresql://neondb_owner:npg_Ic2Qq1ErOykl@ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require' python3 scripts/json_first_processor.py export)",
-      "Bash(DATABASE_URL='postgresql://neondb_owner:npg_Ic2Qq1ErOykl@ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require' python3 scripts/json_first_processor.py parse data/source_html/ --pattern \"adios_ke_aloha.html\")"
+      "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py import)",
+      "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py parse data/source_html/ --pattern \"by_and_by_hoi_mai_oe.html\")",
+      "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py export)",
+      "Bash(DATABASE_URL=$DATABASE_URL python3 scripts/json_first_processor.py parse data/source_html/ --pattern \"adios_ke_aloha.html\")"
     ],
     "deny": [],
     "ask": []

@@ -33,7 +33,7 @@ class SongbookDataImporter:
         host = os.getenv('PGHOST', 'ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech')
         database = os.getenv('PGDATABASE', 'neondb')
         user = os.getenv('PGUSER', 'neondb_owner')
-        password = os.getenv('PGPASSWORD', 'npg_Ic2Qq1ErOykl')  # Use same fallback as main.py
+        password = os.getenv('PGPASSWORD')
         port = os.getenv('PGPORT', '5432')
         
         return f"postgresql://{user}:{password}@{host}:{port}/{database}"
