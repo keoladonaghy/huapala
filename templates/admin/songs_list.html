@@ -1,0 +1,117 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}All Songs - Huapala Admin{% endblock %}
+
+{% block page_title %}🎵 All Songs{% endblock %}
+
+{% block subtitle %}Choose a song to edit{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .songs-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    .songs-table th,
+    .songs-table td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    .songs-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #333;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .songs-table tr:hover {
+        background-color: #f8f9fa;
+    }
+    .edit-link {
+        display: inline-block;
+        color: #007bff;
+        text-decoration: none;
+        padding: 6px 12px;
+        border: 1px solid #007bff;
+        border-radius: 4px;
+        font-size: 0.9em;
+        transition: all 0.2s ease;
+    }
+    .edit-link:hover {
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+    }
+    .song-title {
+        font-weight: 500;
+        color: #333;
+    }
+    .song-composer {
+        color: #666;
+        font-style: italic;
+    }
+    .song-id {
+        font-family: monospace;
+        font-size: 0.85em;
+        color: #999;
+    }
+    .songs-count {
+        text-align: center;
+        color: #666;
+        margin-bottom: 20px;
+        font-style: italic;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="songs-count">
+        Total songs: {{ songs|length }}
+    </div>
+    
+    <table class="songs-table">
+        <thead>
+            <tr>
+                <th>Hawaiian Title</th>
+                <th>English Title</th>
+                <th>Composer</th>
+                <th>Song ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in songs %}
+            <tr>
+                <td class="song-title">{{ song.canonical_title_hawaiian or "—" }}</td>
+                <td class="song-title">{{ song.canonical_title_english or "—" }}</td>
+                <td class="song-composer">{{ song.primary_composer or "Unknown" }}</td>
+                <td class="song-id">{{ song.canonical_mele_id }}</td>
+                <td>
+                    <a href="/song.html?id={{ song.canonical_mele_id }}" class="edit-link" target="_blank" style="margin-right: 10px;">
+                        View Song
+                    </a>
+                    <a href="/songs/{{ song.canonical_mele_id }}/edit-comprehensive" class="edit-link">
+                        Edit Song
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

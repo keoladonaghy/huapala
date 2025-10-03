@@ -1,0 +1,216 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Huapala Admin Dashboard{% endblock %}
+
+{% block page_title %}🌺 Huapala Admin Dashboard{% endblock %}
+
+{% block subtitle %}Comprehensive administration tools for the Hawaiian Music Archives{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<style>
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+    .container {
+        background: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+    }
+    .header h1 {
+        color: #333;
+        margin: 0;
+        font-size: 2.5em;
+    }
+    .header p {
+        color: #666;
+        margin: 10px 0 0 0;
+        font-size: 1.1em;
+    }
+    .admin-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .admin-section {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 25px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .admin-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .admin-section h2 {
+        color: #333;
+        margin: 0 0 15px 0;
+        font-size: 1.4em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .admin-section p {
+        color: #666;
+        margin: 0 0 20px 0;
+    }
+    .admin-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .admin-links li {
+        margin: 8px 0;
+    }
+    .admin-links a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #007bff;
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+    .admin-links a:hover {
+        background-color: #e3f2fd;
+        text-decoration: none;
+    }
+    .icon {
+        font-size: 1.2em;
+    }
+    .status {
+        background: #e8f5e8;
+        border: 1px solid #28a745;
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .status h3 {
+        color: #155724;
+        margin: 0 0 10px 0;
+    }
+    .status p {
+        color: #155724;
+        margin: 0;
+    }
+    .logout-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .logout-nav a {
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        transition: background-color 0.2s ease;
+    }
+    .logout-nav a:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="logout-nav">
+    <div></div>
+    <a href="/admin/logout">🚪 Logout</a>
+</div>
+
+<div class="admin-sections">
+    <div class="admin-section">
+        <h2><span class="icon">🗃️</span>Song Editing</h2>
+        <p>Comprehensive song editing tools for canonical mele data.</p>
+        <ul class="admin-links">
+            <li><a href="/admin/songs"><span class="icon">📋</span>View All Songs List</a></li>
+            <li><a href="/editor"><span class="icon">📝</span>JSON Editor</a></li>
+        </ul>
+        
+        {% if recent_songs %}
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e9ecef;">
+            <h3 style="margin: 0 0 15px 0; color: #666; font-size: 1.1em;">📝 Recently Edited Songs</h3>
+            <ul class="admin-links">
+                {% for song in recent_songs %}
+                <li>
+                    <a href="/songs/{{ song.canonical_mele_id }}/edit-comprehensive">
+                        <span class="icon">🎵</span>{{ song.canonical_title_hawaiian or song.canonical_title_english or song.canonical_mele_id }}
+                        {% if song.primary_composer %}<span style="color: #999; font-style: italic; margin-left: 8px;">— {{ song.primary_composer }}</span>{% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="admin-section">
+        <h2><span class="icon">📝</span>Content Management</h2>
+        <p>Edit songs, manage metadata, and maintain the music collection.</p>
+        <ul class="admin-links">
+            <li><a href="/editor"><span class="icon">🎵</span>Song Editor</a></li>
+            <li><a href="/api/songbook-entries"><span class="icon">📚</span>Songbook Entries (API)</a></li>
+            <li><a href="/api/canonical-mele"><span class="icon">🎼</span>Canonical Mele (API)</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-section">
+        <h2><span class="icon">👥</span>People Management</h2>
+        <p>Manage composer and contributor information.</p>
+        <ul class="admin-links">
+            <li><a href="/api/people"><span class="icon">🎭</span>People Database (API)</a></li>
+            <li><a href="/people/search?name="><span class="icon">🔍</span>People Search</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-section">
+        <h2><span class="icon">🔍</span>Data Validation</h2>
+        <p>Review data quality and validation reports.</p>
+        <ul class="admin-links">
+            <li><a href="/validation/summary"><span class="icon">📊</span>Validation Summary</a></li>
+            <li><a href="/validation/review"><span class="icon">🔎</span>Review Queue</a></li>
+            <li><a href="/validation/sessions"><span class="icon">📋</span>Validation Sessions</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-section">
+        <h2><span class="icon">🛠️</span>System Tools</h2>
+        <p>Database utilities and system maintenance.</p>
+        <ul class="admin-links">
+            <li><a href="/json-files"><span class="icon">📁</span>JSON File Browser</a></li>
+            <li><a href="/api/songbook-stats"><span class="icon">📈</span>Database Statistics</a></li>
+            <li><a href="/api/songbook-names"><span class="icon">📖</span>Songbook Names</a></li>
+        </ul>
+    </div>
+    
+    <div class="admin-section">
+        <h2><span class="icon">🌐</span>Public Interface</h2>
+        <p>Access the public-facing website and APIs.</p>
+        <ul class="admin-links">
+            <li><a href="/"><span class="icon">🏠</span>Home Page</a></li>
+            <li><a href="/songs"><span class="icon">🎶</span>Songs API</a></li>
+            <li><a href="/health"><span class="icon">💚</span>Health Check</a></li>
+            <li><a href="/docs"><span class="icon">📚</span>API Documentation</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="status">
+    <h3>🟢 System Status</h3>
+    <p>All admin functions are operational. Database connection active.</p>
+</div>
+{% endblock %}

@@ -1,0 +1,667 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Huapala JSON Editor{% endblock %}
+
+{% block page_title %}Huapala JSON Editor{% endblock %}
+
+{% block subtitle %}Edit Song Database Files{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="huapala-search.css">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #000;
+        background: #fff url('img/bk.jpg') repeat;
+        min-height: 100vh;
+    }
+    
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+        background: #fff;
+        min-height: 100vh;
+    }
+    
+    header {
+        text-align: center;
+        margin-bottom: 24px;
+        padding: 15px 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .header-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .hibiscus {
+        width: 24px;
+        height: 24px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+        margin: 0;
+    }
+    
+    .subtitle {
+        font-size: 14px;
+        color: #666;
+        font-style: italic;
+        margin-top: 3px;
+    }
+    
+    .admin-controls {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    select {
+        padding: 8px 12px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 5px;
+    }
+    
+    .loading {
+        text-align: center;
+        color: #000;
+        font-size: 12px;
+        margin: 20px 0;
+    }
+    
+    .error {
+        background: #ffeeee;
+        border: 1px solid #cc0000;
+        color: #cc0000;
+        padding: 10px;
+        margin: 20px 0;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .button {
+        background-color: #ffffff;
+        color: #000000;
+        border: 1px solid #ccc;
+        padding: 6px 12px;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 2px;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .button:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .save-button {
+        background-color: #007bff;
+        color: white;
+        border: 1px solid #007bff;
+    }
+    
+    .save-button:hover {
+        background-color: #0056b3;
+    }
+    
+    .form-section {
+        margin-bottom: 15px;
+    }
+    
+    .form-section label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 3px;
+        font-size: 12px;
+    }
+    
+    .form-section input, .form-section textarea {
+        width: 100%;
+        padding: 4px 6px;
+        border: 1px solid #ccc;
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .form-section textarea {
+        min-height: 60px;
+        resize: vertical;
+    }
+    
+    .success-message {
+        background: #eef;
+        border: 1px solid #007bff;
+        color: #007bff;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    /* Search interface styles (matching homepage) */
+    .search-box {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    #searchInput {
+        padding: 8px 12px;
+        font-size: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .search-results {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+    }
+    
+    .song-entry {
+        background: white;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 8px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-left: 3px solid #007bff;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .song-entry:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        transform: translateY(-1px);
+    }
+    
+    .song-link {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    .composer-info {
+        color: #666;
+        font-size: 12px;
+    }
+    
+    .search-results .empty-message {
+        text-align: center;
+        color: #666;
+        padding: 40px 20px;
+        font-style: italic;
+    }
+    
+    /* Home page style formatting for songs */
+    .songs-list {
+        margin-bottom: 30px;
+    }
+    
+    .song-entry {
+        margin-bottom: 2px;
+        line-height: 1.3;
+    }
+    
+    .song-link {
+        color: #0000EE;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 12px;
+    }
+    
+    .song-link:hover {
+        color: #0000AA;
+    }
+    
+    .song-link:visited {
+        color: #551A8B;
+    }
+    
+    .composer-info {
+        color: #000;
+        font-size: 12px;
+    }
+</style>
+<link rel="stylesheet" href="huapala-search.css">
+{% endblock %}
+
+{% block content %}
+<div class="admin-controls">
+    <label for="file-select">Select JSON file:</label>
+    <select id="file-select" onchange="loadFiles()">
+        <option value="">-- Select a file --</option>
+    </select>
+    <a href="/admin" class="button">← Back to Admin</a>
+</div>
+
+<div id="mainSearch"></div>
+
+<div id="loading" class="loading" style="display: none;">Loading file...</div>
+<div id="message"></div>
+<div id="editor-container" style="display: none;">
+    <div style="text-align: center; margin: 15px 0;">
+        <button class="button save-button" onclick="saveFile()">Save Changes</button>
+        <button class="button" onclick="loadFiles()">Revert</button>
+    </div>
+    <form id="json-form"></form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="huapala-search.js"></script>
+<script>
+    let currentFileId = null;
+    let currentData = null;
+
+    // Load available files on page load
+    window.onload = function() {
+        loadFiles();
+    };
+
+    // Search interface
+    let searchInterface = null;
+
+    // Use the shared component instead of duplicating normalization
+
+    async function loadFiles() {
+        try {
+            // Load actual song data using the shared component
+            const response = await fetch('./songs-data.json');
+            if (!response.ok) {
+                throw new Error(`Failed to load songs data: ${response.status}`);
+            }
+            const allSongs = await response.json();
+            
+            // Initialize the shared search component
+            searchInterface = createHuapalaSearch({
+                containerId: 'mainSearch',
+                placeholder: 'Search for a song to edit...',
+                songs: allSongs,
+                onSongClick: (song) => {
+                    selectSong(song.canonical_mele_id);
+                },
+                searchFields: ['canonical_title_hawaiian', 'canonical_title_english', 'primary_composer', 'primary_location', 'island']
+            });
+            
+            searchInterface.init();
+            
+            // Reset editor
+            document.getElementById('editor-container').innerHTML = '<div class="loading">Search for a song to begin editing</div>';
+            currentFileId = null;
+            currentData = null;
+            
+        } catch (error) {
+            showMessage('Error loading songs: ' + error.message, 'error');
+        }
+    }
+
+
+    async function selectSong(songId) {
+        currentFileId = songId;
+        document.getElementById('editor-container').innerHTML = '<div class="loading">Loading song...</div>';
+        
+        try {
+            // Convert canonical_mele_id to file path for JSON editor
+            const filePath = `data/reviewed_songs/${songId}.json`;
+            const response = await fetch(`/json-editor/${encodeURIComponent(filePath)}`);
+            const result = await response.json();
+            
+            currentData = result.data;
+            
+            // Check for manual edits
+            if (result.manual_edit_status && result.manual_edit_status.is_manual_edit) {
+                showManualEditWarning(result.manual_edit_status, result.data, result.file_name);
+            } else {
+                renderEditor(result.data, result.file_name);
+            }
+            
+        } catch (error) {
+            showMessage('Error loading song: ' + error.message, 'error');
+            document.getElementById('editor-container').innerHTML = '<div class="loading">Error loading song</div>';
+        }
+    }
+
+
+    function showManualEditWarning(editStatus, data, fileName) {
+        const container = document.getElementById('editor-container');
+        const severityIcon = editStatus.severity === 'error' ? '🚨' : '⚠️';
+        const severityClass = editStatus.severity === 'error' ? 'error' : 'warning';
+        
+        container.innerHTML = `
+            <div class="manual-edit-warning ${severityClass}">
+                <h3>${severityIcon} Manual Edit Detected</h3>
+                <p><strong>File:</strong> ${fileName}</p>
+                <p><strong>Issue:</strong> ${editStatus.reason}</p>
+                <div class="warning-actions">
+                    <button class="button success" onclick="approveManualEdit()">
+                        ✅ Approve & Continue Editing
+                    </button>
+                    <button class="button secondary" onclick="loadFiles()">
+                        ❌ Cancel & Choose Different File
+                    </button>
+                </div>
+                <details style="margin-top: 20px;">
+                    <summary>Show Current File Content</summary>
+                    <pre style="background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 4px; overflow: auto; max-height: 300px;">
+${JSON.stringify(data, null, 2)}
+                    </pre>
+                </details>
+            </div>
+        `;
+    }
+
+    async function approveManualEdit() {
+        if (!currentFileId) return;
+        
+        try {
+            const response = await fetch(`/json-editor/${encodeURIComponent(currentFileId)}/approve-manual-edit`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                showMessage('✅ Manual edit approved. You can now continue editing.', 'success');
+                // Reload the file to get the updated data with metadata
+                selectSong(currentFileId);
+            } else {
+                showMessage('Error approving manual edit: ' + result.message, 'error');
+            }
+        } catch (error) {
+            showMessage('Error approving manual edit: ' + error.message, 'error');
+        }
+    }
+
+    function renderEditor(data, fileName) {
+        const container = document.getElementById('editor-container');
+        container.innerHTML = `<h3>Editing: ${fileName}</h3>`;
+        
+        const form = document.createElement('div');
+        form.id = 'json-form';
+        
+        renderValue(data, '', form);
+        container.appendChild(form);
+    }
+
+    function renderValue(value, path, container, key = '') {
+        if (value === null || value === undefined) {
+            renderSimpleField(null, path, container, key, 'text');
+        } else if (typeof value === 'boolean') {
+            renderBooleanField(value, path, container, key);
+        } else if (typeof value === 'number') {
+            renderSimpleField(value, path, container, key, 'number');
+        } else if (typeof value === 'string') {
+            if (value.includes('\\n') || value.length > 100) {
+                renderTextareaField(value, path, container, key);
+            } else {
+                renderSimpleField(value, path, container, key, 'text');
+            }
+        } else if (Array.isArray(value)) {
+            renderArrayField(value, path, container, key);
+        } else if (typeof value === 'object') {
+            renderObjectField(value, path, container, key);
+        }
+    }
+
+    function renderSimpleField(value, path, container, key, type) {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'form-field';
+        
+        const label = document.createElement('label');
+        label.textContent = key || path || 'Value';
+        if (path) {
+            const pathSpan = document.createElement('span');
+            pathSpan.className = 'path-indicator';
+            pathSpan.textContent = path;
+            label.appendChild(pathSpan);
+        }
+        
+        const input = document.createElement('input');
+        input.type = type;
+        input.value = value === null ? '' : value;
+        input.dataset.path = path;
+        
+        fieldDiv.appendChild(label);
+        fieldDiv.appendChild(input);
+        container.appendChild(fieldDiv);
+    }
+
+    function renderTextareaField(value, path, container, key) {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'form-field';
+        
+        const label = document.createElement('label');
+        label.textContent = key || path || 'Value';
+        if (path) {
+            const pathSpan = document.createElement('span');
+            pathSpan.className = 'path-indicator';
+            pathSpan.textContent = path;
+            label.appendChild(pathSpan);
+        }
+        
+        const textarea = document.createElement('textarea');
+        textarea.value = value || '';
+        textarea.dataset.path = path;
+        
+        fieldDiv.appendChild(label);
+        fieldDiv.appendChild(textarea);
+        container.appendChild(fieldDiv);
+    }
+
+    function renderBooleanField(value, path, container, key) {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'form-field';
+        
+        const label = document.createElement('label');
+        label.textContent = key || path || 'Value';
+        if (path) {
+            const pathSpan = document.createElement('span');
+            pathSpan.className = 'path-indicator';
+            pathSpan.textContent = path;
+            label.appendChild(pathSpan);
+        }
+        
+        const select = document.createElement('select');
+        select.dataset.path = path;
+        
+        const trueOption = document.createElement('option');
+        trueOption.value = 'true';
+        trueOption.textContent = 'true';
+        trueOption.selected = value === true;
+        
+        const falseOption = document.createElement('option');
+        falseOption.value = 'false';
+        falseOption.textContent = 'false';
+        falseOption.selected = value === false;
+        
+        const nullOption = document.createElement('option');
+        nullOption.value = 'null';
+        nullOption.textContent = 'null';
+        nullOption.selected = value === null;
+        
+        select.appendChild(trueOption);
+        select.appendChild(falseOption);
+        select.appendChild(nullOption);
+        
+        fieldDiv.appendChild(label);
+        fieldDiv.appendChild(select);
+        container.appendChild(fieldDiv);
+    }
+
+    function renderArrayField(array, path, container, key) {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = 'form-field';
+        
+        const label = document.createElement('label');
+        label.textContent = `${key || path || 'Array'} (${array.length} items)`;
+        if (path) {
+            const pathSpan = document.createElement('span');
+            pathSpan.className = 'path-indicator';
+            pathSpan.textContent = path;
+            label.appendChild(pathSpan);
+        }
+        
+        fieldDiv.appendChild(label);
+        
+        array.forEach((item, index) => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'array-item';
+            
+            const itemHeader = document.createElement('h5');
+            itemHeader.textContent = `Item ${index}`;
+            itemDiv.appendChild(itemHeader);
+            
+            const itemPath = path ? `${path}[${index}]` : `[${index}]`;
+            renderValue(item, itemPath, itemDiv);
+            
+            fieldDiv.appendChild(itemDiv);
+        });
+        
+        container.appendChild(fieldDiv);
+    }
+
+    function renderObjectField(obj, path, container, key) {
+        const fieldDiv = document.createElement('div');
+        fieldDiv.className = key ? 'nested-object' : 'form-field';
+        
+        if (key) {
+            const header = document.createElement('h4');
+            header.textContent = key;
+            if (path) {
+                const pathSpan = document.createElement('span');
+                pathSpan.className = 'path-indicator';
+                pathSpan.textContent = path;
+                header.appendChild(pathSpan);
+            }
+            fieldDiv.appendChild(header);
+        }
+        
+        Object.keys(obj).forEach(objKey => {
+            const objPath = path ? `${path}.${objKey}` : objKey;
+            renderValue(obj[objKey], objPath, fieldDiv, objKey);
+        });
+        
+        container.appendChild(fieldDiv);
+    }
+
+    function collectFormData() {
+        const form = document.getElementById('json-form');
+        const inputs = form.querySelectorAll('input, textarea, select');
+        const data = {};
+        
+        inputs.forEach(input => {
+            const path = input.dataset.path;
+            if (!path) return;
+            
+            let value = input.value;
+            
+            // Convert values based on input type
+            if (input.type === 'number') {
+                value = value === '' ? null : Number(value);
+            } else if (input.tagName === 'SELECT' && input.value === 'null') {
+                value = null;
+            } else if (input.tagName === 'SELECT' && (input.value === 'true' || input.value === 'false')) {
+                value = input.value === 'true';
+            } else if (value === '') {
+                value = null;
+            }
+            
+            setNestedValue(data, path, value);
+        });
+        
+        return data;
+    }
+
+    function setNestedValue(obj, path, value) {
+        const keys = path.split(/[.\\[\\]]/).filter(k => k !== '');
+        let current = obj;
+        
+        for (let i = 0; i < keys.length - 1; i++) {
+            const key = keys[i];
+            const nextKey = keys[i + 1];
+            
+            if (!isNaN(nextKey)) {
+                // Next key is array index
+                if (!current[key]) current[key] = [];
+            } else {
+                // Next key is object property
+                if (!current[key]) current[key] = {};
+            }
+            current = current[key];
+        }
+        
+        const finalKey = keys[keys.length - 1];
+        current[finalKey] = value;
+    }
+
+    async function saveFile() {
+        if (!currentFileId) {
+            showMessage('No file selected', 'error');
+            return;
+        }
+        
+        try {
+            const formData = collectFormData();
+            
+            const response = await fetch(`/json-editor/${encodeURIComponent(currentFileId)}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                showMessage(result.message + ' (Backup: ' + result.backup_created + ')', 'success');
+                currentData = formData;
+            } else {
+                showMessage('Error: ' + result.detail, 'error');
+            }
+            
+        } catch (error) {
+            showMessage('Error saving file: ' + error.message, 'error');
+        }
+    }
+
+    function showMessage(text, type) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.innerHTML = `<div class="message ${type}">${text}</div>`;
+        
+        // Auto-hide success messages after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+    }
+</script>
+{% endblock %}
