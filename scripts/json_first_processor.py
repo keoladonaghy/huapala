@@ -348,7 +348,10 @@ class JSONFirstProcessor:
                 song_data["primary_composer"],
                 song_data.get("translator", ""),
                 song_data.get("source_file", ""),
-                json.dumps(self._normalize_verses_format(song_data["verses"]), ensure_ascii=False),
+                json.dumps({
+                    "verses": self._normalize_verses_format(song_data["verses"]),
+                    "processing_metadata": {}
+                }, ensure_ascii=False),
                 "reviewed_and_imported",
                 datetime.now(),
                 canonical_id
@@ -377,7 +380,10 @@ class JSONFirstProcessor:
                     song_data["primary_composer"],
                     song_data.get("translator", ""),
                     song_data.get("source_file", ""),
-                    json.dumps(self._normalize_verses_format(song_data["verses"]), ensure_ascii=False),
+                    json.dumps({
+                    "verses": self._normalize_verses_format(song_data["verses"]),
+                    "processing_metadata": {}
+                }, ensure_ascii=False),
                     "mele",  # song_type - all current songs are mele
                     self._detect_structure_type(song_data["verses"]),  # structure_type
                     "reviewed_and_imported",

@@ -1,0 +1,105 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+ka_hinano_0_puna
+
+[TITLE]
+{
+  hawaiian: Ka Hinano 0 Puna
+  english: //www.youtube.com/watch?v=Gn13qo
+  normalized: ka_hinano_0_puna
+  alternate_titles: [Ka Hīnano o Puna]
+}
+
+[ATTRIBUTION]
+{
+  composer: Kainani Kahaunaele
+  lyricist: null
+  translator: 
+  hawaiian_editor: Kaʻiʻiʻni Garza-Maguire
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | ʻO ka hīnano o Puna kuʻu liʻa
+      | E lauwiliwili ai kaʻiʻiʻni
+      | Nipo ninipo hoʻi i ke aloha
+      | Ka lehua haʻalewa lā i ke kai
+      | ʻO ke kai nehe mai i ka uluhala
+      | E hoʻohenoheno nei kuʻu nui kino
+      | No Puna ka makani Moaniʻala
+      | E hali hali ana i kuʻu haʻehaʻe
+      | ʻEnaena Puna i ke ahi a pele
+      | ʻUʻina laka huaʻinaʻi Puʻu ʻŌʻō
+      | Puʻō ke ahi lapalapa i luna
+      | Punohunohu i ke ano ahiahi
+      | Haʻina ʻia mai ana ka puana
+      | No ka hīnano o Puna paia ʻala
+      | Hʻaina hou mai ana ka puana
+      | No ka hoa lūlana moe i ke ala
+      english_text: 
+      | The hinano of Puna is my desire
+      | Twisting my emotions
+      | Yearning, longing for love
+      | Is the lehua swaying by the sea
+      | The rustling sea by the hala grove
+      | Gently caresses me
+      | The Moani'ala wind hails from Puna
+      | That carries my dear affections
+      | Puna glows in Pele’s fire
+      | The gushing lava crackles at Puu 'O‘o
+      | The blazing fire blazes up
+      | Her smoke billows in the evening
+      | Thus the story is told
+      | For the hinano of Puna with fragrant walls
+      | The story is told again
+      | For my peaceful friend who lies on the path
+      hawaiian_lines: [ʻO ka hīnano o Puna kuʻu liʻa, E lauwiliwili ai kaʻiʻiʻni, Nipo ninipo hoʻi i ke aloha, Ka lehua haʻalewa lā i ke kai, ʻO ke kai nehe mai i ka uluhala, E hoʻohenoheno nei kuʻu nui kino, No Puna ka makani Moaniʻala, E hali hali ana i kuʻu haʻehaʻe, ʻEnaena Puna i ke ahi a pele, ʻUʻina laka huaʻinaʻi Puʻu ʻŌʻō, Puʻō ke ahi lapalapa i luna, Punohunohu i ke ano ahiahi, Haʻina ʻia mai ana ka puana, No ka hīnano o Puna paia ʻala, Hʻaina hou mai ana ka puana, No ka hoa lūlana moe i ke ala]
+      english_lines: [The hinano of Puna is my desire, Twisting my emotions, Yearning, longing for love, Is the lehua swaying by the sea, The rustling sea by the hala grove, Gently caresses me, The Moani'ala wind hails from Puna, That carries my dear affections, Puna glows in Pele’s fire, The gushing lava crackles at Puu 'O‘o, The blazing fire blazes up, Her smoke billows in the evening, Thus the story is told, For the hinano of Puna with fragrant walls, The story is told again, For my peaceful friend who lies on the path]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: [https://www.youtube.com/watch?v=Gn13qo-8hQ8]
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Ka Hīnano O Puna.txt
+  source_publication: C. Kalikiana Durr, Hawaiian Text edited by Kaʻiʻiʻni Garza-Maguire
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.869498
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

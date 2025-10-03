@@ -1,0 +1,36 @@
+{
+  "id": "mahina_o_hoku",
+  "title": {
+    "hawaiian": "Mahina O Hoku",
+    "normalized": "mahina_o_hoku",
+    "alternate_titles": [
+      "Mahina ʻO Hoku"
+    ]
+  },
+  "attribution": {
+    "composer": "Lillian Awa",
+    "lyricist": null,
+    "translator": "Ainsley"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | ʻAuhea wale ʻoe\n      | Mahina ʻo Hoku\n      | Hōʻike aʻe ʻoe\n      | I kou nani\n      | Ua laʻi nā kai\n      | Mehameha nā pali\n      | ʻO ʻoe a ʻo wau\n      | E hoʻoipoipo nei\n      | E moani ke ʻala\n      | O ka pua hīnano\n      | E ʻapo mai ʻoe\n      | Me kou aloha\n      | Haʻina kou inoa\n      | Mahina ʻo Hoku\n      | Ke noho nani maila\n      | Mauna lani kiʻekiʻe\n      english_text: \n      | Where are you\n      | Full moon of the night\n      | Reveal your\n      | Beauty\n      | The seas are calm\n      | The cliffs are lonely\n      | But you and I\n      | Are making love\n      | How fragrant\n      | Is the hīnano blossom\n      | That captivates you\n      | My love\n      | Tell of your name\n      | Full moon of the night\n      | There beauty sits high\n      | Above the heavenly\n      hawaiian_lines: [ʻAuhea wale ʻoe, Mahina ʻo Hoku, Hōʻike aʻe ʻoe, I kou nani, Ua laʻi nā kai, Mehameha nā pali, ʻO ʻoe a ʻo wau, E hoʻoipoipo nei, E moani ke ʻala, O ka pua hīnano, E ʻapo mai ʻoe, Me kou aloha, Haʻina kou inoa, Mahina ʻo Hoku, Ke noho nani maila, Mauna lani kiʻekiʻe]\n      english_lines: [Where are you, Full moon of the night, Reveal your, Beauty, The seas are calm, The cliffs are lonely, But you and I, Are making love, How fragrant, Is the hīnano blossom, That captivates you, My love, Tell of your name, Full moon of the night, There beauty sits high, Above the heavenly]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Mahina o Hoku.txt",
+    "source_publication": "Translated by Ainsley",
+    "extraction_date": "2025-09-14T18:01:38.903004",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

@@ -1,0 +1,105 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+mahina_o_hoku
+
+[TITLE]
+{
+  hawaiian: Mahina O Hoku
+  english: 
+  normalized: mahina_o_hoku
+  alternate_titles: [Mahina ʻO Hoku]
+}
+
+[ATTRIBUTION]
+{
+  composer: Lillian Awa
+  lyricist: null
+  translator: Ainsley
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | ʻAuhea wale ʻoe
+      | Mahina ʻo Hoku
+      | Hōʻike aʻe ʻoe
+      | I kou nani
+      | Ua laʻi nā kai
+      | Mehameha nā pali
+      | ʻO ʻoe a ʻo wau
+      | E hoʻoipoipo nei
+      | E moani ke ʻala
+      | O ka pua hīnano
+      | E ʻapo mai ʻoe
+      | Me kou aloha
+      | Haʻina kou inoa
+      | Mahina ʻo Hoku
+      | Ke noho nani maila
+      | Mauna lani kiʻekiʻe
+      english_text: 
+      | Where are you
+      | Full moon of the night
+      | Reveal your
+      | Beauty
+      | The seas are calm
+      | The cliffs are lonely
+      | But you and I
+      | Are making love
+      | How fragrant
+      | Is the hīnano blossom
+      | That captivates you
+      | My love
+      | Tell of your name
+      | Full moon of the night
+      | There beauty sits high
+      | Above the heavenly
+      hawaiian_lines: [ʻAuhea wale ʻoe, Mahina ʻo Hoku, Hōʻike aʻe ʻoe, I kou nani, Ua laʻi nā kai, Mehameha nā pali, ʻO ʻoe a ʻo wau, E hoʻoipoipo nei, E moani ke ʻala, O ka pua hīnano, E ʻapo mai ʻoe, Me kou aloha, Haʻina kou inoa, Mahina ʻo Hoku, Ke noho nani maila, Mauna lani kiʻekiʻe]
+      english_lines: [Where are you, Full moon of the night, Reveal your, Beauty, The seas are calm, The cliffs are lonely, But you and I, Are making love, How fragrant, Is the hīnano blossom, That captivates you, My love, Tell of your name, Full moon of the night, There beauty sits high, Above the heavenly]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Mahina o Hoku.txt
+  source_publication: Translated by Ainsley
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.903004
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

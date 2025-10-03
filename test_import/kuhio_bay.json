@@ -1,0 +1,37 @@
+{
+  "id": "kuhio_bay",
+  "title": {
+    "hawaiian": "Kuhio Bay",
+    "normalized": "kuhio_bay",
+    "alternate_titles": [
+      "Kūhiō Bay"
+    ]
+  },
+  "attribution": {
+    "composer": "Keliana Bishaw",
+    "lyricist": null,
+    "translator": "Kamehameha Schools HSI"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | ʻAkahi hoʻi a ʻike kuʻu maka\n      | I ka nani aʻo Waiakea\n      | ʻAʻohe lua e like ai\n      | Me ka nani a me ka nani\n      | Aʻo Kūhiō Bay\n      | Mahalo aʻe au i ka nani aʻo Hilo\n      | Me ka ua aʻe hoʻopulu nei\n      | ʻOni ana Mokuola au i ke kai\n      | ʻOua ʻāina e\n      | Kaulana nei\n      | Wai ānuenue a he wai kaulana\n      | Wai makaʻikaʻi a ka malihini\n      | Wai kamahaʻo i kaʻu ʻike\n      | E papahi e hoʻope nei\n      | I ka nahele\n      english_text: \n      | This is the first time I saw\n      | for myself\n      | The beauty of Waiakea\n      | There is no other that can\n      | compare\n      | With the beauty, the\n      | beauty\n      | Of Kūhiō Bay\n      | I admire the beauty of\n      | Hilo\n      | The rain drenches it\n      | Mokuola stands out in the\n      | sea\n      | Island that is\n      | Known to all\n      hawaiian_lines: [ʻAkahi hoʻi a ʻike kuʻu maka, I ka nani aʻo Waiakea, ʻAʻohe lua e like ai, Me ka nani a me ka nani, Aʻo Kūhiō Bay, Mahalo aʻe au i ka nani aʻo Hilo, Me ka ua aʻe hoʻopulu nei, ʻOni ana Mokuola au i ke kai, ʻOua ʻāina e, Kaulana nei, Wai ānuenue a he wai kaulana, Wai makaʻikaʻi a ka malihini, Wai kamahaʻo i kaʻu ʻike, E papahi e hoʻope nei, I ka nahele]\n      english_lines: [This is the first time I saw, for myself, The beauty of Waiakea, There is no other that can, compare, With the beauty, the, beauty, Of Kūhiō Bay, I admire the beauty of, Hilo, The rain drenches it, Mokuola stands out in the, sea, Island that is, Known to all]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Kuhio Bay.txt",
+    "source_publication": "Johnny Noble’s Royal Collection of Hawaiian Songs © 1928 Johnny Noble and Oscar U. Hyatt International Copyright Secured Translated by Kamehameha Schools HSI",
+    "copyright": "Secured Translated by Kamehameha Schools HSI",
+    "extraction_date": "2025-09-14T18:01:38.844312",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

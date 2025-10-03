@@ -1,0 +1,136 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+heha_waipio
+
+[TITLE]
+{
+  hawaiian: Heha Waipio
+  english: 
+  | Drowsy
+  |  Waipiʻo
+  normalized: heha_waipio
+  alternate_titles: [Heha Waipiʻo, (Drowsy
+ Waipiʻo)]
+}
+
+[ATTRIBUTION]
+{
+  composer: Sam
+  lyricist: null
+  translator: 
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | Kaulana kuʻu home puni Waipiʻo
+      | Me nā peʻa nani o ka ʻāina
+      | Kākela he hale aliʻi
+      | Herode koʻu hoalike
+      | Mōʻī puni haʻakei
+      | Kukuna o ka lā koʻu kapa ʻia
+      | E ʻōlino nei a puni ka honua
+      | Aue aʻi luna lilo
+      | Lihi launa ʻole mai
+      | Nā aliʻi nui o ke ao
+      | E oʻu mau kini nā makamaka
+      | Me nā kupa o kuʻu ʻāina
+      | Me ka wailele aʻo Hiʻilawe
+      | Koʻiawe maila i luna
+      | Koʻiawe mau i ka pali
+      | ʻAʻole pēlā ka ʻoia ʻiʻo
+      | Hakuʻepa lokoʻino o ka makamaka
+      | Ua like nō a like
+      | Me nā kini lehulehu
+      | O kuʻu one hānau
+      | E ola māua me aʻu kini
+      | Me aʻu lei o nei ʻāina
+      | Pulupē i ka hunakai
+      | Ka iʻa mili i ka lima
+      | Heha Waipiʻo i ka noe
+      | Haʻina ʻia mai ana ka puana
+      | No ka lei hapa pua Sēpānia
+      | He kupa no ka ʻāina
+      | E kipa mai ma loko
+      | Haleʻiwa beautiful home
+      english_text: 
+      | Famous is my home, beloved Waipiʻo
+      | And the beautiful borders of the land
+      | A castle, a royal house
+      | I am like Herod
+      | A haughty king
+      | Rays of the sun are my garments
+      | Sparkling on all the earth
+      | Far above, so high, beyond reach
+      | There are no limits
+      | For the great lord of the day
+      | My friends and neighbors
+      | And natives of this land
+      | Hiʻilawe, the waterfall
+      | Showering from above
+      | Showering always on the cliff
+      | This is not the truth
+      | Gossip started by a jealous crony
+      | I am just the same
+      | Like every one else
+      | Of my birthplace
+      | May the two of us and my friends
+      | And my children live in this land
+      | Drenched with sea spray
+      | Where fish are caught in the hand
+      | Waipiʻo is drowsy in the mist
+      | Tell the refrain
+      | Of this half Spanish flower lei
+      | A resident of the land
+      | You are welcome to come to
+      | Haleʻiwa, my beautiful home
+      hawaiian_lines: [Kaulana kuʻu home puni Waipiʻo, Me nā peʻa nani o ka ʻāina, Kākela he hale aliʻi, Herode koʻu hoalike, Mōʻī puni haʻakei, Kukuna o ka lā koʻu kapa ʻia, E ʻōlino nei a puni ka honua, Aue aʻi luna lilo, Lihi launa ʻole mai, Nā aliʻi nui o ke ao, E oʻu mau kini nā makamaka, Me nā kupa o kuʻu ʻāina, Me ka wailele aʻo Hiʻilawe, Koʻiawe maila i luna, Koʻiawe mau i ka pali, ʻAʻole pēlā ka ʻoia ʻiʻo, Hakuʻepa lokoʻino o ka makamaka, Ua like nō a like, Me nā kini lehulehu, O kuʻu one hānau, E ola māua me aʻu kini, Me aʻu lei o nei ʻāina, Pulupē i ka hunakai, Ka iʻa mili i ka lima, Heha Waipiʻo i ka noe, Haʻina ʻia mai ana ka puana, No ka lei hapa pua Sēpānia, He kupa no ka ʻāina, E kipa mai ma loko, Haleʻiwa beautiful home]
+      english_lines: [Famous is my home, beloved Waipiʻo, And the beautiful borders of the land, A castle, a royal house, I am like Herod, A haughty king, Rays of the sun are my garments, Sparkling on all the earth, Far above, so high, beyond reach, There are no limits, For the great lord of the day, My friends and neighbors, And natives of this land, Hiʻilawe, the waterfall, Showering from above, Showering always on the cliff, This is not the truth, Gossip started by a jealous crony, I am just the same, Like every one else, Of my birthplace, May the two of us and my friends, And my children live in this land, Drenched with sea spray, Where fish are caught in the hand, Waipiʻo is drowsy in the mist, Tell the refrain, Of this half Spanish flower lei, A resident of the land, You are welcome to come to, Haleʻiwa, my beautiful home]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Heha Waipio.txt
+  source_publication: This mele is for the home of
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.832053
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

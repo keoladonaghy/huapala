@@ -1,0 +1,99 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+bye_and_bye_hoi_mai
+
+[TITLE]
+{
+  hawaiian: Bye and Bye Hoi Mai
+  english: 
+  normalized: bye_and_bye_hoi_mai
+  alternate_titles: []
+}
+
+[ATTRIBUTION]
+{
+  composer: Queen Liliʻuokalani
+  lyricist: null
+  translator: 
+  hawaiian_editor: Puakea Nogelmeier
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | Aia i Mauna Kilohana
+      | ʻO aʻu lehua ʻula i ka wao
+      | Nā maka ʻohe kiʻi i ka wai
+      | ʻĀhaʻi ka ʻiʻini a ka manaʻo
+      english_text: Liliʻuokalani
+      hawaiian_lines: [Aia i Mauna Kilohana, ʻO aʻu lehua ʻula i ka wao, Nā maka ʻohe kiʻi i ka wai, ʻĀhaʻi ka ʻiʻini a ka manaʻo]
+      english_lines: [Liliʻuokalani]
+    }
+    [1] {
+      order: 2
+      type: hui
+      hawaiian_text: 
+      | By and by hoʻi mai ʻoe
+      | E he ʻala hoene i ka poli
+      | By and by hoʻi mai ʻoe
+      | I ʻaneʻi kāua e laʻi ai
+      | E ʻae ana paha
+      | wau i ka ualo
+      | I ka leo hea a ka pololei
+      | E hoʻi aku nō wau e pili
+      | Me ka ua Kīpuʻu o ka nahele
+      | Me he ua noe ala ko aloha
+      | E hana mau nei kuʻu nui kino
+      | ʻO kou kai ia e mākoi ai
+      | Uʻi ʻaʻā ia pua i ka nani
+      english_text: Liliʻuokalani
+      hawaiian_lines: [By and by hoʻi mai ʻoe, E he ʻala hoene i ka poli, By and by hoʻi mai ʻoe, I ʻaneʻi kāua e laʻi ai, E ʻae ana paha, wau i ka ualo, I ka leo hea a ka pololei, E hoʻi aku nō wau e pili, Me ka ua Kīpuʻu o ka nahele, Me he ua noe ala ko aloha, E hana mau nei kuʻu nui kino, ʻO kou kai ia e mākoi ai, Uʻi ʻaʻā ia pua i ka nani]
+      english_lines: [Liliʻuokalani]
+      label: Hui:
+    }
+  ]
+  structure_notes: Extracted 2 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: By and By Hoi Mai ‘oe.txt
+  source_publication: Recorded by Nā ʻŌiwi. Hawaiian Text edited by Puakea Nogelmeier
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.862799
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

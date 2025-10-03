@@ -1,0 +1,39 @@
+{
+  "id": "adios_ke_aloha",
+  "title": {
+    "hawaiian": "Adios Ke Aloha",
+    "english": "Goodby My Love",
+    "normalized": "adios_ke_aloha",
+    "alternate_titles": []
+  },
+  "attribution": {
+    "composer": "Prince William Pitt",
+    "lyricist": null,
+    "translator": "Mary Pukui",
+    "hawaiian_editor": "Puakea Nogelmeier"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | E kuʻu belle o ka pō laʻilaʻi\n      | Ka lawe mālie a ka mahina\n      | Kōaniani mai nei e ke ahe\n      | Āhea ʻoe hoʻolono mai\n      english_text: \n      | Prince\n      | William Pitt Leleiohoku\n      hawaiian_lines: [E kuʻu belle o ka pō laʻilaʻi, Ka lawe mālie a ka mahina, Kōaniani mai nei e ke ahe, Āhea ʻoe hoʻolono mai]\n      english_lines: [Prince, William Pitt Leleiohoku]\n    }\n    [1] {\n      order: 2\n      type: hui\n      hawaiian_text: \n      | Āhea ʻoe, āhea ʻoe\n      | ʻOe hoʻolono mai\n      | I nei leo nahenahe\n      | Adios, adios ke aloha\n      | E ka hauʻoli ʻiniki puʻuwai\n      | E ke aloha e maliu mai ʻoe\n      | Ke hoʻolale mai nei e ke Kiu\n      | Ua anu ka wao i ka ua\n      | Hoʻokahi kiss\n      | Dew drops he maʻū ia\n      | E ka belle o ka noe līhau\n      | Eia au lā e ke aloha\n      | Ke huli hoʻi nei me ka neo\n      english_text: \n      | Prince\n      | William Pitt Leleiohoku\n      hawaiian_lines: [Āhea ʻoe, āhea ʻoe, ʻOe hoʻolono mai, I nei leo nahenahe, Adios, adios ke aloha, E ka hauʻoli ʻiniki puʻuwai, E ke aloha e maliu mai ʻoe, Ke hoʻolale mai nei e ke Kiu, Ua anu ka wao i ka ua, Hoʻokahi kiss, Dew drops he maʻū ia, E ka belle o ka noe līhau, Eia au lā e ke aloha, Ke huli hoʻi nei me ka neo]\n      english_lines: [Prince, William Pitt Leleiohoku]\n      label: Hui:\n    }\n  ]",
+    "structure_notes": "Extracted 2 sections"
+  },
+  "media": {
+    "youtube_urls": [
+      "http://www.youtube.com/watch?v=k7Dk5H80XqE"
+    ],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Adios Ke Aloha.txt",
+    "source_publication": "King's \"Songs of Hawaiʻi\" -",
+    "copyright": "1942 Charles E. King Translated by Mary Pukui",
+    "extraction_date": "2025-09-14T18:01:38.877015",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

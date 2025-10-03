@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Editor - {{song.canonical_title_hawaiian or song.canonical_title_english or song.canonical_mele_id}}</title>
+    <style>
+        :root {
+            --editor-font-size: 14px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 5px;
+        }
+        
+        .editor-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        
+        .top-row {
+            background: #f8f9fa;
+            padding: 5px;
+            border-bottom: 1px solid #e9ecef;
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 5px;
+            align-items: end;
+        }
+        
+        .field-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .field-group label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        .field-group input, .field-group textarea, .field-group select {
+            padding: 5px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        .field-group input:focus, .field-group textarea:focus, .field-group select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .form-content {
+            padding: 5px;
+        }
+        
+        .section {
+            margin-bottom: 10px;
+            border: 1px solid #dee2e6;
+            overflow: hidden;
+        }
+        
+        .section-header {
+            background: #f8f9fa;
+            padding: 8px 15px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .section-header:hover {
+            background: #e9ecef;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-icon {
+            font-size: 16px;
+        }
+        
+        .collapse-indicator {
+            font-size: 12px;
+            color: #6c757d;
+            transition: transform 0.2s;
+        }
+        
+        .section-content {
+            padding: 5px;
+            background: white;
+            display: none;
+        }
+        
+        .section.expanded .section-content {
+            display: block;
+        }
+        
+        /* Ensure lyrics section is always visible */
+        #lyrics-section .section-content {
+            display: block !important;
+        }
+        
+        .section.expanded .collapse-indicator {
+            transform: rotate(180deg);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 5px;
+        }
+        
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+        
+        .form-grid-full {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+        
+        .lyrics-display {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+        }
+        
+        .verse-section {
+            margin-bottom: 20px;
+        }
+        
+        .verse-header-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .verse-label-input {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+            border: 1px solid transparent;
+            background: transparent;
+            font-family: Georgia, serif;
+            padding: 2px 5px;
+            flex: 1;
+        }
+        
+        .verse-label-input:focus {
+            border: 1px solid #667eea;
+            background: white;
+            outline: none;
+        }
+        
+        .lyrics-line-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 0px;
+            align-items: flex-start;
+        }
+        
+        .line-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            background: white;
+            font-family: Georgia, serif;
+            font-size: var(--editor-font-size);
+            line-height: 1.2;
+            padding: 2px 5px;
+            resize: none;
+            min-height: 20px;
+        }
+        
+        .line-input:focus {
+            border: 1px solid #667eea;
+            background: white;
+            outline: none;
+        }
+        
+        .hawaiian-input {
+            font-style: normal;
+        }
+        
+        .media-item {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .action-bar {
+            background: #f8f9fa;
+            padding: 5px;
+            border-top: 1px solid #e9ecef;
+            display: flex;
+            gap: 5px;
+            justify-content: flex-end;
+        }
+        
+        /* Settings Button */
+        .settings-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+        
+        .settings-button:hover {
+            background: white;
+            transform: rotate(90deg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .settings-button svg {
+            width: 20px;
+            height: 20px;
+            color: #333;
+        }
+        
+        /* Settings Modal */
+        .settings-modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .settings-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            width: 300px;
+            max-width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .settings-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .settings-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+        
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+        
+        .setting-section {
+            margin-bottom: 20px;
+        }
+        
+        .setting-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .font-size-visual {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .font-size-option-visual {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+        
+        .font-size-option-visual:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        
+        .font-size-option-visual.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .size-indicator {
+            font-weight: bold;
+            display: block;
+        }
+        
+        .small-text { font-size: 12px; }
+        .medium-text { font-size: 16px; }
+        .large-text { font-size: 20px; }
+        
+        .btn {
+            padding: 5px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-message {
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .readonly {
+            background-color: #f8f9fa !important;
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .top-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .form-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .line-pair {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎵 Song Editor</h1>
+        </div>
+        
+        <!-- Status Messages -->
+        {% if status_message %}
+        <div class="status-message status-{{status_type}}">
+            {{status_message}}
+        </div>
+        {% endif %}
+        
+        <form id="songForm" method="POST" action="/songs/{{song.canonical_mele_id}}/save">
+            <!-- Top Row - Always Visible Core Fields -->
+            <div class="top-row">
+                <div class="field-group">
+                    <label for="canonical_title_hawaiian">Hawaiian Title</label>
+                    <input type="text" id="canonical_title_hawaiian" name="canonical_title_hawaiian" 
+                           value="{{song.canonical_title_hawaiian or ''}}" placeholder="Enter Hawaiian title">
+                </div>
+                
+                <div class="field-group">
+                    <label for="canonical_mele_id">Song ID</label>
+                    <input type="text" id="canonical_mele_id" name="canonical_mele_id" 
+                           value="{{song.canonical_mele_id}}" class="readonly" readonly>
+                </div>
+                
+                <div class="field-group">
+                    <label for="primary_composer">Primary Composer</label>
+                    <input type="text" id="primary_composer" name="primary_composer" 
+                           value="{{song.primary_composer or ''}}" placeholder="Enter composer name">
+                </div>
+            </div>
+            
+            <div class="form-content">
+                <!-- Lyrics Section -->
+                <div class="section expanded" id="lyrics-section">
+                    <div class="section-header" onclick="toggleSection('lyrics-section')">
+                        <div class="section-title">
+                            <span class="section-icon">🎵</span>
+                            <span>Lyrics</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="lyrics-display">
+                            {% if song.parsed_verses %}
+                                {% for verse in song.parsed_verses %}
+                                <div class="verse-section">
+                                    <div class="verse-header-row">
+                                        <input type="text" class="verse-label-input" 
+                                               name="verse_{{verse.id}}_label"
+                                               value="{{verse.label or (verse.type.title() + ' ' + verse.number|string + ':')}}" 
+                                               placeholder="{{verse.type.title()}} {{verse.number}}:">
+                                        <div></div>
+                                    </div>
+                                    {% for line in verse.lines %}
+                                    <div class="lyrics-line-row">
+                                        <textarea class="line-input hawaiian-input" 
+                                                  name="verse_{{verse.id}}_line_{{line.line_number}}_hawaiian" 
+                                                  rows="1">{{line.hawaiian_text or ''}}</textarea>
+                                        <textarea class="line-input english-input" 
+                                                  name="verse_{{verse.id}}_line_{{line.line_number}}_english" 
+                                                  rows="1">{{line.english_text or ''}}</textarea>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <!-- Fallback if no parsed verses -->
+                                <div class="verse-section">
+                                    <div class="verse-header-row">
+                                        <input type="text" class="verse-label-input" 
+                                               name="verse_v1_label"
+                                               value="Verse 1:" placeholder="Verse 1:">
+                                        <div></div>
+                                    </div>
+                                    <div class="lyrics-line-row">
+                                        <textarea class="line-input hawaiian-input" name="verse_v1_line_1_hawaiian" rows="1"></textarea>
+                                        <textarea class="line-input english-input" name="verse_v1_line_1_english" rows="1"></textarea>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Credits & People Section -->
+                <div class="section" id="credits-section">
+                    <div class="section-header" onclick="toggleSection('credits-section')">
+                        <div class="section-title">
+                            <span class="section-icon">👥</span>
+                            <span>Credits & People</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid-2">
+                            <div class="field-group">
+                                <label for="canonical_title_english">English Title</label>
+                                <input type="text" id="canonical_title_english" name="canonical_title_english" 
+                                       value="{{song.canonical_title_english or ''}}" placeholder="Enter English title">
+                            </div>
+                            <div class="field-group">
+                                <label for="primary_lyricist">Primary Lyricist</label>
+                                <input type="text" id="primary_lyricist" name="primary_lyricist" 
+                                       value="{{song.primary_lyricist or ''}}" placeholder="Enter lyricist name">
+                            </div>
+                            <div class="field-group">
+                                <label for="composer">Composer (Source Specific)</label>
+                                <input type="text" id="composer" name="composer" 
+                                       value="{{song.source.composer if song.source else ''}}" placeholder="Source-specific composer">
+                            </div>
+                            <div class="field-group">
+                                <label for="translator">Translator</label>
+                                <input type="text" id="translator" name="translator" 
+                                       value="{{song.source.translator if song.source else ''}}" placeholder="Enter translator name">
+                            </div>
+                            <div class="field-group">
+                                <label for="hawaiian_editor">Hawaiian Editor</label>
+                                <input type="text" id="hawaiian_editor" name="hawaiian_editor" 
+                                       value="{{song.source.hawaiian_editor if song.source else ''}}" placeholder="Hawaiian language editor">
+                            </div>
+                            <div class="field-group">
+                                <label for="estimated_composition_date">Composition Date</label>
+                                <input type="text" id="estimated_composition_date" name="estimated_composition_date" 
+                                       value="{{song.estimated_composition_date or ''}}" placeholder="e.g. 1890, circa 1920">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Publication & Sources Section -->
+                <div class="section" id="publication-section">
+                    <div class="section-header" onclick="toggleSection('publication-section')">
+                        <div class="section-title">
+                            <span class="section-icon">📚</span>
+                            <span>Publication & Sources</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid">
+                            <div class="field-group">
+                                <label for="source_file">Source File</label>
+                                <input type="text" id="source_file" name="source_file" 
+                                       value="{{song.source.source_file if song.source else ''}}" placeholder="Original source file">
+                            </div>
+                            <div class="field-group">
+                                <label for="source_publication">Source Publication</label>
+                                <input type="text" id="source_publication" name="source_publication" 
+                                       value="{{song.source.source_publication if song.source else ''}}" placeholder="Publication name">
+                            </div>
+                        </div>
+                        <div class="form-grid-full">
+                            <div class="field-group">
+                                <label for="copyright_info">Copyright Information</label>
+                                <textarea id="copyright_info" name="copyright_info" rows="3" 
+                                          placeholder="Copyright details, permissions, etc.">{{song.source.copyright_info if song.source else ''}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cultural & Geographic Section -->
+                <div class="section" id="cultural-section">
+                    <div class="section-header" onclick="toggleSection('cultural-section')">
+                        <div class="section-title">
+                            <span class="section-icon">🌺</span>
+                            <span>Cultural & Geographic</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid-2">
+                            <div class="field-group">
+                                <label for="primary_location">Primary Location</label>
+                                <input type="text" id="primary_location" name="primary_location" 
+                                       value="{{song.source.primary_location if song.source else ''}}" placeholder="Geographic location">
+                            </div>
+                            <div class="field-group">
+                                <label for="island">Island</label>
+                                <select id="island" name="island">
+                                    <option value="">Select island...</option>
+                                    <option value="Hawaiʻi" {{'selected' if song.source and song.source.island == 'Hawaiʻi' else ''}}>Hawaiʻi (Big Island)</option>
+                                    <option value="Maui" {{'selected' if song.source and song.source.island == 'Maui' else ''}}>Maui</option>
+                                    <option value="Oʻahu" {{'selected' if song.source and song.source.island == 'Oʻahu' else ''}}>Oʻahu</option>
+                                    <option value="Kauaʻi" {{'selected' if song.source and song.source.island == 'Kauaʻi' else ''}}>Kauaʻi</option>
+                                    <option value="Molokaʻi" {{'selected' if song.source and song.source.island == 'Molokaʻi' else ''}}>Molokaʻi</option>
+                                    <option value="Lānaʻi" {{'selected' if song.source and song.source.island == 'Lānaʻi' else ''}}>Lānaʻi</option>
+                                    <option value="Multiple" {{'selected' if song.source and song.source.island == 'Multiple' else ''}}>Multiple Islands</option>
+                                </select>
+                            </div>
+                            <div class="field-group">
+                                <label for="themes">Themes</label>
+                                <input type="text" id="themes" name="themes" 
+                                       value="{{song.source.themes if song.source else ''}}" placeholder="Love, nature, historical, etc.">
+                            </div>
+                            <div class="field-group">
+                                <label for="mele_type">Mele Type</label>
+                                <input type="text" id="mele_type" name="mele_type" 
+                                       value="{{song.source.mele_type if song.source else ''}}" placeholder="Hula, himeni, oli, etc.">
+                            </div>
+                        </div>
+                        <div class="form-grid-full">
+                            <div class="field-group">
+                                <label for="cultural_elements">Cultural Elements</label>
+                                <textarea id="cultural_elements" name="cultural_elements" rows="3" 
+                                          placeholder="Cultural context, significance, traditional usage">{{song.source.cultural_elements if song.source else ''}}</textarea>
+                            </div>
+                            <div class="field-group">
+                                <label for="cultural_significance_notes">Cultural Significance Notes</label>
+                                <textarea id="cultural_significance_notes" name="cultural_significance_notes" rows="4" 
+                                          placeholder="Historical context, cultural importance, background information">{{song.cultural_significance_notes or ''}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technical & Metadata Section -->
+                <div class="section" id="technical-section">
+                    <div class="section-header" onclick="toggleSection('technical-section')">
+                        <div class="section-title">
+                            <span class="section-icon">⚙️</span>
+                            <span>Technical & Metadata</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="form-grid">
+                            <div class="field-group">
+                                <label for="song_type">Song Type</label>
+                                <input type="text" id="song_type" name="song_type" 
+                                       value="{{song.source.song_type if song.source else ''}}" placeholder="Traditional, contemporary, etc.">
+                            </div>
+                            <div class="field-group">
+                                <label for="structure_type">Structure Type</label>
+                                <input type="text" id="structure_type" name="structure_type" 
+                                       value="{{song.source.structure_type if song.source else ''}}" placeholder="ABAB, verse-chorus, etc.">
+                            </div>
+                            <div class="field-group">
+                                <label for="created_at">Created</label>
+                                <input type="text" id="created_at" name="created_at" 
+                                       value="{{song.created_at.strftime('%Y-%m-%d %H:%M') if song.created_at else ''}}" class="readonly" readonly>
+                            </div>
+                            <div class="field-group">
+                                <label for="updated_at">Last Updated</label>
+                                <input type="text" id="updated_at" name="updated_at" 
+                                       value="{{song.updated_at.strftime('%Y-%m-%d %H:%M') if song.updated_at else ''}}" class="readonly" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Media Links Section -->
+                <div class="section" id="media-section">
+                    <div class="section-header" onclick="toggleSection('media-section')">
+                        <div class="section-title">
+                            <span class="section-icon">🎬</span>
+                            <span>Media Links</span>
+                        </div>
+                        <span class="collapse-indicator">▼</span>
+                    </div>
+                    <div class="section-content">
+                        <div id="media-container">
+                            {% if song.mele_media %}
+                                {% for media in song.mele_media %}
+                                <div class="media-item">
+                                    <div class="form-grid-2">
+                                        <div class="field-group">
+                                            <label>Media URL</label>
+                                            <input type="url" name="media_{{media.id}}_url" value="{{media.url or ''}}" placeholder="https://youtube.com/watch?v=...">
+                                        </div>
+                                        <div class="field-group">
+                                            <label>Media Type</label>
+                                            <select name="media_{{media.id}}_type">
+                                                <option value="youtube" {{'selected' if media.media_type == 'youtube' else ''}}>YouTube</option>
+                                                <option value="audio" {{'selected' if media.media_type == 'audio' else ''}}>Audio File</option>
+                                                <option value="video" {{'selected' if media.media_type == 'video' else ''}}>Video File</option>
+                                                <option value="other" {{'selected' if media.media_type == 'other' else ''}}>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Title</label>
+                                        <input type="text" name="media_{{media.id}}_title" value="{{media.title or ''}}" placeholder="Media title or description">
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Description</label>
+                                        <textarea name="media_{{media.id}}_description" rows="2" placeholder="Additional details about this media">{{media.description or ''}}</textarea>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" onclick="removeMedia(this)">Remove Media</button>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                            <div class="media-item">
+                                <div class="form-grid-2">
+                                    <div class="field-group">
+                                        <label>Media URL</label>
+                                        <input type="url" name="media_new_1_url" placeholder="https://youtube.com/watch?v=...">
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Media Type</label>
+                                        <select name="media_new_1_type">
+                                            <option value="youtube">YouTube</option>
+                                            <option value="audio">Audio File</option>
+                                            <option value="video">Video File</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-group">
+                                    <label>Title</label>
+                                    <input type="text" name="media_new_1_title" placeholder="Media title or description">
+                                </div>
+                                <div class="field-group">
+                                    <label>Description</label>
+                                    <textarea name="media_new_1_description" rows="2" placeholder="Additional details about this media"></textarea>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <button type="button" class="btn btn-secondary" onclick="addMedia()">+ Add Media Link</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Bar -->
+            <div class="action-bar">
+                <button type="button" class="btn btn-secondary" onclick="createBackup()">Create Backup</button>
+                <button type="button" class="btn btn-danger" onclick="resetForm()">Reset Changes</button>
+                <button type="submit" class="btn btn-success">Save Draft</button>
+                <button type="button" class="btn btn-primary" onclick="saveAndPublish()">Save & Publish</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Section toggle functionality
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('expanded');
+        }
+        
+        // Lyrics editing functions
+        let verseCounter = 1;
+        let lineCounter = 1;
+        
+        function addVerse() {
+            verseCounter++;
+            const container = document.getElementById('verses-container');
+            const verseHtml = `
+                <div class="verse-block">
+                    <div class="verse-header">
+                        <span>Verse ${verseCounter}</span>
+                        <button type="button" onclick="removeVerse(this)" style="margin-left: auto; background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Remove</button>
+                    </div>
+                    <div class="line-pair">
+                        <input type="text" class="line-input hawaiian-input" 
+                               name="verse_v${verseCounter}_line_1_hawaiian" placeholder="Hawaiian text">
+                        <input type="text" class="line-input english-input"
+                               name="verse_v${verseCounter}_line_1_english" placeholder="English translation">
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', verseHtml);
+        }
+        
+        function addLine() {
+            const verses = document.querySelectorAll('.verse-block');
+            if (verses.length === 0) return;
+            
+            const lastVerse = verses[verses.length - 1];
+            const existingLines = lastVerse.querySelectorAll('.line-pair').length;
+            const verseId = lastVerse.querySelector('.line-input').name.split('_')[1];
+            
+            const lineHtml = `
+                <div class="line-pair">
+                    <input type="text" class="line-input hawaiian-input" 
+                           name="verse_${verseId}_line_${existingLines + 1}_hawaiian" placeholder="Hawaiian text">
+                    <input type="text" class="line-input english-input"
+                           name="verse_${verseId}_line_${existingLines + 1}_english" placeholder="English translation">
+                    <button type="button" onclick="removeLine(this)" style="grid-column: span 2; background: #dc3545; color: white; border: none; padding: 5px; border-radius: 3px; cursor: pointer; margin-top: 5px;">Remove Line</button>
+                </div>
+            `;
+            lastVerse.insertAdjacentHTML('beforeend', lineHtml);
+        }
+        
+        function removeVerse(button) {
+            button.closest('.verse-block').remove();
+        }
+        
+        function removeLine(button) {
+            button.closest('.line-pair').remove();
+        }
+        
+        // Media editing functions
+        let mediaCounter = 1;
+        
+        function addMedia() {
+            mediaCounter++;
+            const container = document.getElementById('media-container');
+            const mediaHtml = `
+                <div class="media-item">
+                    <div class="form-grid-2">
+                        <div class="field-group">
+                            <label>Media URL</label>
+                            <input type="url" name="media_new_${mediaCounter}_url" placeholder="https://youtube.com/watch?v=...">
+                        </div>
+                        <div class="field-group">
+                            <label>Media Type</label>
+                            <select name="media_new_${mediaCounter}_type">
+                                <option value="youtube">YouTube</option>
+                                <option value="audio">Audio File</option>
+                                <option value="video">Video File</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Title</label>
+                        <input type="text" name="media_new_${mediaCounter}_title" placeholder="Media title or description">
+                    </div>
+                    <div class="field-group">
+                        <label>Description</label>
+                        <textarea name="media_new_${mediaCounter}_description" rows="2" placeholder="Additional details about this media"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="removeMedia(this)">Remove Media</button>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', mediaHtml);
+        }
+        
+        function removeMedia(button) {
+            button.closest('.media-item').remove();
+        }
+        
+        // Form action functions
+        function createBackup() {
+            // Implementation for creating backup
+            fetch(`/songs/{{song.canonical_mele_id}}/backup`, {method: 'POST'})
+                .then(response => response.json())
+                .then(data => {
+                    alert('Backup created successfully');
+                })
+                .catch(error => {
+                    alert('Error creating backup: ' + error);
+                });
+        }
+        
+        function resetForm() {
+            if (confirm('Are you sure you want to reset all changes? This cannot be undone.')) {
+                location.reload();
+            }
+        }
+        
+        function saveAndPublish() {
+            // Debug: Log all form data before submitting
+            const form = document.getElementById('songForm');
+            const formData = new FormData(form);
+            
+            console.log('=== FORM DATA DEBUG ===');
+            console.log('Total form elements:', form.elements.length);
+            console.log('FormData entries:');
+            for (let [key, value] of formData.entries()) {
+                console.log(`  ${key}: "${value}"`);
+            }
+            console.log('=== END FORM DATA DEBUG ===');
+            
+            form.action = '/songs/{{song.canonical_mele_id}}/publish';
+            form.submit();
+        }
+        
+        // Auto-save functionality
+        let autoSaveTimer;
+        function scheduleAutoSave() {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                // Auto-save logic here
+                console.log('Auto-saving...');
+            }, 30000); // Auto-save every 30 seconds
+        }
+        
+        // Add change listeners to all inputs
+        document.addEventListener('input', scheduleAutoSave);
+        
+        // Initialize - expand lyrics section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lyrics section is already expanded by default via CSS class
+            // But let's force expand it to ensure form elements are visible
+            const lyricsSection = document.getElementById('lyrics-section');
+            if (lyricsSection) {
+                lyricsSection.classList.add('expanded');
+                console.log('Lyrics section expanded on page load');
+            }
+            
+            // Log all textarea elements to debug
+            const textareas = document.querySelectorAll('textarea');
+            console.log(`Found ${textareas.length} textarea elements on page`);
+            textareas.forEach((textarea, index) => {
+                console.log(`  Textarea ${index}: name="${textarea.name}", value="${textarea.value.substring(0, 50)}..."`);
+            });
+        });
+    </script>
+    
+    <!-- Settings Button -->
+    <button class="settings-button" id="settingsButton" title="Settings">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+        </svg>
+    </button>
+    
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="settings-modal">
+        <div class="settings-modal-content">
+            <div class="settings-modal-header">
+                <div class="settings-modal-title">Settings</div>
+                <span class="close" id="closeSettingsModal">&times;</span>
+            </div>
+            <div class="setting-section">
+                <h3>Font Size</h3>
+                <div class="font-size-visual">
+                    <div class="font-size-option-visual" data-size="12" title="Small (12pt)">
+                        <span class="size-indicator small-text">A</span>
+                    </div>
+                    <div class="font-size-option-visual active" data-size="14" title="Medium (14pt)">
+                        <span class="size-indicator medium-text">A</span>
+                    </div>
+                    <div class="font-size-option-visual" data-size="16" title="Large (16pt)">
+                        <span class="size-indicator large-text">A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Settings functionality
+        const settingsButton = document.getElementById('settingsButton');
+        const settingsModal = document.getElementById('settingsModal');
+        const closeSettingsModal = document.getElementById('closeSettingsModal');
+        const fontSizeOptions = document.querySelectorAll('.font-size-option-visual');
+        
+        // Load saved settings
+        const savedFontSize = localStorage.getItem('editor-font-size') || '14';
+        document.documentElement.style.setProperty('--editor-font-size', savedFontSize + 'px');
+        
+        // Update active font size option
+        fontSizeOptions.forEach(option => {
+            option.classList.remove('active');
+            if (option.dataset.size === savedFontSize) {
+                option.classList.add('active');
+            }
+        });
+        
+        // Open settings modal
+        settingsButton.addEventListener('click', () => {
+            settingsModal.style.display = 'block';
+        });
+        
+        // Close settings modal
+        closeSettingsModal.addEventListener('click', () => {
+            settingsModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === settingsModal) {
+                settingsModal.style.display = 'none';
+            }
+        });
+        
+        // Font size change handlers
+        fontSizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const fontSize = option.dataset.size;
+                
+                // Update CSS variable
+                document.documentElement.style.setProperty('--editor-font-size', fontSize + 'px');
+                
+                // Save to localStorage
+                localStorage.setItem('editor-font-size', fontSize);
+                
+                // Update active state
+                fontSizeOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

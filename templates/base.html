@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Huapala{% endblock %}</title>
+    {% block meta %}{% endblock %}
+    {% block styles %}
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #000;
+            background: #fff url('/img/bk.jpg') repeat;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            background: #fff;
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .hibiscus {
+            width: 24px;
+            height: 24px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin: 0;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-top: 3px;
+        }
+        
+        {% block header_styles %}{% endblock %}
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-logo">
+                <img src="/img/hibiscus.gif" alt="Hibiscus" class="hibiscus">
+                <h1>{% block page_title %}🌺 Huapala{% endblock %}</h1>
+                <img src="/img/hibiscus.gif" alt="Hibiscus" class="hibiscus">
+            </div>
+            <div class="subtitle">{% block subtitle %}Hawaiian Music Archives{% endblock %}</div>
+            {% block header_content %}{% endblock %}
+        </header>
+        
+        {% block content %}{% endblock %}
+        
+        {% block footer %}{% endblock %}
+    </div>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,103 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+kuhio_bay
+
+[TITLE]
+{
+  hawaiian: Kuhio Bay
+  english: 
+  normalized: kuhio_bay
+  alternate_titles: [Kūhiō Bay]
+}
+
+[ATTRIBUTION]
+{
+  composer: Keliana Bishaw
+  lyricist: null
+  translator: Kamehameha Schools HSI
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | ʻAkahi hoʻi a ʻike kuʻu maka
+      | I ka nani aʻo Waiakea
+      | ʻAʻohe lua e like ai
+      | Me ka nani a me ka nani
+      | Aʻo Kūhiō Bay
+      | Mahalo aʻe au i ka nani aʻo Hilo
+      | Me ka ua aʻe hoʻopulu nei
+      | ʻOni ana Mokuola au i ke kai
+      | ʻOua ʻāina e
+      | Kaulana nei
+      | Wai ānuenue a he wai kaulana
+      | Wai makaʻikaʻi a ka malihini
+      | Wai kamahaʻo i kaʻu ʻike
+      | E papahi e hoʻope nei
+      | I ka nahele
+      english_text: 
+      | This is the first time I saw
+      | for myself
+      | The beauty of Waiakea
+      | There is no other that can
+      | compare
+      | With the beauty, the
+      | beauty
+      | Of Kūhiō Bay
+      | I admire the beauty of
+      | Hilo
+      | The rain drenches it
+      | Mokuola stands out in the
+      | sea
+      | Island that is
+      | Known to all
+      hawaiian_lines: [ʻAkahi hoʻi a ʻike kuʻu maka, I ka nani aʻo Waiakea, ʻAʻohe lua e like ai, Me ka nani a me ka nani, Aʻo Kūhiō Bay, Mahalo aʻe au i ka nani aʻo Hilo, Me ka ua aʻe hoʻopulu nei, ʻOni ana Mokuola au i ke kai, ʻOua ʻāina e, Kaulana nei, Wai ānuenue a he wai kaulana, Wai makaʻikaʻi a ka malihini, Wai kamahaʻo i kaʻu ʻike, E papahi e hoʻope nei, I ka nahele]
+      english_lines: [This is the first time I saw, for myself, The beauty of Waiakea, There is no other that can, compare, With the beauty, the, beauty, Of Kūhiō Bay, I admire the beauty of, Hilo, The rain drenches it, Mokuola stands out in the, sea, Island that is, Known to all]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Kuhio Bay.txt
+  source_publication: Johnny Noble’s Royal Collection of Hawaiian Songs © 1928 Johnny Noble and Oscar U. Hyatt International Copyright Secured Translated by Kamehameha Schools HSI
+  copyright: Secured Translated by Kamehameha Schools HSI
+  extraction_date: 2025-09-14T18:01:38.844312
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

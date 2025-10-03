@@ -1,0 +1,34 @@
+{
+  "id": "bye_and_bye_hoi_mai",
+  "title": {
+    "hawaiian": "Bye and Bye Hoi Mai",
+    "normalized": "bye_and_bye_hoi_mai",
+    "alternate_titles": []
+  },
+  "attribution": {
+    "composer": "Queen Liliʻuokalani",
+    "lyricist": null,
+    "hawaiian_editor": "Puakea Nogelmeier"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | Aia i Mauna Kilohana\n      | ʻO aʻu lehua ʻula i ka wao\n      | Nā maka ʻohe kiʻi i ka wai\n      | ʻĀhaʻi ka ʻiʻini a ka manaʻo\n      english_text: Liliʻuokalani\n      hawaiian_lines: [Aia i Mauna Kilohana, ʻO aʻu lehua ʻula i ka wao, Nā maka ʻohe kiʻi i ka wai, ʻĀhaʻi ka ʻiʻini a ka manaʻo]\n      english_lines: [Liliʻuokalani]\n    }\n    [1] {\n      order: 2\n      type: hui\n      hawaiian_text: \n      | By and by hoʻi mai ʻoe\n      | E he ʻala hoene i ka poli\n      | By and by hoʻi mai ʻoe\n      | I ʻaneʻi kāua e laʻi ai\n      | E ʻae ana paha\n      | wau i ka ualo\n      | I ka leo hea a ka pololei\n      | E hoʻi aku nō wau e pili\n      | Me ka ua Kīpuʻu o ka nahele\n      | Me he ua noe ala ko aloha\n      | E hana mau nei kuʻu nui kino\n      | ʻO kou kai ia e mākoi ai\n      | Uʻi ʻaʻā ia pua i ka nani\n      english_text: Liliʻuokalani\n      hawaiian_lines: [By and by hoʻi mai ʻoe, E he ʻala hoene i ka poli, By and by hoʻi mai ʻoe, I ʻaneʻi kāua e laʻi ai, E ʻae ana paha, wau i ka ualo, I ka leo hea a ka pololei, E hoʻi aku nō wau e pili, Me ka ua Kīpuʻu o ka nahele, Me he ua noe ala ko aloha, E hana mau nei kuʻu nui kino, ʻO kou kai ia e mākoi ai, Uʻi ʻaʻā ia pua i ka nani]\n      english_lines: [Liliʻuokalani]\n      label: Hui:\n    }\n  ]",
+    "structure_notes": "Extracted 2 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "By and By Hoi Mai ‘oe.txt",
+    "source_publication": "Recorded by Nā ʻŌiwi. Hawaiian Text edited by Puakea Nogelmeier",
+    "extraction_date": "2025-09-14T18:01:38.862799",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

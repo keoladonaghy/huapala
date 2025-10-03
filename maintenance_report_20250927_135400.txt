@@ -1,0 +1,18 @@
+============================================================
+HUAPALA MAINTENANCE REPORT
+Generated: 2025-09-27 13:54:00.455599
+============================================================
+
+Latest validation report: validation_report_20250926_203109.txt
+❌ Last validation: ERRORS DETECTED
+
+FILE STATUS:
+✅ Web export data: 66,676 bytes, modified 2025-09-27 13:25:27.841594
+✅ Source JSON files: 13 JSON files
+✅ Migration script: 13,399 bytes, modified 2025-09-26 19:36:18.847410
+✅ Processing script: 25,520 bytes, modified 2025-09-26 19:40:16.530581
+
+MAINTENANCE RECOMMENDATIONS:
+✅ Web export is recent
+
+============================================================

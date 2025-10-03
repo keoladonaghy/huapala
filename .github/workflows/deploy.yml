@@ -55,10 +55,8 @@ jobs:
         mkdir -p build/data
         cp docs/songs-data.json build/data/
         
-        # Create songbooks data if it doesn't exist
-        if [ ! -f build/data/songbooks-data.json ]; then
-          echo '{"adios_ke_aloha_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":2,"pub_year":2003,"composer":"Leleiohoku"}],"latitu_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":146,"pub_year":2003,"composer":"Harry Swinton"}]}' > build/data/songbooks-data.json
-        fi
+        # Create songbooks data
+        echo '{"adios_ke_aloha_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":2,"pub_year":2003,"composer":"Leleiohoku"}],"latitu_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":146,"pub_year":2003,"composer":"Harry Swinton"}]}' > build/data/songbooks-data.json
         
         # Copy built admin interface
         cp -r admin/dist build/admin

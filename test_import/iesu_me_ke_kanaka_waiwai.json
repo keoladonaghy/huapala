@@ -1,0 +1,36 @@
+{
+  "id": "iesu_me_ke_kanaka_waiwai",
+  "title": {
+    "hawaiian": "Iesu Me Ke Kanaka Waiwai",
+    "english": "Jesus and The Rich Man",
+    "normalized": "iesu_me_ke_kanaka_waiwai",
+    "alternate_titles": "[Iesu Me Ke Kanaka\n Waiwai]"
+  },
+  "attribution": {
+    "composer": "John K.",
+    "lyricist": null,
+    "translator": "Haunani Bernardino - Based on"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | Ma ke alahele ʻo Iesû\n      | I hālāwai aku ai\n      | Me ke kanaka ʻōpio hanohano\n      | Kaulana i ka waiwai\n      | Pane mai e ka ʻōpio\n      | ʻE kuʻu Haku maikaʻi\n      | He aha hoʻi kaʻu e hana aku ai\n      | I loaʻa e ke ola mau?\n      english_text: \n      | Along the road, Jesus\n      | Met\n      | With a distinguished young\n      | man\n      | Who was known for his\n      | wealth\n      | The young man said,\n      | \"My good lord,\n      hawaiian_lines: [Ma ke alahele ʻo Iesû, I hālāwai aku ai, Me ke kanaka ʻōpio hanohano, Kaulana i ka waiwai, Pane mai e ka ʻōpio, ʻE kuʻu Haku maikaʻi, He aha hoʻi kaʻu e hana aku ai, I loaʻa e ke ola mau?]\n      english_lines: [Along the road, Jesus, Met, With a distinguished young, man, Who was known for his, wealth, The young man said,, \"My good lord,]\n    }\n    [1] {\n      order: 2\n      type: hui\n      hawaiian_text: \n      | E hāʻawi, e hāʻawi lilo\n      | I kou mau waiwai\n      | Huli a hahai mai iaʻu\n      | I loaʻa e ke ola mau ia ʻoe\n      | Minamina e ka ʻōpio\n      | I kona mau waiwai\n      | I ke kūʻai a hāʻawi lilo aku\n      | I ka poʻe nele a hune\n      | Huli aʻe ʻo Iesū lā\n      | Pane aku i ka ʻōpio\n      | ʻAʻole aʻe hiki ke kanaka waiwai\n      | I ke aupuni o ka lani\n      english_text: \n      | Along the road, Jesus\n      | Met\n      | With a distinguished young\n      | man\n      | Who was known for his\n      | wealth\n      | The young man said,\n      | \"My good lord,\n      | What must I do\n      | To gain eternal life?\"\n      | Chorus:\n      | \"Give, give away all\n      | Of your possessions\n      hawaiian_lines: [E hāʻawi, e hāʻawi lilo, I kou mau waiwai, Huli a hahai mai iaʻu, I loaʻa e ke ola mau ia ʻoe, Minamina e ka ʻōpio, I kona mau waiwai, I ke kūʻai a hāʻawi lilo aku, I ka poʻe nele a hune, Huli aʻe ʻo Iesū lā, Pane aku i ka ʻōpio, ʻAʻole aʻe hiki ke kanaka waiwai, I ke aupuni o ka lani]\n      english_lines: [Along the road, Jesus, Met, With a distinguished young, man, Who was known for his, wealth, The young man said,, \"My good lord,, What must I do, To gain eternal life?\", Chorus:, \"Give, give away all, Of your possessions]\n      label: Hui:\n    }\n  ]",
+    "structure_notes": "Extracted 2 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Iesu Kanaka Waiwai.txt",
+    "source_publication": "Keola Donaghy, Copyright J.",
+    "copyright": "J.",
+    "extraction_date": "2025-09-14T18:01:38.857991",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

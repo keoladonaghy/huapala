@@ -1,0 +1,34 @@
+{
+  "id": "heha_waipio",
+  "title": {
+    "hawaiian": "Heha Waipio",
+    "english": "| Drowsy\n  |  Waipiʻo",
+    "normalized": "heha_waipio",
+    "alternate_titles": "[Heha Waipiʻo, (Drowsy\n Waipiʻo)]"
+  },
+  "attribution": {
+    "composer": "Sam",
+    "lyricist": null
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | Kaulana kuʻu home puni Waipiʻo\n      | Me nā peʻa nani o ka ʻāina\n      | Kākela he hale aliʻi\n      | Herode koʻu hoalike\n      | Mōʻī puni haʻakei\n      | Kukuna o ka lā koʻu kapa ʻia\n      | E ʻōlino nei a puni ka honua\n      | Aue aʻi luna lilo\n      | Lihi launa ʻole mai\n      | Nā aliʻi nui o ke ao\n      | E oʻu mau kini nā makamaka\n      | Me nā kupa o kuʻu ʻāina\n      | Me ka wailele aʻo Hiʻilawe\n      | Koʻiawe maila i luna\n      | Koʻiawe mau i ka pali\n      | ʻAʻole pēlā ka ʻoia ʻiʻo\n      | Hakuʻepa lokoʻino o ka makamaka\n      | Ua like nō a like\n      | Me nā kini lehulehu\n      | O kuʻu one hānau\n      | E ola māua me aʻu kini\n      | Me aʻu lei o nei ʻāina\n      | Pulupē i ka hunakai\n      | Ka iʻa mili i ka lima\n      | Heha Waipiʻo i ka noe\n      | Haʻina ʻia mai ana ka puana\n      | No ka lei hapa pua Sēpānia\n      | He kupa no ka ʻāina\n      | E kipa mai ma loko\n      | Haleʻiwa beautiful home\n      english_text: \n      | Famous is my home, beloved Waipiʻo\n      | And the beautiful borders of the land\n      | A castle, a royal house\n      | I am like Herod\n      | A haughty king\n      | Rays of the sun are my garments\n      | Sparkling on all the earth\n      | Far above, so high, beyond reach\n      | There are no limits\n      | For the great lord of the day\n      | My friends and neighbors\n      | And natives of this land\n      | Hiʻilawe, the waterfall\n      | Showering from above\n      | Showering always on the cliff\n      | This is not the truth\n      | Gossip started by a jealous crony\n      | I am just the same\n      | Like every one else\n      | Of my birthplace\n      | May the two of us and my friends\n      | And my children live in this land\n      | Drenched with sea spray\n      | Where fish are caught in the hand\n      | Waipiʻo is drowsy in the mist\n      | Tell the refrain\n      | Of this half Spanish flower lei\n      | A resident of the land\n      | You are welcome to come to\n      | Haleʻiwa, my beautiful home\n      hawaiian_lines: [Kaulana kuʻu home puni Waipiʻo, Me nā peʻa nani o ka ʻāina, Kākela he hale aliʻi, Herode koʻu hoalike, Mōʻī puni haʻakei, Kukuna o ka lā koʻu kapa ʻia, E ʻōlino nei a puni ka honua, Aue aʻi luna lilo, Lihi launa ʻole mai, Nā aliʻi nui o ke ao, E oʻu mau kini nā makamaka, Me nā kupa o kuʻu ʻāina, Me ka wailele aʻo Hiʻilawe, Koʻiawe maila i luna, Koʻiawe mau i ka pali, ʻAʻole pēlā ka ʻoia ʻiʻo, Hakuʻepa lokoʻino o ka makamaka, Ua like nō a like, Me nā kini lehulehu, O kuʻu one hānau, E ola māua me aʻu kini, Me aʻu lei o nei ʻāina, Pulupē i ka hunakai, Ka iʻa mili i ka lima, Heha Waipiʻo i ka noe, Haʻina ʻia mai ana ka puana, No ka lei hapa pua Sēpānia, He kupa no ka ʻāina, E kipa mai ma loko, Haleʻiwa beautiful home]\n      english_lines: [Famous is my home, beloved Waipiʻo, And the beautiful borders of the land, A castle, a royal house, I am like Herod, A haughty king, Rays of the sun are my garments, Sparkling on all the earth, Far above, so high, beyond reach, There are no limits, For the great lord of the day, My friends and neighbors, And natives of this land, Hiʻilawe, the waterfall, Showering from above, Showering always on the cliff, This is not the truth, Gossip started by a jealous crony, I am just the same, Like every one else, Of my birthplace, May the two of us and my friends, And my children live in this land, Drenched with sea spray, Where fish are caught in the hand, Waipiʻo is drowsy in the mist, Tell the refrain, Of this half Spanish flower lei, A resident of the land, You are welcome to come to, Haleʻiwa, my beautiful home]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Heha Waipio.txt",
+    "source_publication": "This mele is for the home of",
+    "extraction_date": "2025-09-14T18:01:38.832053",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

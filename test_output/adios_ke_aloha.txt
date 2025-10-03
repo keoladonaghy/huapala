@@ -1,0 +1,103 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+adios_ke_aloha
+
+[TITLE]
+{
+  hawaiian: Adios Ke Aloha
+  english: Goodby My Love
+  normalized: adios_ke_aloha
+  alternate_titles: []
+}
+
+[ATTRIBUTION]
+{
+  composer: Prince William Pitt
+  lyricist: null
+  translator: Mary Pukui
+  hawaiian_editor: Puakea Nogelmeier
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | E kuʻu belle o ka pō laʻilaʻi
+      | Ka lawe mālie a ka mahina
+      | Kōaniani mai nei e ke ahe
+      | Āhea ʻoe hoʻolono mai
+      english_text: 
+      | Prince
+      | William Pitt Leleiohoku
+      hawaiian_lines: [E kuʻu belle o ka pō laʻilaʻi, Ka lawe mālie a ka mahina, Kōaniani mai nei e ke ahe, Āhea ʻoe hoʻolono mai]
+      english_lines: [Prince, William Pitt Leleiohoku]
+    }
+    [1] {
+      order: 2
+      type: hui
+      hawaiian_text: 
+      | Āhea ʻoe, āhea ʻoe
+      | ʻOe hoʻolono mai
+      | I nei leo nahenahe
+      | Adios, adios ke aloha
+      | E ka hauʻoli ʻiniki puʻuwai
+      | E ke aloha e maliu mai ʻoe
+      | Ke hoʻolale mai nei e ke Kiu
+      | Ua anu ka wao i ka ua
+      | Hoʻokahi kiss
+      | Dew drops he maʻū ia
+      | E ka belle o ka noe līhau
+      | Eia au lā e ke aloha
+      | Ke huli hoʻi nei me ka neo
+      english_text: 
+      | Prince
+      | William Pitt Leleiohoku
+      hawaiian_lines: [Āhea ʻoe, āhea ʻoe, ʻOe hoʻolono mai, I nei leo nahenahe, Adios, adios ke aloha, E ka hauʻoli ʻiniki puʻuwai, E ke aloha e maliu mai ʻoe, Ke hoʻolale mai nei e ke Kiu, Ua anu ka wao i ka ua, Hoʻokahi kiss, Dew drops he maʻū ia, E ka belle o ka noe līhau, Eia au lā e ke aloha, Ke huli hoʻi nei me ka neo]
+      english_lines: [Prince, William Pitt Leleiohoku]
+      label: Hui:
+    }
+  ]
+  structure_notes: Extracted 2 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: [http://www.youtube.com/watch?v=k7Dk5H80XqE]
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Adios Ke Aloha.txt
+  source_publication: King's "Songs of Hawaiʻi" -
+  copyright: 1942 Charles E. King Translated by Mary Pukui
+  extraction_date: 2025-09-14T18:01:38.877015
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

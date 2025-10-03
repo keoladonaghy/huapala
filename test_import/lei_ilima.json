@@ -1,0 +1,38 @@
+{
+  "id": "lei_ilima",
+  "title": {
+    "hawaiian": "Lei Ilima",
+    "english": "ʻIlima Wreath",
+    "normalized": "lei_ilima",
+    "alternate_titles": [
+      "Lei ‘Ilima (ʻIlima Wreath) - Charles E. King"
+    ]
+  },
+  "attribution": {
+    "composer": "Charles E. King",
+    "lyricist": null,
+    "translator": "Mary Pukui"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | ‘O ka ‘ilima nō koʻu lei\n      | Ka liʻa ia nei puʻu wai\n      | He wehi ia no kuʻu kino\n      | Lei hoʻohihi a ka mana‘o\n      | ‘I‘ini au lā i kou nani\n      | He hiwahiwa i ka‘u ‘ike\n      | ‘O wau kou hoa e kohu ai\n      | E lei ‘ilima ē. lei ‘ilima\n      english_text: \n      | The ‘ilima is my lei and\n      | The joy of my heart\n      | The adornment for me\n      | It is dear to my thoughts\n      | I greatly desire its beauty\n      | A charming lei to my sight\n      | It is the companion suitable to your beauty\n      | The ‘ilima wreath, the ʻilima wreath\n      hawaiian_lines: [‘O ka ‘ilima nō koʻu lei, Ka liʻa ia nei puʻu wai, He wehi ia no kuʻu kino, Lei hoʻohihi a ka mana‘o, ‘I‘ini au lā i kou nani, He hiwahiwa i ka‘u ‘ike, ‘O wau kou hoa e kohu ai, E lei ‘ilima ē. lei ‘ilima]\n      english_lines: [The ‘ilima is my lei and, The joy of my heart, The adornment for me, It is dear to my thoughts, I greatly desire its beauty, A charming lei to my sight, It is the companion suitable to your beauty, The ‘ilima wreath, the ʻilima wreath]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Lei Ilima.txt",
+    "source_publication": "King's Book of Hawaiian Melodies © 1926,43 Charles E. King - Translated by Mary Pukui",
+    "copyright": 1926,
+    "extraction_date": "2025-09-14T18:01:38.835794",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

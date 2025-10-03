@@ -1,0 +1,89 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+lei_ilima
+
+[TITLE]
+{
+  hawaiian: Lei Ilima
+  english: ʻIlima Wreath
+  normalized: lei_ilima
+  alternate_titles: [Lei ‘Ilima (ʻIlima Wreath) - Charles E. King]
+}
+
+[ATTRIBUTION]
+{
+  composer: Charles E. King
+  lyricist: null
+  translator: Mary Pukui
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | ‘O ka ‘ilima nō koʻu lei
+      | Ka liʻa ia nei puʻu wai
+      | He wehi ia no kuʻu kino
+      | Lei hoʻohihi a ka mana‘o
+      | ‘I‘ini au lā i kou nani
+      | He hiwahiwa i ka‘u ‘ike
+      | ‘O wau kou hoa e kohu ai
+      | E lei ‘ilima ē. lei ‘ilima
+      english_text: 
+      | The ‘ilima is my lei and
+      | The joy of my heart
+      | The adornment for me
+      | It is dear to my thoughts
+      | I greatly desire its beauty
+      | A charming lei to my sight
+      | It is the companion suitable to your beauty
+      | The ‘ilima wreath, the ʻilima wreath
+      hawaiian_lines: [‘O ka ‘ilima nō koʻu lei, Ka liʻa ia nei puʻu wai, He wehi ia no kuʻu kino, Lei hoʻohihi a ka mana‘o, ‘I‘ini au lā i kou nani, He hiwahiwa i ka‘u ‘ike, ‘O wau kou hoa e kohu ai, E lei ‘ilima ē. lei ‘ilima]
+      english_lines: [The ‘ilima is my lei and, The joy of my heart, The adornment for me, It is dear to my thoughts, I greatly desire its beauty, A charming lei to my sight, It is the companion suitable to your beauty, The ‘ilima wreath, the ʻilima wreath]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Lei Ilima.txt
+  source_publication: King's Book of Hawaiian Melodies © 1926,43 Charles E. King - Translated by Mary Pukui
+  copyright: 1926
+  extraction_date: 2025-09-14T18:01:38.835794
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

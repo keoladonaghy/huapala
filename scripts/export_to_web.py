@@ -7,6 +7,7 @@ This creates a static data file that can be served by GitHub Pages.
 """
 
 import json
+import os
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
@@ -43,7 +44,6 @@ def export_songs_data():
             ms.source_file,
             ms.source_publication,
             ms.copyright_info,
-            ms.verses_json,
             ms.primary_location,
             ms.island,
             ms.themes,
@@ -58,7 +58,7 @@ def export_songs_data():
             cm.canonical_mele_id, cm.canonical_title_hawaiian, cm.canonical_title_english,
             cm.primary_composer, cm.primary_lyricist, cm.estimated_composition_date,
             cm.cultural_significance_notes, ms.composer, ms.translator, ms.hawaiian_editor,
-            ms.source_file, ms.source_publication, ms.copyright_info, ms.verses_json,
+            ms.source_file, ms.source_publication, ms.copyright_info,
             ms.primary_location, ms.island, ms.themes, ms.mele_type, ms.cultural_elements
         ORDER BY cm.canonical_title_hawaiian
         """
@@ -71,14 +71,64 @@ def export_songs_data():
         for row in rows:
             song = dict(row)
             
-            # Parse JSON fields
-            if song['verses_json']:
-                try:
-                    song['verses'] = json.loads(song['verses_json'])
-                except:
-                    song['verses'] = []
+            # Get the source ID for this canonical mele
+            source_id_query = """
+            SELECT id FROM mele_sources WHERE canonical_mele_id = %s
+            """
+            cur.execute(source_id_query, (song['canonical_mele_id'],))
+            source_result = cur.fetchone()
+            
+            if source_result:
+                source_id = source_result['id']
+                
+                # Get verses from normalized tables
+                verses_query = """
+                SELECT 
+                    v.verse_id,
+                    v.verse_type,
+                    v.verse_number,
+                    v.verse_order,
+                    v.label,
+                    JSON_AGG(
+                        JSON_BUILD_OBJECT(
+                            'id', vl.line_id,
+                            'line_number', vl.line_number,
+                            'hawaiian_text', vl.hawaiian_text,
+                            'english_text', vl.english_text,
+                            'is_bilingual', vl.is_bilingual
+                        ) ORDER BY vl.line_number
+                    ) as lines
+                FROM verses v
+                LEFT JOIN verse_lines vl ON v.id = vl.verse_id
+                WHERE v.mele_source_id = %s
+                GROUP BY v.id, v.verse_id, v.verse_type, v.verse_number, v.verse_order, v.label
+                ORDER BY v.verse_order
+                """
+                
+                cur.execute(verses_query, (source_id,))
+                verses_rows = cur.fetchall()
             else:
-                song['verses'] = []
+                # No source found, set empty verses
+                verses_rows = []
+            
+            # Build verses structure
+            verses = []
+            for verse_row in verses_rows:
+                verse_data = {
+                    'id': verse_row['verse_id'],
+                    'type': verse_row['verse_type'],
+                    'number': verse_row['verse_number'],
+                    'order': verse_row['verse_order'],
+                    'lines': verse_row['lines'] or []
+                }
+                
+                # Add label if present
+                if verse_row['label']:
+                    verse_data['label'] = verse_row['label']
+                    
+                verses.append(verse_data)
+            
+            song['verses'] = verses
             
             # Clean up None values and empty arrays
             if song['youtube_urls'] and song['youtube_urls'][0] is None:
@@ -88,9 +138,6 @@ def export_songs_data():
                 
             if song['youtube_count'] == 0:
                 song['youtube_count'] = None
-                
-            # Remove the raw JSON field
-            del song['verses_json']
             
             songs_data.append(song)
         

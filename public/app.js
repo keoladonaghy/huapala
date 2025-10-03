@@ -16,22 +16,15 @@ class HuapalaApp {
             let response;
             let songs;
             
-            if (window.location.hostname === 'localhost') {
-                // Local development - use API
-                const API_BASE_URL = 'http://localhost:8000';
-                response = await fetch(`${API_BASE_URL}/songs`);
-                if (!response.ok) {
-                    throw new Error(`Failed to load songs data: ${response.status}`);
-                }
-                songs = await response.json();
-            } else {
-                // GitHub Pages - use static data file
-                response = await fetch('./songs-data.json');
-                if (!response.ok) {
-                    throw new Error(`Failed to load songs data: ${response.status}`);
-                }
-                songs = await response.json();
+            // Always use database API for all environments
+            const API_BASE_URL = window.location.hostname === 'localhost' 
+                ? 'http://localhost:8000' 
+                : ''; // Use relative URL for production
+            response = await fetch(`${API_BASE_URL}/songs`);
+            if (!response.ok) {
+                throw new Error(`Failed to load songs data: ${response.status}`);
             }
+            songs = await response.json();
             
             this.songs = songs;
             this.filteredSongs = [...this.songs];

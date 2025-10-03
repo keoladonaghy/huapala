@@ -1,0 +1,36 @@
+{
+  "id": "haleakala_hula",
+  "title": {
+    "hawaiian": "Haleakala Hula",
+    "english": "House of the sun",
+    "normalized": "haleakala_hula",
+    "alternate_titles": [
+      "Haleakalā Hula"
+    ]
+  },
+  "attribution": {
+    "composer": "Alice Nämakelua",
+    "lyricist": null
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | Kuahiwi nani ʻoe Haleakalā\n      | Kaulana hoʻi ʻoe kū kilakila\n      | ʻO Makawao ia ua kaulana\n      | I kāohi ia iho o ka lāʻau\n      | He ʻŪkiu e ka ua o ka ʻāina\n      | Me ka makani aheahe ʻoluʻolu\n      | E aho no ʻoe a e komo mai\n      | A e hoʻolaʻi ka malu o ke ao\n      | Puana ka inoa i lohe ʻia\n      | Kuahiwi nani ʻoe Haleakalā\n      english_text: \n      | You are a beautiful mountain,\n      | Haleakalā\n      | You are famous and stand\n      | majestically\n      | At Makawao, this rain is well\n      | known\n      | It falls gently on the\n      | trees\n      | ʻŪkiu is the\n      | name of the rain of this land\n      hawaiian_lines: [Kuahiwi nani ʻoe Haleakalā, Kaulana hoʻi ʻoe kū kilakila, ʻO Makawao ia ua kaulana, I kāohi ia iho o ka lāʻau, He ʻŪkiu e ka ua o ka ʻāina, Me ka makani aheahe ʻoluʻolu, E aho no ʻoe a e komo mai, A e hoʻolaʻi ka malu o ke ao, Puana ka inoa i lohe ʻia, Kuahiwi nani ʻoe Haleakalā]\n      english_lines: [You are a beautiful mountain,, Haleakalā, You are famous and stand, majestically, At Makawao, this rain is well, known, It falls gently on the, trees, ʻŪkiu is the, name of the rain of this land]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Kuahiwi Nani.txt",
+    "source_publication": "Mana Collection - Composed 1941,",
+    "extraction_date": "2025-09-14T18:01:38.897873",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

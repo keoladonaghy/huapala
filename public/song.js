@@ -19,28 +19,15 @@ class SongPage {
                 throw new Error('No song ID provided');
             }
             
-            if (window.location.hostname === 'localhost') {
-                // Local development - use API
-                const API_BASE_URL = 'http://localhost:8000';
-                const response = await fetch(`${API_BASE_URL}/songs/${songId}`);
-                if (!response.ok) {
-                    throw new Error(`Failed to load song: ${response.status}`);
-                }
-                this.song = await response.json();
-            } else {
-                // GitHub Pages - use static data file and find song by ID
-                const response = await fetch('./songs-data.json');
-                if (!response.ok) {
-                    throw new Error(`Failed to load songs data: ${response.status}`);
-                }
-                const songs = await response.json();
-                
-                // Find the song by ID
-                this.song = songs.find(song => song.canonical_mele_id === songId);
-                if (!this.song) {
-                    throw new Error(`Song with ID "${songId}" not found`);
-                }
+            // Always use database API for all environments
+            const API_BASE_URL = window.location.hostname === 'localhost' 
+                ? 'http://localhost:8000' 
+                : ''; // Use relative URL for production
+            const response = await fetch(`${API_BASE_URL}/songs/${songId}`);
+            if (!response.ok) {
+                throw new Error(`Failed to load song: ${response.status}`);
             }
+            this.song = await response.json();
             
             this.renderSong();
             this.hideLoading();

@@ -1,0 +1,162 @@
+================================================================================
+CODE DEDUPLICATION ANALYSIS REPORT
+================================================================================
+Generated: 2025-09-27T13:04:45.463330
+Files Analyzed: 88
+
+📊 SUMMARY
+----------------------------------------
+Total Duplication Patterns: 138
+High Priority: 9
+Medium Priority: 79
+Low Priority: 50
+Total Lines Duplicated: 26566
+
+💡 RECOMMENDATIONS
+----------------------------------------
+• 🚨 HIGH PRIORITY: Address 9 critical duplication patterns immediately
+• 🔧 Consider creating shared utilities for sql_query (found 55 times)
+• 🔧 Consider creating shared utilities for unknown (found 36 times)
+• 🔧 Consider creating shared utilities for error_handling (found 12 times)
+• 📋 Create a refactoring plan to address duplications systematically
+• 🔄 Run this analysis weekly to catch new duplication patterns early
+
+🔍 DETAILED PATTERNS
+----------------------------------------
+
+1. Found 7 similar auth_check patterns
+   Type: auth_check
+   Priority: HIGH
+   Similarity: 100.00%
+   Estimated Savings: 7 lines, 7 locations
+   Suggestion: Use centralized authentication from `auth.py` module (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - main.py:1239 - # Check authentication
+     - main.py:1279 - # Check authentication
+     - main.py:1310 - # Check authentication
+     - main.py:1321 - # Check authentication
+     - main.py:1542 - # Check authentication
+     ... and 2 more locations
+
+2. Found 4 similar credential_handling patterns
+   Type: credential_handling
+   Priority: HIGH
+   Similarity: 100.00%
+   Estimated Savings: 4 lines, 4 locations
+   Suggestion: Use shared credential management from `auth.py` (MEDIUM PRIORITY - Multiple locations)
+   Locations:
+     - validate_data_integrity.py:29 - DB_URL = f"postgresql://neondb_owner:{os.environ['PGPASSWORD']}@ep-young-silence-ad9wue88-pooler.c-2...
+     - debug_verse_structure.py:10 - DB_URL = f"postgresql://neondb_owner:{os.environ['PGPASSWORD']}@ep-young-silence-ad9wue88-pooler.c-2...
+     - debug_corrupted_songs.py:10 - DB_URL = f"postgresql://neondb_owner:{os.environ['PGPASSWORD']}@ep-young-silence-ad9wue88-pooler.c-2...
+     - fix_verses_corruption.py:23 - DB_URL = f"postgresql://neondb_owner:{os.environ['PGPASSWORD']}@ep-young-silence-ad9wue88-pooler.c-2...
+
+3. Found 3 similar auth_check patterns
+   Type: auth_check
+   Priority: HIGH
+   Similarity: 100.00%
+   Estimated Savings: 3 lines, 3 locations
+   Suggestion: Use centralized authentication from `auth.py` module (MEDIUM PRIORITY - Multiple locations)
+   Locations:
+     - main.py:96 - token = request.cookies.get("admin_session")
+     - main.py:103 - token = request.cookies.get("admin_session")
+     - main.py:1228 - token = request.cookies.get("admin_session")
+
+4. Found 4 similar credential_handling patterns
+   Type: credential_handling
+   Priority: HIGH
+   Similarity: 99.11%
+   Estimated Savings: 4 lines, 4 locations
+   Suggestion: Use shared credential management from `auth.py` (MEDIUM PRIORITY - Multiple locations)
+   Locations:
+     - maintenance.py:183 - print("❌ Error: PGPASSWORD environment variable not set")
+     - create_normalized_tables.py:118 - print("❌ Error: PGPASSWORD environment variable not set")
+     - validate_data_integrity.py:335 - print("Error: PGPASSWORD environment variable not set")
+     - migrate_verses_to_tables.py:173 - print("❌ Error: PGPASSWORD environment variable not set")
+
+5. Found 22 similar database_connection patterns
+   Type: database_connection
+   Priority: HIGH
+   Similarity: 94.99%
+   Estimated Savings: 22 lines, 22 locations
+   Suggestion: Create shared database connection utility in `database.py` or `auth.py` (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - auth.py:30 - def get_db_connection():
+     - auth.py:100 - conn = get_db_connection()
+     - auth.py:114 - return get_db_connection()
+     - main.py:121 - def get_db_connection():
+     - main.py:179 - conn = get_db_connection()
+     ... and 17 more locations
+
+6. Found 8 similar auth_check patterns
+   Type: auth_check
+   Priority: HIGH
+   Similarity: 92.50%
+   Estimated Savings: 8 lines, 8 locations
+   Suggestion: Use centralized authentication from `auth.py` module (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - main.py:101 - def check_admin_auth(request: Request):
+     - main.py:1240 - auth_redirect = check_admin_auth(request)
+     - main.py:1280 - auth_redirect = check_admin_auth(request)
+     - main.py:1311 - auth_redirect = check_admin_auth(request)
+     - main.py:1322 - auth_redirect = check_admin_auth(request)
+     ... and 3 more locations
+
+7. Found 11 similar database_connection patterns
+   Type: database_connection
+   Priority: HIGH
+   Similarity: 89.34%
+   Estimated Savings: 11 lines, 11 locations
+   Suggestion: Create shared database connection utility in `database.py` or `auth.py` (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - database.py:246 - db = SessionLocal()
+     - debug_song_data.py:8 - db = SessionLocal()
+     - debug_all_verses.py:8 - db = SessionLocal()
+     - main.py:1245 - db = SessionLocal()
+     - main.py:1285 - db = SessionLocal()
+     ... and 6 more locations
+
+8. Found 17 similar credential_handling patterns
+   Type: credential_handling
+   Priority: HIGH
+   Similarity: 84.36%
+   Estimated Savings: 17 lines, 17 locations
+   Suggestion: Use shared credential management from `auth.py` (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - auth.py:37 - password=os.getenv('PGPASSWORD'),
+     - auth.py:86 - if not os.getenv('PGPASSWORD'):
+     - create_normalized_tables.py:117 - if not os.getenv('PGPASSWORD'):
+     - clear_database.py:20 - password = os.getenv('PGPASSWORD', '')
+     - database.py:22 - password = os.getenv('PGPASSWORD')
+     ... and 12 more locations
+
+9. Found 6 similar credential_handling patterns
+   Type: credential_handling
+   Priority: HIGH
+   Similarity: 83.71%
+   Estimated Savings: 6 lines, 6 locations
+   Suggestion: Use shared credential management from `auth.py` (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - clear_database.py:23 - return f"postgresql://{user}:{password}@{host}:{port}/{database}"
+     - database.py:25 - return f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode=require"
+     - debug_melesources.py:21 - return f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode=require"
+     - check_tables.py:22 - return f"postgresql://{user}:{password}@{host}:{port}/{database}"
+     - scripts/import_songbook_data.py:39 - return f"postgresql://{user}:{password}@{host}:{port}/{database}"
+     ... and 1 more locations
+
+10. Found 120 similar error_handling patterns
+   Type: error_handling
+   Priority: MEDIUM
+   Similarity: 100.00%
+   Estimated Savings: 120 lines, 120 locations
+   Suggestion: Create shared error handling decorators or middleware (HIGH PRIORITY - Found in many locations)
+   Locations:
+     - auth.py:32 - try:
+     - auth.py:99 - try:
+     - maintenance.py:27 - try:
+     - maintenance.py:101 - try:
+     - normalize_filenames.py:85 - try:
+     ... and 115 more locations
+
+... and 128 more patterns
+
+================================================================================

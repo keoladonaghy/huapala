@@ -1,0 +1,37 @@
+{
+  "id": "green_carnation",
+  "title": {
+    "hawaiian": "Green Carnation",
+    "normalized": "green_carnation",
+    "alternate_titles": []
+  },
+  "attribution": {
+    "composer": "John K. Almeida",
+    "lyricist": null,
+    "translator": "Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier",
+    "hawaiian_editor": "Puakea Nogelmeier"
+  },
+  "content": {
+    "verses": "[\n    [0] {\n      order: 1\n      type: verse\n      hawaiian_text: \n      | Listen to Green Carnation on YouTube http://www.youtube.com/watch?v=CJBAgW6iHtY\n      | Kuʻu ipo, kuʻu pua, kuʻu lei\n      | Green carnation onaona\n      | Wili ʻia me maile lau liʻi\n      | Lei nani makamae\n      | Liʻa wau i kou nani\n      | Hoa pili no mī nei\n      | Lei mai ana iaʻu kou aloha\n      | Hoʻi mai kāua e pili\n      english_text: \n      | My sweetheart, my blossom, my wreath\n      | Green carnation, so alluring\n      | Entwined with small leaf maile\n      | Wreath so beautiful, so precious\n      | I desire your beauty\n      | Won`t you be my companion\n      | I am blessed with your love\n      | Come, let us be together\n      hawaiian_lines: [Listen to Green Carnation on YouTube http://www.youtube.com/watch?v=CJBAgW6iHtY, Kuʻu ipo, kuʻu pua, kuʻu lei, Green carnation onaona, Wili ʻia me maile lau liʻi, Lei nani makamae, Liʻa wau i kou nani, Hoa pili no mī nei, Lei mai ana iaʻu kou aloha, Hoʻi mai kāua e pili]\n      english_lines: [My sweetheart, my blossom, my wreath, Green carnation, so alluring, Entwined with small leaf maile, Wreath so beautiful, so precious, I desire your beauty, Won`t you be my companion, I am blessed with your love, Come, let us be together]\n    }\n  ]",
+    "structure_notes": "Extracted 1 sections"
+  },
+  "media": {
+    "youtube_urls": [
+      "http://www.youtube.com/watch?v=CJBAgW6iHtY"
+    ],
+    "recordings": [],
+    "sheet_music": []
+  },
+  "metadata": {
+    "source_file": "Green Carnation.txt",
+    "source_publication": "Mana Collection, Translated by Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier",
+    "extraction_date": "2025-09-14T18:01:38.848815",
+    "processing_status": "extracted",
+    "raw_html_preserved": true
+  },
+  "classification": {
+    "mele_type": [],
+    "themes": [],
+    "cultural_elements": []
+  }
+}

@@ -1,0 +1,113 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+e_hoi_i_ka_pili
+
+[TITLE]
+{
+  hawaiian: E Hoi I Ka Pili
+  english: 
+  normalized: e_hoi_i_ka_pili
+  alternate_titles: [E Hoʻi I Ka Pili]
+}
+
+[ATTRIBUTION]
+{
+  composer: Kealiʻi
+  lyricist: null
+  translator: Kealiʻi Reichel. Hawaiian Text edited by Puakea Nogelmeier © 1994 Punahele
+  hawaiian_editor: Puakea Nogelmeier
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | E hoʻi i ka pili
+      | E kuʻu ipo.
+      | E neneʻe mai, e nanea mai
+      | E ke aloha,
+      | E hoʻonipo kāua
+      | He lei wehi ʻoe
+      | No kuʻu nui kino.
+      | Lei ʻala hoʻōnaona lua i ka poli
+      | E ke aloha,
+      | E hanu lipo kāua
+      | Ka nehe a ke kai
+      | O Kahakuloa
+      | Kai koʻo hākuʻi piʻi ka pali
+      | E ke aloha,
+      | Pulu pē iho kāua
+      | Puana ʻia mai
+      | E kuʻu ipo.
+      | E neneʻe mai. e nanea mai
+      | E ke aloha,
+      | E hoʻonipo kāua
+      english_text: 
+      | Come here to me,
+      | My darling love.
+      | Cuddle close,
+      | Relax my beloved,
+      | And let us make love
+      | You are like a lei,
+      | For me to wear.
+      | Incomparably fragrant
+      | At my heart, my dearest,
+      | Let us deeply kiss
+      | The sea at Kahakuloa,
+      | Rumbles on the rocks
+      | And splashes up the
+      | cliffs.
+      | Oh my love,
+      | We are drenched
+      | Let it be told,
+      | My love, my darling.
+      | Cuddle close,
+      | Relax my beloved,
+      hawaiian_lines: [E hoʻi i ka pili, E kuʻu ipo., E neneʻe mai, e nanea mai, E ke aloha,, E hoʻonipo kāua, He lei wehi ʻoe, No kuʻu nui kino., Lei ʻala hoʻōnaona lua i ka poli, E ke aloha,, E hanu lipo kāua, Ka nehe a ke kai, O Kahakuloa, Kai koʻo hākuʻi piʻi ka pali, E ke aloha,, Pulu pē iho kāua, Puana ʻia mai, E kuʻu ipo., E neneʻe mai. e nanea mai, E ke aloha,, E hoʻonipo kāua]
+      english_lines: [Come here to me,, My darling love., Cuddle close,, Relax my beloved,, And let us make love, You are like a lei,, For me to wear., Incomparably fragrant, At my heart, my dearest,, Let us deeply kiss, The sea at Kahakuloa,, Rumbles on the rocks, And splashes up the, cliffs., Oh my love,, We are drenched, Let it be told,, My love, my darling., Cuddle close,, Relax my beloved,]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: E Hoi I ka Pili.txt
+  source_publication: Kealiʻi Reichel album "Pride of
+  copyright: 1994 Punahele
+  extraction_date: 2025-09-14T18:01:38.884606
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

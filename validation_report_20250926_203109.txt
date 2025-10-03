@@ -1,0 +1,46 @@
+================================================================================
+HUAPALA DATA INTEGRITY VALIDATION REPORT
+Generated: 2025-09-26 20:31:09.832497
+================================================================================
+
+STATISTICS:
+  Source JSON files: 12
+  Database records: 14
+  Web export songs: 14
+  Corrupted formats: 0
+  Missing fields: 14
+  Orphaned records: 12
+
+❌ STATUS: 14 ERRORS, 12 WARNINGS
+
+ERRORS:
+  ❌ [WEB] adios_ke_aloha_canonical: Missing required field 'verses'
+  ❌ [WEB] bye_and_bye_hoi_mai_canonical: Missing required field 'verses'
+  ❌ [WEB] e_hoi_i_ka_pili_canonical: Missing required field 'verses'
+  ❌ [WEB] e_waianae_canonical: Missing required field 'verses'
+  ❌ [WEB] green_carnation_canonical: Missing required field 'verses'
+  ❌ [WEB] haleakala_hula_canonical: Missing required field 'verses'
+  ❌ [WEB] heha_waipio_canonical: Missing required field 'verses'
+  ❌ [WEB] iesu_me_ke_kanaka_waiwai_canonical: Missing required field 'verses'
+  ❌ [WEB] ka_hinano_o_puna_canonical: Missing required field 'verses'
+  ❌ [WEB] kuhio_bay_canonical: Missing required field 'verses'
+  ❌ [WEB] latitu_canonical: Missing required field 'verses'
+  ❌ [WEB] lei_ilima_canonical: Missing required field 'verses'
+  ❌ [WEB] mahina_o_hoku_canonical: Missing required field 'verses'
+  ❌ [WEB] pili_mau_me_oe_canonical: Missing required field 'verses'
+
+WARNINGS:
+  ⚠️  [CONSISTENCY] bye_and_bye_hoi_mai: In source files but not in database
+  ⚠️  [CONSISTENCY] mahina_o_hoku: In source files but not in database
+  ⚠️  [CONSISTENCY] green_carnation: In source files but not in database
+  ⚠️  [CONSISTENCY] latitu: In source files but not in database
+  ⚠️  [CONSISTENCY] heha_waipio: In source files but not in database
+  ⚠️  [CONSISTENCY] lei_ilima: In source files but not in database
+  ⚠️  [CONSISTENCY] adios_ke_aloha: In source files but not in database
+  ⚠️  [CONSISTENCY] iesu_me_ke_kanaka_waiwai: In source files but not in database
+  ⚠️  [CONSISTENCY] haleakala_hula: In source files but not in database
+  ⚠️  [CONSISTENCY] ka_hinano_0_puna: In source files but not in database
+  ⚠️  [CONSISTENCY] e_hoi_i_ka_pili: In source files but not in database
+  ⚠️  [CONSISTENCY] kuhio_bay: In source files but not in database
+
+================================================================================

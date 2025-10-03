@@ -1,0 +1,107 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+latitu
+
+[TITLE]
+{
+  hawaiian: Latitu
+  english: Mana collection
+  normalized: latitu
+  alternate_titles: [Latitü]
+}
+
+[ATTRIBUTION]
+{
+  composer: Traditional
+  lyricist: null
+  translator: 
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: hui
+      hawaiian_text: 
+      | Kainō a ʻo wau wale nō ka i ʻike
+      | I nā latitū aʻā ia aupuni
+      | Eia kā he nui loa a he lehulehu
+      | Nā pailaka o ia awa kū moku ē
+      | Loko ʻino maoli nō hoʻi ʻoe e ke hoa
+      | Ko lilo paha i ka ʻulala
+      | Aloha ʻole iho i nei kupuʻeu
+      | E ʻau hele nei i ka moana
+      | E kuhi ana paha ʻoe a e nalo ana
+      | Kāu hana hōʻehaʻeha naʻau
+      | I ka nalo ʻana aʻe o kuʻu maka
+      | Lawa pono iho ai ko makemake
+      | Aia i mua kuʻu nui kino
+      | Aia i hopekuʻu hoʻoilina
+      | I ʻaneʻi hoʻi au ʻeha ka manaʻo
+      | I ka lohe ʻana mai ua heo ʻoe
+      english_text: 
+      | Chorus:
+      | I thought that I was the only
+      | one that knew
+      | The latitude of this
+      | kingdom
+      | There are many,
+      | multitudes
+      | Pilots of this boat
+      | harbor
+      | You are truly bitter,
+      | friend
+      | You are cruel
+      | You have no love for this
+      | rascal
+      | I shall sail out to sea
+      | Perhaps you think it will
+      | vanish
+      hawaiian_lines: [Kainō a ʻo wau wale nō ka i ʻike, I nā latitū aʻā ia aupuni, Eia kā he nui loa a he lehulehu, Nā pailaka o ia awa kū moku ē, Loko ʻino maoli nō hoʻi ʻoe e ke hoa, Ko lilo paha i ka ʻulala, Aloha ʻole iho i nei kupuʻeu, E ʻau hele nei i ka moana, E kuhi ana paha ʻoe a e nalo ana, Kāu hana hōʻehaʻeha naʻau, I ka nalo ʻana aʻe o kuʻu maka, Lawa pono iho ai ko makemake, Aia i mua kuʻu nui kino, Aia i hopekuʻu hoʻoilina, I ʻaneʻi hoʻi au ʻeha ka manaʻo, I ka lohe ʻana mai ua heo ʻoe]
+      english_lines: [Chorus:, I thought that I was the only, one that knew, The latitude of this, kingdom, There are many,, multitudes, Pilots of this boat, harbor, You are truly bitter,, friend, You are cruel, You have no love for this, rascal, I shall sail out to sea, Perhaps you think it will, vanish]
+      label: Hui:
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Latitū.txt
+  source_publication: Mana collection - Some credit
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.891759
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

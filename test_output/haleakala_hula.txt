@@ -1,0 +1,93 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+haleakala_hula
+
+[TITLE]
+{
+  hawaiian: Haleakala Hula
+  english: House of the sun
+  normalized: haleakala_hula
+  alternate_titles: [Haleakalā Hula]
+}
+
+[ATTRIBUTION]
+{
+  composer: Alice Nämakelua
+  lyricist: null
+  translator: 
+  hawaiian_editor: 
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | Kuahiwi nani ʻoe Haleakalā
+      | Kaulana hoʻi ʻoe kū kilakila
+      | ʻO Makawao ia ua kaulana
+      | I kāohi ia iho o ka lāʻau
+      | He ʻŪkiu e ka ua o ka ʻāina
+      | Me ka makani aheahe ʻoluʻolu
+      | E aho no ʻoe a e komo mai
+      | A e hoʻolaʻi ka malu o ke ao
+      | Puana ka inoa i lohe ʻia
+      | Kuahiwi nani ʻoe Haleakalā
+      english_text: 
+      | You are a beautiful mountain,
+      | Haleakalā
+      | You are famous and stand
+      | majestically
+      | At Makawao, this rain is well
+      | known
+      | It falls gently on the
+      | trees
+      | ʻŪkiu is the
+      | name of the rain of this land
+      hawaiian_lines: [Kuahiwi nani ʻoe Haleakalā, Kaulana hoʻi ʻoe kū kilakila, ʻO Makawao ia ua kaulana, I kāohi ia iho o ka lāʻau, He ʻŪkiu e ka ua o ka ʻāina, Me ka makani aheahe ʻoluʻolu, E aho no ʻoe a e komo mai, A e hoʻolaʻi ka malu o ke ao, Puana ka inoa i lohe ʻia, Kuahiwi nani ʻoe Haleakalā]
+      english_lines: [You are a beautiful mountain,, Haleakalā, You are famous and stand, majestically, At Makawao, this rain is well, known, It falls gently on the, trees, ʻŪkiu is the, name of the rain of this land]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: []
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Kuahiwi Nani.txt
+  source_publication: Mana Collection - Composed 1941,
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.897873
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================

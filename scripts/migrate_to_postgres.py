@@ -253,7 +253,10 @@ def insert_to_database(canonical_entries, processed_files, config):
                 attribution.get('translator', ''),
                 attribution.get('hawaiian_editor', ''),
                 attribution.get('source_editor', ''),
-                json.dumps(content.get('verses', [])),
+                json.dumps({
+                    "verses": content.get('verses', []),
+                    "processing_metadata": {}
+                }),
                 content.get('structure_notes', ''),
                 metadata.get('source_file', ''),
                 metadata.get('source_publication', ''),

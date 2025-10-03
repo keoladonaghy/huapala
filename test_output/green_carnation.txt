@@ -1,0 +1,90 @@
+================================================================================
+MELE DATA - EDITABLE FORMAT
+================================================================================
+
+# All JSON fields are preserved below for editing
+# Format: FIELD_NAME: value
+# Nested structures use indentation
+# Multi-line text uses | prefix
+
+[ID]
+green_carnation
+
+[TITLE]
+{
+  hawaiian: Green Carnation
+  english: 
+  normalized: green_carnation
+  alternate_titles: []
+}
+
+[ATTRIBUTION]
+{
+  composer: John K. Almeida
+  lyricist: null
+  translator: Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier
+  hawaiian_editor: Puakea Nogelmeier
+  source_editor: 
+}
+
+[CONTENT]
+{
+  verses: [
+    [0] {
+      order: 1
+      type: verse
+      hawaiian_text: 
+      | Listen to Green Carnation on YouTube http://www.youtube.com/watch?v=CJBAgW6iHtY
+      | Kuʻu ipo, kuʻu pua, kuʻu lei
+      | Green carnation onaona
+      | Wili ʻia me maile lau liʻi
+      | Lei nani makamae
+      | Liʻa wau i kou nani
+      | Hoa pili no mī nei
+      | Lei mai ana iaʻu kou aloha
+      | Hoʻi mai kāua e pili
+      english_text: 
+      | My sweetheart, my blossom, my wreath
+      | Green carnation, so alluring
+      | Entwined with small leaf maile
+      | Wreath so beautiful, so precious
+      | I desire your beauty
+      | Won`t you be my companion
+      | I am blessed with your love
+      | Come, let us be together
+      hawaiian_lines: [Listen to Green Carnation on YouTube http://www.youtube.com/watch?v=CJBAgW6iHtY, Kuʻu ipo, kuʻu pua, kuʻu lei, Green carnation onaona, Wili ʻia me maile lau liʻi, Lei nani makamae, Liʻa wau i kou nani, Hoa pili no mī nei, Lei mai ana iaʻu kou aloha, Hoʻi mai kāua e pili]
+      english_lines: [My sweetheart, my blossom, my wreath, Green carnation, so alluring, Entwined with small leaf maile, Wreath so beautiful, so precious, I desire your beauty, Won`t you be my companion, I am blessed with your love, Come, let us be together]
+    }
+  ]
+  structure_notes: Extracted 1 sections
+}
+
+[MEDIA]
+{
+  youtube_urls: [http://www.youtube.com/watch?v=CJBAgW6iHtY]
+  recordings: []
+  sheet_music: []
+}
+
+[METADATA]
+{
+  source_file: Green Carnation.txt
+  source_publication: Mana Collection, Translated by Kanani Mana. Hawaiian Text edited by Puakea Nogelmeier
+  copyright: 
+  extraction_date: 2025-09-14T18:01:38.848815
+  processing_status: extracted
+  raw_html_preserved: true
+}
+
+[CLASSIFICATION]
+{
+  mele_type: []
+  themes: []
+  primary_location: 
+  island: 
+  cultural_elements: []
+}
+
+================================================================================
+END OF MELE DATA
+================================================================================
