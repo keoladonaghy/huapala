@@ -30,12 +30,14 @@ jobs:
     - name: Install admin dependencies
       run: |
         cd admin
-        npm install
+        npm ci
+        echo "npm install completed"
 
     - name: Build admin interface
       run: |
         cd admin
         npm run build
+        echo "Build command completed, checking dist directory:"
         ls -la dist/
         echo "Admin build completed"
 
@@ -63,9 +65,14 @@ jobs:
         # Copy built admin interface
         echo "Checking admin/dist directory:"
         ls -la admin/dist/
-        cp -r admin/dist build/admin
-        echo "Admin interface copied to build/admin"
-        ls -la build/admin/
+        if [ -d "admin/dist" ]; then
+          cp -r admin/dist build/admin
+          echo "Admin interface copied to build/admin"
+          ls -la build/admin/
+        else
+          echo "ERROR: admin/dist directory not found!"
+          exit 1
+        fi
         
         # Copy public MD files
         mkdir -p build/docs
