@@ -19,15 +19,32 @@ class SongPage {
                 throw new Error('No song ID provided');
             }
             
-            // Fetch song directly from database API
-            const response = await fetch(`/songs/${songId}`);
-            if (!response.ok) {
-                if (response.status === 404) {
+            // Use config system to determine data source
+            const dataSource = window.Config.getDataSource();
+            
+            if (window.Config.isDevelopment) {
+                // Development: Use API endpoint
+                const response = await fetch(dataSource.songById(songId));
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        throw new Error(`Song with ID "${songId}" not found`);
+                    }
+                    throw new Error(`Failed to load song data: ${response.status}`);
+                }
+                this.song = await response.json();
+            } else {
+                // Production: Load all songs and filter client-side
+                const response = await fetch(dataSource.songs);
+                if (!response.ok) {
+                    throw new Error(`Failed to load songs data: ${response.status}`);
+                }
+                const songs = await response.json();
+                this.song = songs.find(song => song.canonical_mele_id === songId);
+                
+                if (!this.song) {
                     throw new Error(`Song with ID "${songId}" not found`);
                 }
-                throw new Error(`Failed to load song data: ${response.status}`);
             }
-            this.song = await response.json();
             
             console.log('DEBUG: Song loaded from database API:', this.song);
             
@@ -442,13 +459,29 @@ class SongModalManager {
         container.innerHTML = '<div class="modal-loading">Loading songbook information...</div>';
         
         try {
-            // Fetch songbook data for this song
-            const response = await fetch(`/songs/${songId}/songbooks`);
-            if (!response.ok) {
-                throw new Error(`Failed to load songbooks: ${response.status}`);
+            // Use config system to determine data source
+            const dataSource = window.Config.getDataSource();
+            let songbooks = [];
+            
+            if (window.Config.isDevelopment) {
+                // Development: Use API endpoint
+                const response = await fetch(dataSource.songbooks(songId));
+                if (!response.ok) {
+                    throw new Error(`Failed to load songbooks: ${response.status}`);
+                }
+                const data = await response.json();
+                songbooks = data.songbooks || [];
+            } else {
+                // Production: Load static songbooks data and filter client-side
+                const response = await fetch(dataSource.songbooks());
+                if (!response.ok) {
+                    throw new Error(`Failed to load songbooks data: ${response.status}`);
+                }
+                const allSongbooks = await response.json();
+                songbooks = allSongbooks[songId] || [];
             }
             
-            const data = await response.json();
+            const data = { songbooks: songbooks, count: songbooks.length };
             
             if (data.songbooks && data.songbooks.length > 0) {
                 // Display the songbooks

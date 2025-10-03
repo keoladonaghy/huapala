@@ -1,6 +1,10 @@
 # Data directories with proprietary content
 data/
-lovable-admin/
+admin/
+
+# Private documentation and sensitive files
+docs_private/
+backups/
 
 # Python
 __pycache__/

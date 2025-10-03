@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song - Huapala Hawaiian Music Archives</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            font-size: 16pt;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            padding: 40px;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+        
+        .print-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .song-title {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 4px;
+        }
+        
+        .song-composer {
+            font-size: 16pt;
+            color: #555;
+            font-style: italic;
+        }
+        
+        .song-lyrics {
+            margin-bottom: 30px;
+        }
+        
+        .verse-container {
+            margin-bottom: 18pt;
+            page-break-inside: avoid;
+        }
+        
+        .verse-container:last-child {
+            margin-bottom: 0;
+        }
+        
+        .line-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 2pt;
+            align-items: start;
+            margin-left: 50px;
+        }
+        
+        .line-pair:last-child {
+            margin-bottom: 0;
+        }
+        
+        .hawaiian-line {
+            color: #000;
+            font-weight: 500;
+            font-size: 16pt;
+            line-height: 1.2;
+        }
+        
+        .english-line {
+            color: #333;
+            font-style: italic;
+            font-size: 16pt;
+            line-height: 1.2;
+        }
+        
+        .hawaiian-only-line {
+            color: #000;
+            font-weight: 500;
+            font-size: 22pt;
+            line-height: 1.2;
+            margin-bottom: 2pt;
+            text-align: left;
+            margin-left: 50px;
+        }
+        
+        .hawaiian-only-line:last-child {
+            margin-bottom: 0;
+        }
+        
+        .verse-label {
+            font-weight: bold;
+            margin-bottom: 8pt;
+            margin-top: 18pt;
+            color: #000;
+            font-size: 20pt;
+            margin-left: 50px;
+        }
+        
+        .cultural-notes {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+            font-size: 14pt;
+            line-height: 1.5;
+            color: #555;
+            page-break-inside: avoid;
+        }
+        
+        .notes-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #000;
+        }
+        
+        .loading, .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 16pt;
+        }
+        
+        .error {
+            color: #cc0000;
+            border: 2px solid #cc0000;
+            background: #ffeeee;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                padding: 0.5in;
+                font-size: 16pt;
+            }
+            
+            .song-title {
+                font-size: 22pt;
+            }
+            
+            .verse-container {
+                margin-bottom: 30px;
+                page-break-inside: avoid;
+            }
+            
+            /* Ensure verses don't break across pages */
+            .verse-container {
+                break-inside: avoid;
+            }
+        }
+        
+        /* Mobile responsiveness for preview */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+                font-size: 14pt;
+            }
+            
+            .line-pair {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            
+            .hawaiian-line, .english-line {
+                font-size: 14pt;
+            }
+            
+            .song-title {
+                font-size: 20pt;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loadingMessage" class="loading">Loading song...</div>
+    <div id="errorMessage" class="error" style="display: none;">Unable to load song. Please check the URL.</div>
+    
+    <div id="songContent" style="display: none;">
+        <div class="print-header">
+            <div class="song-title" id="songTitle"></div>
+            <div class="song-composer" id="songComposer"></div>
+        </div>
+        
+        <div class="song-lyrics" id="songLyrics">
+            <!-- Lyrics will be inserted here -->
+        </div>
+        
+        <div id="culturalNotes" class="cultural-notes" style="display: none;">
+            <div class="notes-title">Cultural Significance:</div>
+            <div id="notesContent"></div>
+        </div>
+    </div>
+    
+    <script src="song.js"></script>
+</body>
+</html>

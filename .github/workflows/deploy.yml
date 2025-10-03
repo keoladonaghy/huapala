@@ -16,23 +16,65 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: admin/package-lock.json
+
+    - name: Install admin dependencies
+      run: |
+        cd admin
+        npm install
+
+    - name: Build admin interface
+      run: |
+        cd admin
+        npm run build
+
+    - name: Setup site structure
+      run: |
+        # Create build directory
+        mkdir -p build
+        
+        # Copy main site files
+        cp index.html build/
+        cp song.html build/
+        cp song-print.html build/
+        cp huapala-search.css build/
+        cp -r js build/
+        cp -r img build/
+        cp -r css build/
+        cp -r data build/
+        
+        # Copy built admin interface
+        cp -r admin/dist build/admin
+        
+        # Copy public MD files
+        cp -r md_files build/docs
+
     - name: Setup Pages
-      uses: actions/configure-pages@v4
+      uses: actions/configure-pages@v3
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v2
       with:
-        path: 'public'
+        path: './build'
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Deploy to GitHub Pages
       id: deployment
-      uses: actions/deploy-pages@v4
+      uses: actions/deploy-pages@v2

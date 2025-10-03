@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Huapala - Hawaiian Music and Hula Archives</title>
     <!-- Force rebuild -->
+    <link rel="stylesheet" href="huapala-search.css">
     <style>
         * {
             margin: 0;
@@ -12,60 +13,101 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --base-font-size: 14px;
+            --header-bg-overlay: rgba(255, 248, 220, 0.85);
+        }
+        
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            font-size: var(--base-font-size);
             line-height: 1.4;
-            color: #000;
+            color: #2c2c2c;
             background: #fff url('img/bk.jpg') repeat;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 10px;
+            padding: 0;
             background: #fff;
             min-height: 100vh;
         }
         
         header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 32px;
+            padding: 0 20px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: url('img/headerBkg.png') repeat-x top left;
+            background-size: auto;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--header-bg-overlay);
+            pointer-events: none;
         }
         
         .header-logo {
+            height: 100%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-110%);
+            z-index: 1;
         }
         
-        .hibiscus {
-            width: 24px;
-            height: 24px;
+        .header-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
         }
         
-        h1 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #000;
-            margin: 0;
+        .header-logo a:hover {
+            transform: scale(1.02);
         }
         
-        .subtitle {
-            font-size: 14px;
-            color: #666;
-            font-style: italic;
-            margin-top: 3px;
+        .aks-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(10%);
+            z-index: 1;
+        }
+        
+        .aks-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .aks-logo a:hover {
+            transform: scale(1.02);
+        }
+        
+        .header-logo img, .aks-logo img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
         }
         
         .search-box {
             margin-bottom: 20px;
-            text-align: center;
+            padding-left: 10px;
         }
         
         #searchInput {
@@ -78,6 +120,7 @@
         
         .songs-list {
             margin-bottom: 30px;
+            padding: 0 50px;
         }
         
         .song-entry {
@@ -112,10 +155,10 @@
         }
         
         .loading {
-            text-align: center;
             color: #000;
             font-size: 12px;
             margin: 20px 0;
+            padding-left: 10px;
         }
         
         .error {
@@ -123,8 +166,7 @@
             border: 1px solid #cc0000;
             color: #cc0000;
             padding: 10px;
-            margin: 20px 0;
-            text-align: center;
+            margin: 20px 10px;
             font-size: 12px;
         }
 
@@ -357,26 +399,218 @@
             font-size: 12px;
             border-radius: 3px;
         }
+        
+        .page-info-icon {
+            position: absolute;
+            right: 55px;
+            bottom: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+            color: #444;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-info-icon:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .page-info-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .settings-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+            color: #444;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .settings-icon:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .settings-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Settings Dropdown Styles */
+        #settingsModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+        
+        #settingsModal .modal-content {
+            position: absolute;
+            right: 20px;
+            top: 90px;
+            margin: 0;
+            width: 280px;
+            max-width: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .settings-content {
+            padding: 15px;
+        }
+        
+        .setting-section {
+            margin-bottom: 0;
+        }
+        
+        .setting-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .setting-section h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+        
+        .font-size-visual {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .font-size-option-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .font-size-option-visual:hover {
+            border-color: #007bff;
+            background: #e9f4ff;
+            transform: translateY(-1px);
+        }
+        
+        .font-size-option-visual.active {
+            border-color: #007bff;
+            background: #007bff;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+        }
+        
+        .size-indicator {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .small-text {
+            font-size: 12px;
+        }
+        
+        .medium-text {
+            font-size: 16px;
+        }
+        
+        .large-text {
+            font-size: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .songs-list {
+                padding: 0 10px;
+            }
+            
+            #searchInput {
+                width: 280px;
+                max-width: 90vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #searchInput {
+                width: 250px;
+                max-width: 85vw;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="header-logo">
-                <img src="img/hibiscus.gif" alt="Hibiscus" class="hibiscus">
-                <h1>Huapala</h1>
-                <img src="img/hibiscus.gif" alt="Hibiscus" class="hibiscus">
+                <a href="/">
+                    <img src="img/huapala.tab.png" alt="Huapala - Hawaiian Music and Hula Archives">
+                </a>
             </div>
-            <div class="subtitle">Hawaiian Music and Hula Archives</div>
+            <div class="aks-logo">
+                <a href="/aks">
+                    <img src="img/AKSCollection.tab.png" alt="AKS Collection">
+                </a>
+            </div>
+            <div class="page-info-icon" id="pageInfoIcon" title="Page Information">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </div>
+            <div class="settings-icon" id="settingsIcon" title="Settings">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                </svg>
+            </div>
         </header>
         
-        <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search songs by title or composer...">
-        </div>
+        <div id="mainSearch"></div>
         
         <div id="loadingMessage" class="loading">Loading songs...</div>
         <div id="errorMessage" class="error" style="display: none;">Unable to load songs. Please check your database connection.</div>
-        <div id="songsContainer" class="songs-list" style="display: none;"></div>
     </div>
     
     <!-- People Modal -->
@@ -399,6 +633,37 @@
         </div>
     </div>
     
-    <script src="app.js"></script>
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Settings</div>
+                <span class="close" id="closeSettingsModal">&times;</span>
+            </div>
+            <div class="settings-content">
+                <div class="setting-section">
+                    <div class="setting-row">
+                        <h3>Font Size</h3>
+                        <div class="font-size-visual">
+                            <div class="font-size-option-visual" data-size="12" title="Small (12pt)">
+                                <span class="size-indicator small-text">A</span>
+                            </div>
+                            <div class="font-size-option-visual" data-size="14" title="Medium (14pt)">
+                                <span class="size-indicator medium-text">A</span>
+                            </div>
+                            <div class="font-size-option-visual" data-size="16" title="Large (16pt)">
+                                <span class="size-indicator large-text">A</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/config.js"></script>
+    <script src="js/shared/settings.js"></script>
+    <script src="js/core/huapala-search.js"></script>
+    <script src="js/pages/app.js"></script>
 </body>
 </html>
