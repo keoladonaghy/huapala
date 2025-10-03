@@ -1,0 +1,299 @@
+{
+  "canonical_mele_id": "heha_waipio_canonical",
+  "canonical_title_hawaiian": "Heha Waipiʻo",
+  "canonical_title_english": "",
+  "primary_composer": "",
+  "translator": "",
+  "source_file": "data/source_html/Heha Waipio.txt",
+  "processing_metadata": {
+    "original_file": "data/source_html/Heha Waipio.txt",
+    "processed_at": "2025-09-19T17:57:49.737994",
+    "parsing_quality_score": 0,
+    "total_sections": 8,
+    "total_lines": 30
+  },
+  "verses": [
+    {
+      "id": "v1",
+      "type": "verse",
+      "number": 1,
+      "order": 1,
+      "label": "Verse 1:",
+      "lines": [
+        {
+          "id": "v1.1",
+          "line_number": 1,
+          "hawaiian_text": "Kaulana kuʻu home puni Waipiʻo",
+          "english_text": "Famous is my home,  beloved Waipiʻo",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.2",
+          "line_number": 2,
+          "hawaiian_text": "Me nā peʻa nani o ka ʻāina",
+          "english_text": "And the beautiful borders of the land",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.3",
+          "line_number": 3,
+          "hawaiian_text": "Kākela he hale aliʻi",
+          "english_text": "A castle, a royal house",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.4",
+          "line_number": 4,
+          "hawaiian_text": "Herode koʻu hoalike",
+          "english_text": "I am like Herod",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "verse",
+      "number": 2,
+      "order": 2,
+      "label": "Verse 2:",
+      "lines": [
+        {
+          "id": "v2.1",
+          "line_number": 1,
+          "hawaiian_text": "Mōʻī puni haʻakei",
+          "english_text": "A haughty king",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.2",
+          "line_number": 2,
+          "hawaiian_text": "Kukuna o ka lā koʻu kapa ʻia",
+          "english_text": "Rays of the sun are my garments",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.3",
+          "line_number": 3,
+          "hawaiian_text": "E ʻōlino nei a puni ka honua",
+          "english_text": "Sparkling on all the earth",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.4",
+          "line_number": 4,
+          "hawaiian_text": "Aue aʻi luna lilo",
+          "english_text": "Far above, so high, beyond reach",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "type": "verse",
+      "number": 3,
+      "order": 3,
+      "label": "Verse 3:",
+      "lines": [
+        {
+          "id": "v3.1",
+          "line_number": 1,
+          "hawaiian_text": "Lihi launa ʻole mai",
+          "english_text": "There are no limits",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.2",
+          "line_number": 2,
+          "hawaiian_text": "Nā aliʻi nui o ke ao",
+          "english_text": "For the great lord of the day",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.3",
+          "line_number": 3,
+          "hawaiian_text": "E oʻu mau kini nā makamaka",
+          "english_text": "My friends and neighbors",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.4",
+          "line_number": 4,
+          "hawaiian_text": "Me nā kupa o kuʻu ʻāina",
+          "english_text": "And natives of this land",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "type": "verse",
+      "number": 4,
+      "order": 4,
+      "label": "Verse 4:",
+      "lines": [
+        {
+          "id": "v4.1",
+          "line_number": 1,
+          "hawaiian_text": "Me ka wailele aʻo Hiʻilawe",
+          "english_text": "Hiʻilawe, the waterfall",
+          "is_bilingual": true
+        },
+        {
+          "id": "v4.2",
+          "line_number": 2,
+          "hawaiian_text": "Koʻiawe maila i luna",
+          "english_text": "Showering from above",
+          "is_bilingual": true
+        },
+        {
+          "id": "v4.3",
+          "line_number": 3,
+          "hawaiian_text": "Koʻiawe mau i ka pali",
+          "english_text": "Showering always on the cliff",
+          "is_bilingual": true
+        },
+        {
+          "id": "v4.4",
+          "line_number": 4,
+          "hawaiian_text": "ʻAʻole pēlā ka ʻoia ʻiʻo",
+          "english_text": "This is not the truth",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v5",
+      "type": "verse",
+      "number": 5,
+      "order": 5,
+      "label": "Verse 5:",
+      "lines": [
+        {
+          "id": "v5.1",
+          "line_number": 1,
+          "hawaiian_text": "Hakuʻepa lokoʻino o ka makamaka",
+          "english_text": "Gossip started by a jealous crony",
+          "is_bilingual": true
+        },
+        {
+          "id": "v5.2",
+          "line_number": 2,
+          "hawaiian_text": "Ua like nō a like",
+          "english_text": "I am just the same",
+          "is_bilingual": true
+        },
+        {
+          "id": "v5.3",
+          "line_number": 3,
+          "hawaiian_text": "Me nā kini lehulehu",
+          "english_text": "Like every one else",
+          "is_bilingual": true
+        },
+        {
+          "id": "v5.4",
+          "line_number": 4,
+          "hawaiian_text": "O kuʻu one hānau",
+          "english_text": "Of my birthplace",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v6",
+      "type": "verse",
+      "number": 6,
+      "order": 6,
+      "label": "Verse 6:",
+      "lines": [
+        {
+          "id": "v6.1",
+          "line_number": 1,
+          "hawaiian_text": "E ola māua me aʻu kini",
+          "english_text": "May the two of us and my friends",
+          "is_bilingual": true
+        },
+        {
+          "id": "v6.2",
+          "line_number": 2,
+          "hawaiian_text": "Me aʻu lei o nei ʻāina",
+          "english_text": "And my children live in this land",
+          "is_bilingual": true
+        },
+        {
+          "id": "v6.3",
+          "line_number": 3,
+          "hawaiian_text": "Pulupē i ka hunakai",
+          "english_text": "Drenched with sea spray",
+          "is_bilingual": true
+        },
+        {
+          "id": "v6.4",
+          "line_number": 4,
+          "hawaiian_text": "Ka iʻa mili i ka lima",
+          "english_text": "Where fish are caught in the hand",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v7",
+      "type": "verse",
+      "number": 7,
+      "order": 7,
+      "label": "Verse 7:",
+      "lines": [
+        {
+          "id": "v7.1",
+          "line_number": 1,
+          "hawaiian_text": "Heha Waipiʻo i ka noe",
+          "english_text": "Waipiʻo is drowsy in the mist",
+          "is_bilingual": true
+        },
+        {
+          "id": "v7.2",
+          "line_number": 2,
+          "hawaiian_text": "Haʻina ʻia mai ana ka puana",
+          "english_text": "Tell the refrain",
+          "is_bilingual": true
+        },
+        {
+          "id": "v7.3",
+          "line_number": 3,
+          "hawaiian_text": "No ka lei hapa pua Sēpānia",
+          "english_text": "Of this half Spanish flower lei",
+          "is_bilingual": true
+        },
+        {
+          "id": "v7.4",
+          "line_number": 4,
+          "hawaiian_text": "He kupa no ka ʻāina",
+          "english_text": "A resident of the land",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v8",
+      "type": "verse",
+      "number": 8,
+      "order": 8,
+      "label": "Verse 8:",
+      "lines": [
+        {
+          "id": "v8.1",
+          "line_number": 1,
+          "hawaiian_text": "E kipa mai ma loko",
+          "english_text": "You are welcome to come to",
+          "is_bilingual": true
+        },
+        {
+          "id": "v8.2",
+          "line_number": 2,
+          "hawaiian_text": "Haleʻiwa beautiful home",
+          "english_text": "Haleʻiwa, my beautiful home",
+          "is_bilingual": true
+        }
+      ]
+    }
+  ]
+}

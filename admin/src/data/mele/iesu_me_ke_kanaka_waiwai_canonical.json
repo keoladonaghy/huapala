@@ -1,0 +1,187 @@
+{
+  "canonical_mele_id": "iesu_me_ke_kanaka_waiwai_canonical",
+  "canonical_title_hawaiian": "Iesu Me Ke Kanaka Waiwai",
+  "canonical_title_english": "",
+  "primary_composer": "Claris Home Page version 2.0-->",
+  "translator": "",
+  "source_file": "data/source_html/Iesu Kanaka Waiwai.txt",
+  "processing_metadata": {
+    "original_file": "data/source_html/Iesu Kanaka Waiwai.txt",
+    "processed_at": "2025-09-19T17:57:49.746937",
+    "parsing_quality_score": 0,
+    "total_sections": 8,
+    "total_lines": 14
+  },
+  "verses": [
+    {
+      "id": "v1",
+      "type": "verse",
+      "number": 1,
+      "order": 1,
+      "label": "Verse 1:",
+      "lines": [
+        {
+          "id": "v1.1",
+          "line_number": 1,
+          "hawaiian_text": "Ma ke alahele ʻo Iesû",
+          "english_text": "Along the road, Jesus",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 2,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "Me ke kanaka ʻōpio hanohano",
+          "english_text": "With a distinguished young",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 3,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "Pane mai e ka ʻōpio",
+          "english_text": "Who was known for his",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 4,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "He aha hoʻi kaʻu e hana aku ai",
+          "english_text": "The young man said,",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.2",
+          "line_number": 2,
+          "hawaiian_text": "I loaʻa e ke ola mau?",
+          "english_text": "\"My good lord,",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 5,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "E hāʻawi, e hāʻawi lilo",
+          "english_text": "To gain eternal life?\"",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 6,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "Huli a hahai mai iaʻu",
+          "english_text": "\"Give, give away all",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.2",
+          "line_number": 2,
+          "hawaiian_text": "I loaʻa e ke ola mau ia ʻoe",
+          "english_text": "Of your possessions",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.3",
+          "line_number": 3,
+          "hawaiian_text": "Minamina e ka ʻōpio",
+          "english_text": "Then come and follow me",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.4",
+          "line_number": 4,
+          "hawaiian_text": "I kona mau waiwai",
+          "english_text": "In order to gain eternal",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 7,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "I ka poʻe nele a hune",
+          "english_text": "The young man grieved",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.2",
+          "line_number": 2,
+          "hawaiian_text": "Huli aʻe ʻo Iesū lā",
+          "english_text": "Over his wealth",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.3",
+          "line_number": 3,
+          "hawaiian_text": "Pane aku i ka ʻōpio",
+          "english_text": "Unwilling to sell and give",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 8,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "I ke aupuni o ka lani",
+          "english_text": "To the poor and",
+          "is_bilingual": true
+        }
+      ]
+    }
+  ]
+}

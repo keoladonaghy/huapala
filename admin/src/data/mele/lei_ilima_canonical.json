@@ -1,0 +1,91 @@
+{
+  "canonical_mele_id": "lei_ilima_canonical",
+  "canonical_title_hawaiian": "Lei Ilima",
+  "canonical_title_english": "",
+  "primary_composer": "",
+  "translator": "Mary Pukui",
+  "source_file": "data/source_html/Lei Ilima.txt",
+  "processing_metadata": {
+    "original_file": "data/source_html/Lei Ilima.txt",
+    "processed_at": "2025-09-19T17:57:49.739945",
+    "parsing_quality_score": 0,
+    "total_sections": 2,
+    "total_lines": 8
+  },
+  "verses": [
+    {
+      "id": "v1",
+      "type": "verse",
+      "number": 1,
+      "order": 1,
+      "label": "Verse 1:",
+      "lines": [
+        {
+          "id": "v1.1",
+          "line_number": 1,
+          "hawaiian_text": "‘O ka ‘ilima nō koʻu lei",
+          "english_text": "The  ‘ilima is my lei and",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.2",
+          "line_number": 2,
+          "hawaiian_text": "Ka liʻa ia nei puʻu wai",
+          "english_text": "The joy of my heart",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.3",
+          "line_number": 3,
+          "hawaiian_text": "He wehi ia no kuʻu kino",
+          "english_text": "The adornment for me",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.4",
+          "line_number": 4,
+          "hawaiian_text": "Lei hoʻohihi a ka mana‘o",
+          "english_text": "It is dear to my thoughts",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "verse",
+      "number": 2,
+      "order": 2,
+      "label": "Verse 2:",
+      "lines": [
+        {
+          "id": "v2.1",
+          "line_number": 1,
+          "hawaiian_text": "‘I‘ini au lā i kou nani",
+          "english_text": "I greatly desire its beauty",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.2",
+          "line_number": 2,
+          "hawaiian_text": "He hiwahiwa i ka‘u  ‘ike",
+          "english_text": "A charming lei to my sight",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.3",
+          "line_number": 3,
+          "hawaiian_text": "‘O wau kou hoa e kohu ai",
+          "english_text": "It is the companion suitable to your beauty",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.4",
+          "line_number": 4,
+          "hawaiian_text": "E lei  ‘ilima ē. lei ‘ilima",
+          "english_text": "The  ‘ilima wreath, the ʻilima wreath",
+          "is_bilingual": true
+        }
+      ]
+    }
+  ]
+}

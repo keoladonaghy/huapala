@@ -1,0 +1,179 @@
+{
+  "canonical_mele_id": "pili_mau_me_oe_canonical",
+  "canonical_title_hawaiian": "Pili Mau Me ʻOe",
+  "canonical_title_english": "",
+  "primary_composer": "Chris Keli&#8216;ia&#8216;a, Manu Boyd, Kenneth Makuak&auml;ne",
+  "translator": "",
+  "source_file": "data/source_html/Pili Mau Me Oe.txt",
+  "processing_metadata": {
+    "original_file": "data/source_html/Pili Mau Me Oe.txt",
+    "processed_at": "2025-09-19T17:57:49.781568",
+    "parsing_quality_score": 0,
+    "total_sections": 4,
+    "total_lines": 18
+  },
+  "verses": [
+    {
+      "id": "v1",
+      "type": "verse",
+      "number": 1,
+      "order": 1,
+      "label": "Verse 1:",
+      "lines": [
+        {
+          "id": "v1.1",
+          "line_number": 1,
+          "hawaiian_text": "Hanu i ke ʻala ou e ka pīkake",
+          "english_text": "I breathe in your fragrance, O sweet jasmine",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.2",
+          "line_number": 2,
+          "hawaiian_text": "Haliʻa ka manaʻo i ka hui mua",
+          "english_text": "And am reminded of the time we first met",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.3",
+          "line_number": 3,
+          "hawaiian_text": "Hana lauwiliwili me ka liʻa loko",
+          "english_text": "When love's desire twisted and turned within",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.4",
+          "line_number": 4,
+          "hawaiian_text": "He ʻiʻini koʻu e pili me ʻoe",
+          "english_text": "I longed to be close to you",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 2,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "Wrap your arms around my waist",
+          "english_text": "Wrap your arms around my waist",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.2",
+          "line_number": 2,
+          "hawaiian_text": "Come honihoni me",
+          "english_text": "Come kiss me",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.3",
+          "line_number": 3,
+          "hawaiian_text": "Oh my goodness ku‘u pu‘uwai",
+          "english_text": "Oh my goodness, ... my heart",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.4",
+          "line_number": 4,
+          "hawaiian_text": "Now that you are in my arms",
+          "english_text": "Now that you are in my arms",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.5",
+          "line_number": 5,
+          "hawaiian_text": "E ula la‘e hou",
+          "english_text": "What a feeling!",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.6",
+          "line_number": 6,
+          "hawaiian_text": "Darling pili mau me ‘oe",
+          "english_text": "Darling I'll always be close to you",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "verse",
+      "number": 2,
+      "order": 3,
+      "label": "Verse 2:",
+      "lines": [
+        {
+          "id": "v2.1",
+          "line_number": 1,
+          "hawaiian_text": "Helele‘i mai ka ‘ohu noe i ka ‘ili",
+          "english_text": "Lightly falls the mist on your skin",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.2",
+          "line_number": 2,
+          "hawaiian_text": "Hali‘ali‘a i ka ulu aloha",
+          "english_text": "It reminds me of when love first began to grow",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.3",
+          "line_number": 3,
+          "hawaiian_text": "Pa‘a pono ‘ia la i ku‘u manawa",
+          "english_text": "I hold this dear to my heart, my affections",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.4",
+          "line_number": 4,
+          "hawaiian_text": "He ‘i‘ini ko‘u e pili me ‘oe",
+          "english_text": "I long to be close to you",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "type": "verse",
+      "number": 3,
+      "order": 4,
+      "label": "Verse 3:",
+      "lines": [
+        {
+          "id": "v3.1",
+          "line_number": 1,
+          "hawaiian_text": "‘A‘ole ka mana‘o e poina wale",
+          "english_text": "My mind will never forget",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.2",
+          "line_number": 2,
+          "hawaiian_text": "Ka popohe o ka pikake anuhea",
+          "english_text": "The shapely beauty of the cool, sweet jasmine",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.3",
+          "line_number": 3,
+          "hawaiian_text": "‘Ae no ho‘i ua poina ‘ole",
+          "english_text": "Yes, indeed, unforgettable",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.4",
+          "line_number": 4,
+          "hawaiian_text": "Maopopo ia‘u pili mau me ‘oe",
+          "english_text": "It is clear - I'll always be close to you",
+          "is_bilingual": true
+        }
+      ]
+    }
+  ]
+}

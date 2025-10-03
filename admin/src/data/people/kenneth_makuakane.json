@@ -1,0 +1,31 @@
+{
+  "person_id": "kenneth_makuakane",
+  "full_name": "Kenneth Ah Sam You Makuakāne",
+  "display_name": "Kenneth Makuakāne",
+  "place_of_birth": "Hilo, Hawai‘i Island",
+  "places_of_hawaiian_influence": [],
+  "primary_influence_location": null,
+  "hawaiian_speaker": null,
+  "birth_date": "February 4, 1955",
+  "death_date": null,
+  "cultural_background": "Kanaka ‘Ōiwi",
+  "biographical_notes": "Kenneth Makuakāne was born to Kahu John Makuakāne and Violet Makuakāne in Hilo. He is a household name across the paeʻāina in many areas. A renaissance man in his own right, he now leads Kawaiahaʻo Church as its Senior Pastor. He is a prolific singer and songwriter with 21 Nā Hōkū Hanohano Awards, and is the 2015 recipient of the Hawaiʻi Academy of Recording Arts Lifetime Achievement Award. He is an accomplished entrepreneur, producing music for some of the biggest names in Hawaiian music. Kahu Makuakāne’s personal and professional lives have been dedicated to Hawaiian culture and to the caring of Hawaiʻi’s people. He was awarded an Honorary Doctorate of Humane Letters by the University of Hawai‘i in 2025.",
+  "roles": ["composer"],
+  "primary_role": "composer",
+  "specialties": [],
+  "active_period_start": null,
+  "active_period_end": null,
+  "notable_works": ["I Miss You, My Hawai‘i", "E Wai‘anae", "Pili Mau Me ‘Oe, ", "Maui On My Mind", "Hāna Chant"],
+  "awards_honors": [
+    { "name": "Honorary Doctorate of Humane Letters","awarded_by": "The University of Hawai‘i",  "year": 2025 },
+    { "name": "Nā Hōkū Hanohano Award", "awarded_by": "Hawai‘i Academy of Recording Arts", "year": 2021 },
+    { "name": "Lifetime Achievement Award", "awarded_by": "Hawai‘i Academy of Recording Arts", "year": 2015 },
+    { "name": "‘O‘o Award","awarded_by": "Native Hawaiian Chamber of Commerce",  "year": 2010 }
+  ],
+  "source_references": {
+    "sources": [],
+    "citations": []
+  },
+  "verification_status": "unverified",
+  "last_verified_date": null
+}

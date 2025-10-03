@@ -1,0 +1,28 @@
+{
+  "canonical_mele_id": "haleakala_hula_canonical",
+  "canonical_title_hawaiian": "Haleakala Hula",
+  "canonical_title_english": "House of the sun",
+  "primary_composer": "Alice Nämakelua",
+  "translator": "",
+  "source_file": "Kuahiwi Nani.txt",
+  "processing_metadata": {
+    "exported_at": "2025-09-19T16:56:40.902731",
+    "source": "database_export",
+    "total_sections": 1,
+    "total_lines": 0
+  },
+  "verses": [
+    {
+      "order": 1,
+      "type": "verse",
+      "hawaiian_text": "Kuahiwi nani ʻoe Haleakalā Kaulana hoʻi ʻoe kū kilakila ʻO Makawao ia ua kaulana I kāohi ia iho o ka lāʻau He ʻŪkiu e ka ua o ka ʻāina Me ka makani aheahe ʻoluʻolu E aho no ʻoe a e komo mai A e hoʻolaʻi ka malu o ke ao Puana ka inoa i lohe ʻia Kuahiwi nani ʻoe Haleakalā",
+      "english_text": "You are a beautiful mountain, Haleakalā You are famous and stand majestically At Makawao, this rain is well known It falls gently on the trees ʻŪkiu is the name of the rain of this land Here the wind is soft and cool You should come in Relax in the shade of the clouds Tell the name so that it can be heard You are a beautiful mountain, Haleakalā",
+      "hawaiian_lines": [
+        "Kuahiwi nani ʻoe Haleakalā Kaulana hoʻi ʻoe kū kilakila ʻO Makawao ia ua kaulana I kāohi ia iho o ka lāʻau He ʻŪkiu e ka ua o ka ʻāina Me ka makani aheahe ʻoluʻolu E aho no ʻoe a e komo mai A e hoʻolaʻi ka malu o ke ao Puana ka inoa i lohe ʻia Kuahiwi nani ʻoe Haleakalā"
+      ],
+      "english_lines": [
+        "You are a beautiful mountain, Haleakalā You are famous and stand majestically At Makawao, this rain is well known It falls gently on the trees ʻŪkiu is the name of the rain of this land Here the wind is soft and cool You should come in Relax in the shade of the clouds Tell the name so that it can be heard You are a beautiful mountain, Haleakalā"
+      ]
+    }
+  ]
+}

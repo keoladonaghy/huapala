@@ -1,0 +1,195 @@
+{
+  "canonical_mele_id": "e_hoi_i_ka_pili_canonical",
+  "canonical_title_hawaiian": "E Hoʻi I Ka Pili",
+  "canonical_title_english": "",
+  "primary_composer": "",
+  "translator": "Kealiʻi Reichel",
+  "source_file": "data/source_html/E Hoi I ka Pili.txt",
+  "processing_metadata": {
+    "original_file": "data/source_html/E Hoi I ka Pili.txt",
+    "processed_at": "2025-09-19T17:57:49.758898",
+    "parsing_quality_score": 0,
+    "total_sections": 5,
+    "total_lines": 19
+  },
+  "verses": [
+    {
+      "id": "v1",
+      "type": "verse",
+      "number": 1,
+      "order": 1,
+      "label": "Verse 1:",
+      "lines": [
+        {
+          "id": "v1.1",
+          "line_number": 1,
+          "hawaiian_text": "E hoʻi i ka pili",
+          "english_text": "Come here to me,",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.2",
+          "line_number": 2,
+          "hawaiian_text": "E kuʻu ipo.",
+          "english_text": "My darling love.",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.3",
+          "line_number": 3,
+          "hawaiian_text": "E neneʻe mai, e nanea mai",
+          "english_text": "Cuddle close,",
+          "is_bilingual": true
+        },
+        {
+          "id": "v1.4",
+          "line_number": 4,
+          "hawaiian_text": "E ke aloha,",
+          "english_text": "Relax my beloved,",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v2",
+      "type": "verse",
+      "number": 2,
+      "order": 2,
+      "label": "Verse 2:",
+      "lines": [
+        {
+          "id": "v2.1",
+          "line_number": 1,
+          "hawaiian_text": "E hoʻonipo kāua",
+          "english_text": "And let us make love",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.2",
+          "line_number": 2,
+          "hawaiian_text": "He lei wehi ʻoe",
+          "english_text": "You are like a lei,",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.3",
+          "line_number": 3,
+          "hawaiian_text": "No kuʻu nui kino.",
+          "english_text": "For me to wear.",
+          "is_bilingual": true
+        },
+        {
+          "id": "v2.4",
+          "line_number": 4,
+          "hawaiian_text": "Lei ʻala hoʻōnaona lua i ka poli",
+          "english_text": "Incomparably fragrant",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v3",
+      "type": "verse",
+      "number": 3,
+      "order": 3,
+      "label": "Verse 3:",
+      "lines": [
+        {
+          "id": "v3.1",
+          "line_number": 1,
+          "hawaiian_text": "E ke aloha,",
+          "english_text": "At my heart, my dearest,",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.2",
+          "line_number": 2,
+          "hawaiian_text": "E hanu lipo kāua",
+          "english_text": "Let us deeply kiss",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.3",
+          "line_number": 3,
+          "hawaiian_text": "Ka nehe a ke kai",
+          "english_text": "The sea at Kahakuloa,",
+          "is_bilingual": true
+        },
+        {
+          "id": "v3.4",
+          "line_number": 4,
+          "hawaiian_text": "O Kahakuloa",
+          "english_text": "Rumbles on the rocks",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "v4",
+      "type": "verse",
+      "number": 4,
+      "order": 4,
+      "label": "Verse 4:",
+      "lines": [
+        {
+          "id": "v4.1",
+          "line_number": 1,
+          "hawaiian_text": "Kai koʻo hākuʻi piʻi ka pali",
+          "english_text": "And splashes up the",
+          "is_bilingual": true
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "type": "chorus",
+      "number": 1,
+      "order": 5,
+      "label": "Hui:",
+      "lines": [
+        {
+          "id": "c1.1",
+          "line_number": 1,
+          "hawaiian_text": "Pulu pē iho kāua",
+          "english_text": "Oh my love,",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.2",
+          "line_number": 2,
+          "hawaiian_text": "Puana ʻia mai",
+          "english_text": "We are drenched",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.3",
+          "line_number": 3,
+          "hawaiian_text": "E kuʻu ipo.",
+          "english_text": "Let it be told,",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.4",
+          "line_number": 4,
+          "hawaiian_text": "E neneʻe mai. e nanea mai",
+          "english_text": "My love, my darling.",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.5",
+          "line_number": 5,
+          "hawaiian_text": "E ke aloha,",
+          "english_text": "Cuddle close,",
+          "is_bilingual": true
+        },
+        {
+          "id": "c1.6",
+          "line_number": 6,
+          "hawaiian_text": "E hoʻonipo kāua",
+          "english_text": "Relax my beloved,",
+          "is_bilingual": true
+        }
+      ]
+    }
+  ]
+}
