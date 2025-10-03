@@ -1,4 +1,5 @@
 import { CanonicalMele, MeleVerse, ProcessingMetadata } from "@/types/mele";
+import { Person } from "@/types/people";
 
 // Interface for the real data structure from docs/songs-data.json
 interface RealSongData {
@@ -73,4 +74,16 @@ export function adaptSongData(realSong: RealSongData): CanonicalMele {
     processing_metadata,
     verses
   };
+}
+
+// For now, return empty people data until we have real people data to adapt
+export async function loadRealPeopleData(): Promise<Person[]> {
+  try {
+    // TODO: Implement when we have real people data source
+    // For now, return empty array to prevent build errors
+    return [];
+  } catch (error) {
+    console.error('Error loading people data:', error);
+    return [];
+  }
 }

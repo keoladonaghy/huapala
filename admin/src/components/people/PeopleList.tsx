@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Person } from "@/types/people";
-import { realPeopleData } from "@/data/mockPeople";
+import { loadRealPeopleData } from "@/lib/dataAdapter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,10 +9,27 @@ import { PersonFormModal } from "./PersonFormModal";
 import { Plus, Search, Edit2, Calendar, User } from "lucide-react";
 
 export function PeopleList() {
-  const [people, setPeople] = useState<Person[]>(realPeopleData);
+  const [people, setPeople] = useState<Person[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPerson, setEditingPerson] = useState<Person | null>(null);
+
+  // Load real people data on component mount
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const realData = await loadRealPeopleData();
+        setPeople(realData);
+      } catch (err) {
+        console.error('Error loading people data:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   const filteredPeople = people.filter(person =>
     person.full_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
