@@ -11,40 +11,108 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --base-font-size: 14px;
+            --header-bg-overlay: rgba(255, 248, 220, 0.85);
+        }
+        
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            font-size: var(--base-font-size);
             line-height: 1.4;
-            color: #000;
+            color: #2c2c2c;
             background: #fff url('img/bk.jpg') repeat;
             min-height: 100vh;
         }
         
-        .page-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: linear-gradient(to right, #fff 0%, #fff 65%, transparent 100%), url('img/bk.jpg') repeat;
+        .container {
+            padding: 0;
+            background: #fff;
             min-height: 100vh;
+        }
+        
+        header {
+            margin-bottom: 4px;
+            padding: 0 20px;
+            height: 100px;
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: url('img/headerBkg.png') repeat-x top left;
+            background-size: auto;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
         
-        .main-content {
-            flex: 1;
-            padding: 20px 30px;
-            background: rgba(255,255,255,0.95);
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--header-bg-overlay);
+            pointer-events: none;
         }
         
-        .left-sidebar {
-            width: 200px;
-            padding: 20px;
-            background: rgba(255,255,255,0.9);
-            border-right: 1px solid #ddd;
+        .header-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-110%);
+            z-index: 1;
+        }
+        
+        .header-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .header-logo a:hover {
+            transform: scale(1.02);
+        }
+        
+        .aks-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(10%);
+            z-index: 1;
+        }
+        
+        .aks-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .aks-logo a:hover {
+            transform: scale(1.02);
+        }
+        
+        .header-logo img, .aks-logo img {
+            height: 85px;
+            width: auto;
+            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+        }
+        
+        .page-container {
+            background: #fff;
+            min-height: calc(100vh - 100px);
+            padding: 0;
+            margin: 0;
         }
         
         .song-header {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+            margin-left: 20px;
         }
         
         .song-title {
@@ -60,56 +128,81 @@
             margin-bottom: 10px;
         }
         
-        .sidebar-section {
-            margin-bottom: 20px;
-        }
         
-        .sidebar-title {
-            font-weight: bold;
-            font-size: 12px;
-            color: #000;
-            margin-bottom: 8px;
-        }
-        
-        .sidebar-content {
-            font-size: 11px;
-            color: #333;
-            line-height: 1.3;
-        }
-        
-        .sidebar-content a {
-            color: #0000EE;
-            text-decoration: underline;
-        }
-        
-        .lyrics-table {
-            width: 100%;
-            border-collapse: collapse;
+        /* New flexible song layout */
+        .song-lyrics {
+            width: calc(100% - 40px);
+            margin-left: 20px;
             margin-bottom: 25px;
         }
         
-        .lyrics-table td {
-            vertical-align: top;
-            padding: 15px 15px;
-            border: none;
-            font-size: 14px;
-            line-height: 1.7;
+        .verse-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
-        .hawaiian-lyrics {
-            width: 50%;
+        .verse-container:last-child {
+            margin-bottom: 0;
+        }
+        
+        .verse-column {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+        
+        .hawaiian-verse {
             color: #000;
-            border-right: 1px solid #ddd;
         }
         
-        .english-lyrics {
-            width: 50%;
+        .english-verse {
             color: #333;
             font-style: italic;
         }
         
+        .verse-line {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .verse-line:last-child {
+            margin-bottom: 0;
+        }
+        
+        .verse-label {
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #555;
+        }
+        
+        /* Future chord notation support */
+        .chord-line {
+            position: absolute;
+            top: -18px;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+            white-space: pre;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .verse-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .song-lyrics {
+                width: calc(100% - 20px);
+                margin-left: 10px;
+            }
+        }
+        
         .cultural-notes {
             margin-top: 25px;
+            margin-left: 20px;
+            margin-right: 20px;
             padding-top: 15px;
             border-top: 1px solid #ddd;
             font-size: 12px;
@@ -143,43 +236,629 @@
             display: inline-block;
             color: #0000EE;
             text-decoration: underline;
-            font-size: 12px;
-            margin-bottom: 15px;
+            font-size: 8pt;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            margin-top: 4px;
         }
         
         .back-link:hover {
             color: #0000AA;
         }
+        
+        .page-info-icon {
+            position: absolute;
+            right: 90px;
+            bottom: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+            color: #444;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-info-icon:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .page-info-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .print-icon {
+            position: absolute;
+            right: 55px;
+            bottom: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+            color: #444;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .print-icon:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .print-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .settings-icon {
+            position: absolute;
+            right: 20px;
+            bottom: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            opacity: 0.75;
+            transition: all 0.2s ease;
+            color: #444;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .settings-icon:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .settings-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Settings Dropdown Styles */
+        #settingsModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+        }
+        
+        #settingsModal .modal-content {
+            position: absolute;
+            right: 20px;
+            top: 90px;
+            margin: 0;
+            width: 280px;
+            max-width: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .settings-content {
+            padding: 15px;
+        }
+        
+        .setting-section {
+            margin-bottom: 0;
+        }
+        
+        .setting-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .setting-section h3 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+        
+        .font-size-visual {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .font-size-option-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .font-size-option-visual:hover {
+            border-color: #007bff;
+            background: #e9f4ff;
+            transform: translateY(-1px);
+        }
+        
+        .font-size-option-visual.active {
+            border-color: #007bff;
+            background: #007bff;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+        }
+        
+        .size-indicator {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .small-text {
+            font-size: 12px;
+        }
+        
+        .medium-text {
+            font-size: 16px;
+        }
+        
+        .large-text {
+            font-size: 20px;
+        }
+
+        /* Print Dialog Styles */
+        .print-dialog {
+            max-width: 500px;
+            margin: 10% auto;
+        }
+        
+        .print-dialog-content {
+            padding: 20px;
+        }
+        
+        .print-instructions {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .print-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        
+        .print-button {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            background: #f8f9fa;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .print-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .cancel-button {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+        
+        .cancel-button:hover {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .translation-button {
+            border-color: #ffc107;
+            color: #856404;
+        }
+        
+        .translation-button:hover {
+            background: #ffc107;
+            color: white;
+        }
+        
+        .lyrics-button {
+            border-color: #007bff;
+            color: #007bff;
+            background: #e9f4ff;
+        }
+        
+        .lyrics-button:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        .default-button {
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,123,255,0.2);
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modal-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .modal-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .close {
+            color: #999;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .modal-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab-button {
+            flex: 1;
+            background: #f8f9fa;
+            border: none;
+            padding: 12px 15px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #666;
+            border-right: 1px solid #ddd;
+        }
+        
+        .tab-button:last-child {
+            border-right: none;
+        }
+        
+        .tab-button.active {
+            background: #fff;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .metadata-section {
+            margin-bottom: 20px;
+        }
+        
+        .metadata-section h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .metadata-field {
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        .metadata-label {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            width: 120px;
+            vertical-align: top;
+        }
+        
+        .metadata-value {
+            color: #000;
+        }
+        
+        .modal-loading {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+        }
+        
+        .modal-error {
+            background: #ffeeee;
+            border: 1px solid #cc0000;
+            color: #cc0000;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 12px;
+            border-radius: 3px;
+        }
+        
+        /* Songbooks tab styling */
+        .songbooks-section h3 {
+            color: #2c5530;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #4a7c59;
+            padding-bottom: 5px;
+        }
+        
+        .songbooks-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .songbook-entry {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+            transition: all 0.2s ease;
+        }
+        
+        .songbook-entry:hover {
+            background: #f0f8ff;
+            border-color: #4a7c59;
+        }
+        
+        .songbook-main {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #2c5530;
+        }
+        
+        .songbook-details {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+        
+        .songbook-page, .songbook-composer {
+            font-size: 14px;
+            color: #666;
+            background: #e8f4fd;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #b3d9ff;
+        }
+        
+        .songbook-title {
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+        .songbooks-empty {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+        
+        .songbooks-note {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .songbooks-note a {
+            color: #4a7c59;
+            text-decoration: none;
+        }
+        
+        .songbooks-note a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="page-container">
-        <div class="left-sidebar">
-            <a href="index.html" class="back-link">← Back to song list</a>
-            <div id="sidebarContent"></div>
+    <div class="container">
+        <header>
+            <div class="header-logo">
+                <a href="/">
+                    <img src="img/huapala.tab.png" alt="Huapala - Hawaiian Music and Hula Archives">
+                </a>
+            </div>
+            <div class="aks-logo">
+                <a href="/aks">
+                    <img src="img/AKSCollection.tab.png" alt="AKS Collection">
+                </a>
+            </div>
+            <div class="page-info-icon" id="pageInfoIcon" title="Song Information">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                </svg>
+            </div>
+            <div class="print-icon" id="printIcon" title="Print Version">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 8H18V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 12v2H8v-2H7v-3h10v3h-1z"/>
+                    <path d="M17 10.5c-0.28 0-0.5 0.22-0.5 0.5s0.22 0.5 0.5 0.5s0.5-0.22 0.5-0.5s-0.22-0.5-0.5-0.5z"/>
+                </svg>
+            </div>
+            <div class="settings-icon" id="settingsIcon" title="Settings">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
+                </svg>
+            </div>
+        </header>
+
+        <div class="page-container">
+        <div id="loadingMessage" class="loading">Loading song...</div>
+        <div id="errorMessage" class="error" style="display: none;">Unable to load song. Please check the URL.</div>
+        <div id="songContent" style="display: none;">
+            <a href="/" class="back-link">← Back to song list</a>
+            
+            <div class="song-header">
+                <div class="song-title" id="songTitle"></div>
+                <div class="song-composer" id="songComposer"></div>
+            </div>
+            
+            <div class="song-lyrics" id="songLyrics">
+                <!-- Lyrics will be inserted here -->
+            </div>
+            
+            <div id="culturalNotes" class="cultural-notes" style="display: none;">
+                <div class="notes-title">Cultural Significance:</div>
+                <div id="notesContent"></div>
+            </div>
         </div>
-        
-        <div class="main-content">
-            <div id="loadingMessage" class="loading">Loading song...</div>
-            <div id="errorMessage" class="error" style="display: none;">Unable to load song. Please check the URL.</div>
-            <div id="songContent" style="display: none;">
-                <div class="song-header">
-                    <div class="song-title" id="songTitle"></div>
-                    <div class="song-composer" id="songComposer"></div>
+        </div>
+    </div>
+    
+    <!-- Print Options Dialog -->
+    <div id="printModal" class="modal">
+        <div class="modal-content print-dialog">
+            <div class="modal-header">
+                <div class="modal-title">Print Song Options</div>
+                <span class="close" id="closePrintModal">&times;</span>
+            </div>
+            <div class="print-dialog-content">
+                <div class="print-instructions">
+                    Select "Lyrics Only" if you want to print lyrics only. Select "Lyrics & Translation" if you want to print both. Please know that printing both could result in longer pages and make the document difficult to use on a music stand.
                 </div>
-                
-                <table class="lyrics-table" id="lyricsTable">
-                    <!-- Lyrics will be inserted here -->
-                </table>
-                
-                <div id="culturalNotes" class="cultural-notes" style="display: none;">
-                    <div class="notes-title">Cultural Significance:</div>
-                    <div id="notesContent"></div>
+                <div class="print-buttons">
+                    <button class="print-button cancel-button" id="cancelPrint">Cancel</button>
+                    <button class="print-button translation-button" id="printWithTranslation">Lyrics & Translation</button>
+                    <button class="print-button lyrics-button default-button" id="printLyricsOnly">Lyrics Only</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Settings</div>
+                <span class="close" id="closeSettingsModal">&times;</span>
+            </div>
+            <div class="settings-content">
+                <div class="setting-section">
+                    <div class="setting-row">
+                        <h3>Font Size</h3>
+                        <div class="font-size-visual">
+                            <div class="font-size-option-visual" data-size="12" title="Small (12pt)">
+                                <span class="size-indicator small-text">A</span>
+                            </div>
+                            <div class="font-size-option-visual" data-size="14" title="Medium (14pt)">
+                                <span class="size-indicator medium-text">A</span>
+                            </div>
+                            <div class="font-size-option-visual" data-size="16" title="Large (16pt)">
+                                <span class="size-indicator large-text">A</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <script src="song.js"></script>
+    <!-- Song Modal -->
+    <div id="songModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalSongTitle">Song Details</div>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-tabs">
+                <button class="tab-button active" data-tab="metadata">Song Details</button>
+                <button class="tab-button" data-tab="composer">Composer</button>
+                <button class="tab-button" data-tab="songbooks">Songbooks</button>
+            </div>
+            <div id="metadataTab" class="tab-content active">
+                <div class="modal-loading">Loading song details...</div>
+            </div>
+            <div id="composerTab" class="tab-content">
+                <div class="modal-loading">Loading composer details...</div>
+            </div>
+            <div id="songbooksTab" class="tab-content">
+                <div class="modal-loading">Click to load songbook information...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/shared/settings.js"></script>
+    <script src="js/pages/song.js"></script>
 </body>
 </html>
