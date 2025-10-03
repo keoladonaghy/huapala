@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CanonicalMele } from "@/types/mele";
-import { realMeleData } from "@/data/mockMele";
+import { loadRealSongData } from "@/lib/dataAdapter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,12 +10,32 @@ import { MeleFormModal } from "./MeleFormModal";
 import { Plus, Search, Eye, Edit2, Music, Languages, User, Calendar, FileText } from "lucide-react";
 
 export function MeleList() {
-  const [mele, setMele] = useState<CanonicalMele[]>(realMeleData);
+  const [mele, setMele] = useState<CanonicalMele[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [selectedMele, setSelectedMele] = useState<CanonicalMele | null>(null);
   const [editingMele, setEditingMele] = useState<CanonicalMele | null>(null);
+
+  // Load real data on component mount
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setLoading(true);
+        const realData = await loadRealSongData();
+        setMele(realData);
+        setError(null);
+      } catch (err) {
+        setError('Failed to load song data');
+        console.error('Error loading song data:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadData();
+  }, []);
 
   const filteredMele = mele.filter(song =>
     song.canonical_title_hawaiian.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -94,12 +114,47 @@ export function MeleList() {
     }, 0);
   };
 
+  if (loading) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center">
+            <Music className="w-12 h-12 mx-auto text-muted-foreground mb-4 animate-pulse" />
+            <h3 className="text-lg font-medium text-foreground mb-2">Loading mele collection...</h3>
+            <p className="text-muted-foreground">Fetching song data from the archive</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center">
+            <Music className="w-12 h-12 mx-auto text-destructive mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">Error loading data</h3>
+            <p className="text-muted-foreground">{error}</p>
+            <Button 
+              onClick={() => window.location.reload()} 
+              className="mt-4"
+              variant="outline"
+            >
+              Try Again
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Mele Collection</h1>
-          <p className="text-muted-foreground">Canonical Hawaiian songs with bilingual lyrics</p>
+          <p className="text-muted-foreground">Canonical Hawaiian songs with bilingual lyrics ({mele.length} songs)</p>
         </div>
         <Button onClick={openAddModal} className="bg-ocean-deep hover:bg-ocean-deep/90">
           <Plus className="w-4 h-4 mr-2" />
