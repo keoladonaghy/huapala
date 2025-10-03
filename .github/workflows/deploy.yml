@@ -36,6 +36,8 @@ jobs:
       run: |
         cd admin
         npm run build
+        ls -la dist/
+        echo "Admin build completed"
 
     - name: Setup site structure
       run: |
@@ -59,7 +61,11 @@ jobs:
         echo '{"adios_ke_aloha_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":2,"pub_year":2003,"composer":"Leleiohoku"}],"latitu_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":146,"pub_year":2003,"composer":"Harry Swinton"}]}' > build/data/songbooks-data.json
         
         # Copy built admin interface
+        echo "Checking admin/dist directory:"
+        ls -la admin/dist/
         cp -r admin/dist build/admin
+        echo "Admin interface copied to build/admin"
+        ls -la build/admin/
         
         # Copy public MD files
         mkdir -p build/docs
