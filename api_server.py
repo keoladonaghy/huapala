@@ -477,4 +477,5 @@ def run_server(port=8081):
 if __name__ == "__main__":
     # Use Railway's PORT environment variable if available
     port = int(os.getenv('PORT', 8081))
+    print(f"Starting server with database host: {os.getenv('PGHOST', 'not set')}")
     run_server(port)
