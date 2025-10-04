@@ -19,8 +19,17 @@ from sqlalchemy.orm import sessionmaker
 from database import get_database_url, People, Base
 
 # Database setup
-engine = create_engine(get_database_url())
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+try:
+    database_url = get_database_url()
+    print(f"Creating engine with URL: {database_url[:50]}...")  # Don't log full URL with password
+    engine = create_engine(database_url)
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    print("Database engine created successfully")
+except Exception as e:
+    print(f"Failed to create database engine: {e}")
+    # Still create the variables to avoid import errors
+    engine = None
+    SessionLocal = None
 
 def serialize_date(obj):
     """Helper function to serialize date objects to strings"""
