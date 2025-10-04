@@ -16,11 +16,15 @@ from sqlalchemy.dialects.postgresql import ARRAY, UUID
 # Database configuration - same as main.py
 def get_database_url():
     """Get database URL from environment variables"""
+    # Temporary hard-coded values to test Railway deployment
     host = os.getenv('PGHOST', 'ep-young-silence-ad9wue88-pooler.c-2.us-east-1.aws.neon.tech')
     database = os.getenv('PGDATABASE', 'neondb')
     user = os.getenv('PGUSER', 'neondb_owner')
     password = os.getenv('PGPASSWORD')
     port = os.getenv('PGPORT', 5432)
+    
+    # Debug logging
+    print(f"Database connection - Host: {host}, User: {user}, Database: {database}")
     
     return f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode=require"
 
