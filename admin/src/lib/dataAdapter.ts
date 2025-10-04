@@ -79,8 +79,12 @@ export function adaptSongData(realSong: RealSongData): CanonicalMele {
 
 export async function loadRealPeopleData(): Promise<Person[]> {
   try {
-    // Load from database API endpoint
-    const response = await fetch('/api/people');
+    // Load from database API endpoint - use Railway URL in production
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? '/api/people' 
+      : 'https://web-production-cde73.up.railway.app/api/people';
+    
+    const response = await fetch(apiUrl);
     if (!response.ok) {
       console.warn('People API not available, returning empty array');
       return [];
@@ -95,7 +99,11 @@ export async function loadRealPeopleData(): Promise<Person[]> {
 
 export async function createPerson(person: Omit<Person, "person_id">): Promise<Person> {
   try {
-    const response = await fetch('/api/people', {
+    const apiUrl = window.location.hostname === 'localhost' 
+      ? '/api/people' 
+      : 'https://web-production-cde73.up.railway.app/api/people';
+    
+    const response = await fetch(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,7 +124,11 @@ export async function createPerson(person: Omit<Person, "person_id">): Promise<P
 
 export async function updatePerson(personId: string, person: Omit<Person, "person_id">): Promise<Person> {
   try {
-    const response = await fetch(`/api/people/${personId}`, {
+    const baseUrl = window.location.hostname === 'localhost' 
+      ? '' 
+      : 'https://web-production-cde73.up.railway.app';
+    
+    const response = await fetch(`${baseUrl}/api/people/${personId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -137,7 +149,11 @@ export async function updatePerson(personId: string, person: Omit<Person, "perso
 
 export async function deletePerson(personId: string): Promise<void> {
   try {
-    const response = await fetch(`/api/people/${personId}`, {
+    const baseUrl = window.location.hostname === 'localhost' 
+      ? '' 
+      : 'https://web-production-cde73.up.railway.app';
+    
+    const response = await fetch(`${baseUrl}/api/people/${personId}`, {
       method: 'DELETE',
     });
     
