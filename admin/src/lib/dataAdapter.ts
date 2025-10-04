@@ -28,7 +28,8 @@ interface RealSongData {
 export async function loadRealSongData(): Promise<CanonicalMele[]> {
   try {
     // In production (GitHub Pages), load from static data
-    const response = await fetch('/data/songs-data.json');
+    // Use relative path to go up from /admin/ to root level
+    const response = await fetch('../data/songs-data.json');
     if (!response.ok) {
       throw new Error(`Failed to load song data: ${response.status}`);
     }
