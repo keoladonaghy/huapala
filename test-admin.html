@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Test</title>
+</head>
+<body>
+    <h1>Admin Test Page</h1>
+    <p>If you can see this, the deployment is working.</p>
+    <script>
+        console.log('Test script loaded');
+        fetch('/admin/assets/index-DKhznShj.js')
+            .then(response => {
+                console.log('Asset fetch status:', response.status);
+                if (response.ok) {
+                    console.log('✓ Asset file found');
+                } else {
+                    console.log('✗ Asset file not found');
+                }
+            })
+            .catch(error => {
+                console.log('✗ Asset fetch error:', error);
+            });
+    </script>
+</body>
+</html>
