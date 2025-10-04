@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Music, FileText, Settings, BarChart3 } from "lucide-react";
+import { Music, FileText, Settings, BarChart3, Mic, Video } from "lucide-react";
 
 interface MeleFormModalProps {
   isOpen: boolean;
@@ -119,8 +119,12 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="flex-1 overflow-hidden flex flex-col">
-          <Tabs defaultValue="basic" className="flex-1 overflow-hidden flex flex-col">
-            <TabsList className="grid w-full grid-cols-4 flex-shrink-0">
+          <Tabs defaultValue="processing" className="flex-1 overflow-hidden flex flex-col">
+            <TabsList className="grid w-full grid-cols-6 flex-shrink-0">
+              <TabsTrigger value="processing" className="flex items-center gap-2">
+                <Settings className="w-4 h-4" />
+                Processing Data
+              </TabsTrigger>
               <TabsTrigger value="basic" className="flex items-center gap-2">
                 <Music className="w-4 h-4" />
                 Basic Info
@@ -129,13 +133,17 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
                 <FileText className="w-4 h-4" />
                 People & Sources
               </TabsTrigger>
-              <TabsTrigger value="processing" className="flex items-center gap-2">
-                <Settings className="w-4 h-4" />
-                Processing Data
-              </TabsTrigger>
               <TabsTrigger value="content" className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4" />
                 Content Summary
+              </TabsTrigger>
+              <TabsTrigger value="recordings" className="flex items-center gap-2">
+                <Mic className="w-4 h-4" />
+                Recordings
+              </TabsTrigger>
+              <TabsTrigger value="media" className="flex items-center gap-2">
+                <Video className="w-4 h-4" />
+                Media
               </TabsTrigger>
             </TabsList>
             
@@ -319,6 +327,22 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
                     <li>• Line numbering and ordering</li>
                     <li>• Bilingual text alignment</li>
                   </ul>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="recordings" className="space-y-4 p-4">
+                <div className="p-8 text-center text-muted-foreground">
+                  <Mic className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <h3 className="text-lg font-medium mb-2">Recordings</h3>
+                  <p>Recording management functionality will be added here.</p>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="media" className="space-y-4 p-4">
+                <div className="p-8 text-center text-muted-foreground">
+                  <Video className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <h3 className="text-lg font-medium mb-2">Media</h3>
+                  <p>Media management functionality will be added here.</p>
                 </div>
               </TabsContent>
             </div>
