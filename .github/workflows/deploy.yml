@@ -63,13 +63,24 @@ jobs:
         echo '{"adios_ke_aloha_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":2,"pub_year":2003,"composer":"Leleiohoku"}],"latitu_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":146,"pub_year":2003,"composer":"Harry Swinton"}]}' > build/data/songbooks-data.json
         
         # Copy built admin interface
+        echo "=== DEBUGGING ADMIN BUILD ==="
         echo "Checking admin/dist directory:"
         ls -la admin/dist/
+        echo "Checking admin/dist/assets:"
+        ls -la admin/dist/assets/ || echo "No assets directory found"
+        echo "Contents of admin/dist/index.html:"
+        cat admin/dist/index.html
+        
         if [ -d "admin/dist" ]; then
           mkdir -p build/admin
           cp -r admin/dist/* build/admin/
           echo "Admin interface copied to build/admin"
+          echo "Contents of build/admin after copy:"
           ls -la build/admin/
+          echo "Contents of build/admin/assets:"
+          ls -la build/admin/assets/ || echo "No assets directory in build/admin"
+          echo "Final build directory structure:"
+          find build -name "*.js" -o -name "*.css" -o -name "*.html" | head -20
         else
           echo "ERROR: admin/dist directory not found!"
           exit 1
