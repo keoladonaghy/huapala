@@ -150,7 +150,13 @@ class CustomHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(json.dumps(people_data, ensure_ascii=False).encode('utf-8'))
             
         except Exception as e:
-            self.send_error_response(500, f"Failed to load people: {str(e)}")
+            # Add debug info about environment variables
+            import os
+            pgpass = os.getenv('PGPASSWORD')
+            debug_info = f"PGPASSWORD set: {bool(pgpass)}"
+            if pgpass:
+                debug_info += f", length: {len(pgpass)}, starts: {pgpass[:3]}"
+            self.send_error_response(500, f"Failed to load people: {str(e)} | Debug: {debug_info}")
     
     def serve_person_api(self, person_id):
         """Get individual person by ID"""
