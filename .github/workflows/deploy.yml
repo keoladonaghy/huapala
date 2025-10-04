@@ -58,6 +58,7 @@ jobs:
         # Copy test files for debugging
         [ -f test.html ] && cp test.html build/
         [ -f debug-assets.html ] && cp debug-assets.html build/
+        [ -f admin-test.html ] && cp admin-test.html build/admin/ && echo "Admin test file copied"
         
         # Create and populate data directory
         mkdir -p build/data

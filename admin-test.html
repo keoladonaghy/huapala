@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Directory Test</title>
+</head>
+<body>
+    <h1>Admin Directory Test</h1>
+    <p>If you see this, the admin directory is being deployed correctly.</p>
+    <script>
+        console.log('Admin test page loaded from:', window.location.href);
+        
+        // Test if we can fetch admin assets
+        fetch('./assets/index-BBudkbin.js', {method: 'HEAD'})
+            .then(response => {
+                console.log('Admin JS asset status:', response.status);
+                document.body.innerHTML += `<p>Admin JS asset status: ${response.status}</p>`;
+            })
+            .catch(error => {
+                console.log('Admin JS asset error:', error);
+                document.body.innerHTML += `<p>Admin JS asset error: ${error.message}</p>`;
+            });
+            
+        // Test data access
+        fetch('../data/songs-data.json', {method: 'HEAD'})
+            .then(response => {
+                console.log('Data file status:', response.status);
+                document.body.innerHTML += `<p>Data file status: ${response.status}</p>`;
+            })
+            .catch(error => {
+                console.log('Data file error:', error);
+                document.body.innerHTML += `<p>Data file error: ${error.message}</p>`;
+            });
+    </script>
+</body>
+</html>
