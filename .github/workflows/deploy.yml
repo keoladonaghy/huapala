@@ -55,6 +55,10 @@ jobs:
         cp -r img build/
         [ -d css ] && cp -r css build/ || echo "css directory not found, skipping"
         
+        # Copy test files for debugging
+        [ -f test.html ] && cp test.html build/
+        [ -f debug-assets.html ] && cp debug-assets.html build/
+        
         # Create and populate data directory
         mkdir -p build/data
         cp docs/songs-data.json build/data/
