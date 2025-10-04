@@ -25,6 +25,10 @@ def get_database_url():
     
     # Debug logging
     print(f"Database connection - Host: {host}, User: {user}, Database: {database}, Password set: {bool(password)}")
+    if password:
+        print(f"Password length: {len(password)}, starts with: {password[:3]}...")
+    else:
+        print("ERROR: No password found in PGPASSWORD environment variable!")
     
     return f"postgresql://{user}:{password}@{host}:{port}/{database}?sslmode=require"
 
