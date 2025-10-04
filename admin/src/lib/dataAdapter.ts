@@ -77,12 +77,16 @@ export function adaptSongData(realSong: RealSongData): CanonicalMele {
   };
 }
 
-// For now, return empty people data until we have real people data to adapt
 export async function loadRealPeopleData(): Promise<Person[]> {
   try {
-    // TODO: Implement when we have real people data source
-    // For now, return empty array to prevent build errors
-    return [];
+    // Load from the people data directory
+    const response = await fetch('../data/people-data.json');
+    if (!response.ok) {
+      console.warn('People data file not found, returning empty array');
+      return [];
+    }
+    const peopleData: Person[] = await response.json();
+    return peopleData;
   } catch (error) {
     console.error('Error loading people data:', error);
     return [];

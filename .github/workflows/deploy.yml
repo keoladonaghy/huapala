@@ -63,6 +63,7 @@ jobs:
         # Create and populate data directory
         mkdir -p build/data
         cp docs/songs-data.json build/data/
+        cp data/people-data.json build/data/
         
         # Create songbooks data
         echo '{"adios_ke_aloha_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":2,"pub_year":2003,"composer":"Leleiohoku"}],"latitu_canonical":[{"songbook_name":"He Mele Aloha (2003)","page":146,"pub_year":2003,"composer":"Harry Swinton"}]}' > build/data/songbooks-data.json
