@@ -21,6 +21,8 @@ export interface Person {
   death_date: string | null;
   cultural_background: string | null;
   biographical_notes: string;
+  photograph: string | null;
+  caption: string | null;
   roles: string[];
   primary_role: string;
   specialties: string[];
@@ -44,6 +46,8 @@ export interface PersonFormData {
   death_date: string;
   cultural_background: string;
   biographical_notes: string;
+  photograph: string;
+  caption: string;
   roles: string[];
   primary_role: string;
   specialties: string;

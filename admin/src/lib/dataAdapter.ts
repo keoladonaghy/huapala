@@ -79,10 +79,10 @@ export function adaptSongData(realSong: RealSongData): CanonicalMele {
 
 export async function loadRealPeopleData(): Promise<Person[]> {
   try {
-    // Load from the people data directory
-    const response = await fetch('../data/people-data.json');
+    // Load from database API endpoint
+    const response = await fetch('/api/people');
     if (!response.ok) {
-      console.warn('People data file not found, returning empty array');
+      console.warn('People API not available, returning empty array');
       return [];
     }
     const peopleData: Person[] = await response.json();
@@ -90,5 +90,62 @@ export async function loadRealPeopleData(): Promise<Person[]> {
   } catch (error) {
     console.error('Error loading people data:', error);
     return [];
+  }
+}
+
+export async function createPerson(person: Omit<Person, "person_id">): Promise<Person> {
+  try {
+    const response = await fetch('/api/people', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(person),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to create person: ${response.statusText}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating person:', error);
+    throw error;
+  }
+}
+
+export async function updatePerson(personId: string, person: Omit<Person, "person_id">): Promise<Person> {
+  try {
+    const response = await fetch(`/api/people/${personId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(person),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to update person: ${response.statusText}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error('Error updating person:', error);
+    throw error;
+  }
+}
+
+export async function deletePerson(personId: string): Promise<void> {
+  try {
+    const response = await fetch(`/api/people/${personId}`, {
+      method: 'DELETE',
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to delete person: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Error deleting person:', error);
+    throw error;
   }
 }

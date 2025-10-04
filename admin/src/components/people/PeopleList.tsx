@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Person } from "@/types/people";
-import { loadRealPeopleData } from "@/lib/dataAdapter";
+import { loadRealPeopleData, createPerson, updatePerson, deletePerson } from "@/lib/dataAdapter";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,22 +40,26 @@ export function PeopleList() {
     (person.cultural_background && person.cultural_background.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  const handleAddPerson = (newPerson: Omit<Person, "person_id">) => {
-    const person: Person = {
-      ...newPerson,
-      person_id: Date.now().toString(),
-    };
-    setPeople([...people, person]);
+  const handleAddPerson = async (newPerson: Omit<Person, "person_id">) => {
+    try {
+      const createdPerson = await createPerson(newPerson);
+      setPeople([...people, createdPerson]);
+    } catch (error) {
+      console.error('Failed to create person:', error);
+      // TODO: Show error message to user
+    }
   };
 
-  const handleEditPerson = (updatedPerson: Omit<Person, "person_id">) => {
+  const handleEditPerson = async (updatedPerson: Omit<Person, "person_id">) => {
     if (editingPerson) {
-      const person: Person = {
-        ...updatedPerson,
-        person_id: editingPerson.person_id,
-      };
-      setPeople(people.map(p => p.person_id === editingPerson.person_id ? person : p));
-      setEditingPerson(null);
+      try {
+        const person = await updatePerson(editingPerson.person_id, updatedPerson);
+        setPeople(people.map(p => p.person_id === editingPerson.person_id ? person : p));
+        setEditingPerson(null);
+      } catch (error) {
+        console.error('Failed to update person:', error);
+        // TODO: Show error message to user
+      }
     }
   };
 

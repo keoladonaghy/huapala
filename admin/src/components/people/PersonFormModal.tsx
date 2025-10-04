@@ -40,6 +40,8 @@ export function PersonFormModal({ isOpen, onClose, onSubmit, person }: PersonFor
     death_date: "",
     cultural_background: "",
     biographical_notes: "",
+    photograph: "",
+    caption: "",
     roles: [],
     primary_role: "",
     specialties: "",
@@ -68,6 +70,8 @@ export function PersonFormModal({ isOpen, onClose, onSubmit, person }: PersonFor
         death_date: person.death_date || "",
         cultural_background: person.cultural_background || "",
         biographical_notes: person.biographical_notes,
+        photograph: person.photograph || "",
+        caption: person.caption || "",
         roles: person.roles,
         primary_role: person.primary_role,
         specialties: person.specialties.join(", "),
@@ -94,6 +98,8 @@ export function PersonFormModal({ isOpen, onClose, onSubmit, person }: PersonFor
         death_date: "",
         cultural_background: "",
         biographical_notes: "",
+        photograph: "",
+        caption: "",
         roles: [],
         primary_role: "",
         specialties: "",
@@ -146,6 +152,8 @@ export function PersonFormModal({ isOpen, onClose, onSubmit, person }: PersonFor
       death_date: formData.death_date || null,
       cultural_background: formData.cultural_background.trim() || null,
       biographical_notes: formData.biographical_notes.trim(),
+      photograph: formData.photograph.trim() || null,
+      caption: formData.caption.trim() || null,
       roles: formData.roles,
       primary_role: formData.primary_role,
       specialties: formData.specialties.trim() 
@@ -325,15 +333,74 @@ export function PersonFormModal({ isOpen, onClose, onSubmit, person }: PersonFor
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="biographical_notes">Biographical Notes</Label>
-                  <Textarea
-                    id="biographical_notes"
-                    value={formData.biographical_notes}
-                    onChange={(e) => setFormData(prev => ({ ...prev, biographical_notes: e.target.value }))}
-                    placeholder="Biographical information and notes"
-                    rows={8}
-                  />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="photograph">Photograph Filename</Label>
+                      <Input
+                        id="photograph"
+                        value={formData.photograph}
+                        onChange={(e) => setFormData(prev => ({ ...prev, photograph: e.target.value }))}
+                        placeholder="e.g., john_doe.jpg"
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        Base URL: http://reomoana.com/waihonamele/img/
+                      </p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="caption">Photo Caption</Label>
+                      <Textarea
+                        id="caption"
+                        value={formData.caption}
+                        onChange={(e) => setFormData(prev => ({ ...prev, caption: e.target.value }))}
+                        placeholder="Description of the photograph"
+                        rows={3}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="biographical_notes">Biographical Notes</Label>
+                      <Textarea
+                        id="biographical_notes"
+                        value={formData.biographical_notes}
+                        onChange={(e) => setFormData(prev => ({ ...prev, biographical_notes: e.target.value }))}
+                        placeholder="Biographical information and notes"
+                        rows={6}
+                      />
+                    </div>
+                  </div>
+
+                  {formData.photograph && (
+                    <div className="space-y-2">
+                      <Label>Photo Preview</Label>
+                      <div className="border rounded-lg p-2 bg-muted/50">
+                        <img
+                          src={`http://reomoana.com/waihonamele/img/${formData.photograph}`}
+                          alt={formData.caption || "Person photograph"}
+                          className="w-full h-auto max-h-96 object-contain rounded"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.nextElementSibling!.textContent = 'Image not found or failed to load';
+                          }}
+                          onLoad={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'block';
+                            if (target.nextElementSibling) {
+                              target.nextElementSibling.textContent = '';
+                            }
+                          }}
+                        />
+                        <p className="text-xs text-muted-foreground mt-2" />
+                        {formData.caption && (
+                          <p className="text-sm text-center mt-2 italic">
+                            {formData.caption}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </TabsContent>
 
