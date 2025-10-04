@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Music, FileText, Settings, BarChart3, Mic, Video } from "lucide-react";
+import { Music, Users, BookOpen, Mic, Video, Settings } from "lucide-react";
 
 interface MeleFormModalProps {
   isOpen: boolean;
@@ -119,23 +119,19 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="flex-1 overflow-hidden flex flex-col">
-          <Tabs defaultValue="processing" className="flex-1 overflow-hidden flex flex-col">
+          <Tabs defaultValue="details" className="flex-1 overflow-hidden flex flex-col">
             <TabsList className="grid w-full grid-cols-6 flex-shrink-0">
-              <TabsTrigger value="processing" className="flex items-center gap-2">
-                <Settings className="w-4 h-4" />
-                Processing Data
-              </TabsTrigger>
-              <TabsTrigger value="basic" className="flex items-center gap-2">
+              <TabsTrigger value="details" className="flex items-center gap-2">
                 <Music className="w-4 h-4" />
-                Basic Info
+                Song Details
               </TabsTrigger>
               <TabsTrigger value="people" className="flex items-center gap-2">
-                <FileText className="w-4 h-4" />
-                People & Sources
+                <Users className="w-4 h-4" />
+                Person(s)
               </TabsTrigger>
-              <TabsTrigger value="content" className="flex items-center gap-2">
-                <BarChart3 className="w-4 h-4" />
-                Content Summary
+              <TabsTrigger value="songbook" className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                Songbook
               </TabsTrigger>
               <TabsTrigger value="recordings" className="flex items-center gap-2">
                 <Mic className="w-4 h-4" />
@@ -145,10 +141,14 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
                 <Video className="w-4 h-4" />
                 Media
               </TabsTrigger>
+              <TabsTrigger value="processing" className="flex items-center gap-2">
+                <Settings className="w-4 h-4" />
+                Processing Data
+              </TabsTrigger>
             </TabsList>
             
             <div className="flex-1 overflow-y-auto">
-              <TabsContent value="basic" className="space-y-4 p-4">
+              <TabsContent value="details" className="space-y-4 p-4">
                 <div className="space-y-2">
                   <Label htmlFor="canonical_title_hawaiian">Hawaiian Title *</Label>
                   <Input
@@ -302,31 +302,11 @@ export function MeleFormModal({ isOpen, onClose, onSubmit, mele }: MeleFormModal
                 </div>
               </TabsContent>
 
-              <TabsContent value="content" className="space-y-4 p-4">
-                <div className="space-y-2">
-                  <Label htmlFor="verses_summary">Verses & Structure Summary</Label>
-                  <Textarea
-                    id="verses_summary"
-                    value={formData.verses_summary}
-                    onChange={(e) => setFormData(prev => ({ ...prev, verses_summary: e.target.value }))}
-                    placeholder="Brief summary of verse structure (full verse data is preserved separately)"
-                    rows={3}
-                    className="bg-muted"
-                  />
-                  <p className="text-xs text-muted-foreground">
-                    This field shows a summary only. The complete verse-by-verse Hawaiian and English text data is preserved separately and not editable through this form to save space.
-                  </p>
-                </div>
-
-                <div className="p-4 border rounded-lg bg-muted/50">
-                  <h4 className="font-medium mb-2">Content Data Preserved</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Complete verse-by-verse structure</li>
-                    <li>• Line-by-line Hawaiian and English text</li>
-                    <li>• Verse types (verse, chorus/hui)</li>
-                    <li>• Line numbering and ordering</li>
-                    <li>• Bilingual text alignment</li>
-                  </ul>
+              <TabsContent value="songbook" className="space-y-4 p-4">
+                <div className="p-8 text-center text-muted-foreground">
+                  <BookOpen className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <h3 className="text-lg font-medium mb-2">Songbook</h3>
+                  <p>Songbook information functionality will be added here.</p>
                 </div>
               </TabsContent>
 
