@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asset Debug</title>
+</head>
+<body>
+    <h1>Asset Debug Test</h1>
+    <p>Testing asset availability:</p>
+    
+    <script>
+        const baseURL = window.location.origin + window.location.pathname.replace('/debug-assets.html', '');
+        console.log('Base URL:', baseURL);
+        
+        const assetPaths = [
+            '/admin/assets/index-DKhznShj.js',
+            '/admin/assets/index-DLnXGZaB.css',
+            '/huapala/admin/assets/index-DKhznShj.js',
+            '/huapala/admin/assets/index-DLnXGZaB.css'
+        ];
+        
+        assetPaths.forEach(path => {
+            const fullURL = window.location.origin + path;
+            console.log('Testing:', fullURL);
+            
+            fetch(fullURL, {method: 'HEAD'})
+                .then(response => {
+                    console.log(`${fullURL} - Status: ${response.status}`);
+                    if (response.ok) {
+                        console.log(`✓ FOUND: ${fullURL}`);
+                    } else {
+                        console.log(`✗ NOT FOUND: ${fullURL}`);
+                    }
+                })
+                .catch(error => {
+                    console.log(`✗ ERROR: ${fullURL} - ${error.message}`);
+                });
+        });
+    </script>
+</body>
+</html>
